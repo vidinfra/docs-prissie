@@ -329,7 +329,7 @@
           {
             "group": "CDN",
             "openapi": {
-              "source": "https://petstore3.swagger.io/api/v3/openapi.json",
+              "source": "https://raw.githubusercontent.com/vidinfra/open-api-docs/refs/heads/main/cdn-openapi.json",
               "directory": "api-reference"
             }
           },
