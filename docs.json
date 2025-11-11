@@ -335,7 +335,7 @@
           {
             "group": "Vidinfra",
             "openapi": {
-              "source": "https://raw.githubusercontent.com/github/rest-api-description/main/descriptions/api.github.com/api.github.com.json",
+              "source": "https://raw.githubusercontent.com/vidinfra/open-api-docs/refs/heads/main/openapi.json",
               "directory": "api-reference"
             }
           }
