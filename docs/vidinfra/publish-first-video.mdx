@@ -1,34 +1,49 @@
 ---
-title: 'Publish Your First Video'
-description: 'Upload, process, and publish your first video with Vidinfra using the dashboard or API.'
-icon: 'video'
+title: 'Publish your First Video'
+description: 'Embed, Share, and Distribute Your Stream'
+sidebarTitle: 'Publish First Video'
+icon: "video"
 ---
-
-# Publish Your First Video
+# Publish your First Video
 
 With Vidinfra, you can go from raw video to global streaming in minutes — no infrastructure or video expertise required.
 
-This guide walks you through publishing your first video using either the **Vidinfra Dashboard** or the **Vidinfra API**.
-
 ---
+## Share and Integrate Your Video
 
-## 🚀 Step 1: Upload Your Video
+- Once you open your video library, you’ll see all your uploaded and imported videos listed with their titles, durations
 
-### Option 1 — Upload via Dashboard
+    <Frame caption="All Uploaded Video Dashboard">
+        <img src="/images/vidinfra/library-07.png" alt="Vidinfra Dashboard" />
+    </Frame>
+    
+### Embed your Video
+Embedding a video lets you display it directly on your website or app without storing the file yourself. It’s the easiest way to stream securely using Vidinfra’s cloud delivery.
 
-1. Go to the **Vidinfra Console** → **Assets** → **Upload Video**
-2. Drag and drop your video file, or click to browse
-3. Vidinfra begins processing the file immediately — transcoding it into multiple renditions and adaptive formats (HLS + DASH)
+- A pop-up window will appear when you click the chain icon on your selected video. From this window, click on **Copy Embed Code** and paste it into your website to display the video.
 
-> ✅ Supported formats: `.mp4`, `.mov`, `.mkv`, `.webm`, `.avi`, `.flv`
+    <Frame caption="Copy Video Embed Code">
+        <img src="/images/vidinfra/library-9.1.png" alt="Copy Video Embed Code" />
+    </Frame>
 
-### Option 2 — Upload via API
+- In the Embed section, you can choose between **Responsive** and **Fixed player** sizes to match your layout, and enable or disable **Player Controls**, **Autoplay**, **Loop**, or **Mute** to customize the viewing experience.
 
-```bash
-curl -X POST https://api.vidinfra.io/v1/assets \
-  -H "Authorization: Bearer $VIDINFRA_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{
-    "input": "https://example.com/videos/product-demo.mp4",
-    "playbackPolicy": "public"
-  }'
+### URLs
+The URLs tab provides direct links for viewing, streaming, and integrating your videos across platforms.
+Each link type serves a specific purpose depending on how you plan to use your video.
+
+- When you click the URLs tab next to Embed, you’ll see multiple links for playback, integration, and sharing.
+    <Frame caption="Copy URL">
+        <img src="/images/vidinfra/library-10.png" alt="Copy URL" />
+    </Frame>
+
+1. **Watch Page:** A direct playback link that opens your video in the Vidinfra player. Perfect for quick sharing.
+2. **HLS Manifest URL:** Adaptive streaming link for HLS-supported players, ensuring smooth playback across all devices.
+3. **MPEG-DASH URL:** Used for players and applications that support the MPEG-DASH streaming protocol.
+4. **Thumbnail URL:** A static image link representing your video thumbnail.
+5. **Animated Thumbnail URL (WebP):** A motion thumbnail that gives viewers a preview before playback starts.
+
+<Tip>You can use HLS or DASH URLs for integrations, and the Watch Page for quick sharing.</Tip>
+
+
+

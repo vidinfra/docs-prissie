@@ -4,12 +4,9 @@ description: 'Upload, process, and stream your first video using Vidinfra.'
 icon: 'zap'
 ---
 
+This guide helps you upload, process, and play your first video with Vidinfra, a complete cloud platform for hosting and streaming. 
 
-# Quick Start Guide
-
-This guide will help you upload, process, and play your first video with **Vidinfra** — a fully managed cloud video infrastructure for ingest, transcoding, and delivery.
-
-In just a few steps, you’ll go from a raw video file to a globally delivered, adaptive streaming playback URL.
+In a few simple steps, you’ll turn a raw video file into a ready-to-stream playback link.
 
 ---
 
@@ -17,23 +14,71 @@ In just a few steps, you’ll go from a raw video file to a globally delivered, 
 
 Before starting, make sure you have:
 
-- A **Vidinfra account** — [Sign up](https://beta.tenbyte.io/vidinfra)
-- An **API key** with `assets:write` permission
+- A **Tenbyte account** — [Sign up](https://beta.tenbyte.io/vidinfra)
 - A **video file** ready to upload (e.g. `.mp4`, `.mov`, `.mkv`)
+- An **API key** with `assets:write` permission
 
 ---
 
-## 
+## Set Up Your Vidinfra Workspace
+
 - After signing in with your registered email and password, you will see a welcome page.
-    <p align="center">
-        <img src="/images/vidinfra/dashboard.png" alt="Vidinfra-Dashboard" width="600" />
-    </p>
+    
+    <Frame caption="Vidinfra Dashboard">
+        <img src="/images/vidinfra/dashboard.png" alt="Vidinfra Dashboard" />
+    </Frame>
 
 - From the left sidebar, select **Vidinfra**.
 - A workspace will open. From here, create your library by selecting **New Library**.
-    <p align="center">
-        <img src="/images/vidinfra/library.png" alt="Vidinfra-Dashboard" width="600" />
-    </p>
+    
+    <Frame caption="Library Workspace">
+        <img src="/images/vidinfra/library.png" alt="Library Workspace" />
+    </Frame>
+
+- Fill in the required fields with your information, including the **library name**, **region**, and **purpose of the library**, then click **Create Library** to continue.
+    
+    <Frame caption="Create Video Library">
+        <img src="/images/vidinfra/library-01.png" alt="Create Video Library" />
+    </Frame>
+
+    <Note>Choose your preferred region to ensure the best performance and streaming quality.</Note>
+
+- Once the library is created successfully, your workspace will display the video dashboard. 
+
+    <Frame caption="Video Library Dashboard">
+        <img src="/images/vidinfra/library-04.png" alt="Video Library Dashboard" />
+    </Frame>    
+
+From here, you can **upload** or **import** videos to start building your content library.
+
+## Upload your Video
+
+- Click **Upload Video** to add a new file from your device and start building your library.
+
+    <Frame caption="Upload your Video">
+        <img src="/images/vidinfra/library-02.png" alt="Upload your Video" />
+    </Frame>
+
+- Alternatively, choose from the supported platforms to bring your existing videos directly into Vidinfra.
+
+    <Frame caption="Import Existing Videos">
+        <img src="/images/vidinfra/library-03.png" alt="Import Existing Videos" />
+    </Frame>
+
+## Stream your Video
+
+- Vidinfra automatically processes your video with high-speed optimization, transcoding it into multiple renditions and adaptive formats (**`HLS`** and **`DASH`**) to make it stream-ready within seconds.
+
+    <Frame caption="Vidinfra Processing your Video">
+        <img src="/images/vidinfra/library-05.png" alt="Vidinfra Processing your Video" />
+    </Frame>
+
+> ✅ Supported formats: `.mp4`, `.mov`, `.mkv`, `.webm`, `.avi`, `.flv`
+
+- Once your video is uploaded, you can start using it across your business for streaming, embedding, or sharing with your audience.
+
+---
+
 ## 1️⃣ Install the SDK
 
 Vidinfra offers official SDKs for Node.js, Python, and other languages.
