@@ -156,9 +156,7 @@
                 "expanded": false,
                 "icon": "palette",
                 "pages": [
-                  "docs/vidinfra/player-customization/player-themes",
-                  "docs/vidinfra/player-customization/custom-overlays",
-                  "docs/vidinfra/player-customization/interactive-elements"
+                  "docs/vidinfra/player-customization/player-themes"
                 ]
               },
               {
