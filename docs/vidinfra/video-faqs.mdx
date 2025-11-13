@@ -10,28 +10,27 @@ Find answers to the most common questions about using **Vidinfra** for video upl
 
 ---
 
-## 📦 Uploading & Importing
-
 ### 1. What video formats does Vidinfra support?
 
-Vidinfra supports most major formats including `.mp4`, `.mov`, `.mkv`, `.avi`, `.flv`, and `.webm`.
-We recommend using **MP4 (H.264)** for best compatibility and upload performance.
+Vidinfra supports most major formats including **`.mp4`, `.mov`, `.mkv`, `.avi`, `.flv`, and `.webm`.**
+For best compatibility and upload speed, we recommend using **`MP4`** (**`H.264`**).
 
 ---
 
 ### 2. Is there a file size limit for uploads?
 
-No hard limit — Vidinfra supports **large uploads (100GB+)** using multipart and resumable uploads via the API.
-For optimal performance, use the official SDK or upload through cloud storage (S3, GCS) imports.
+There’s no fixed file size limit. Vidinfra supports large uploads of **100GB** and beyond using multipart and resumable uploads through the API.
+
+For best performance, use the official **SDK** or import through cloud storage such as **S3** or **GCS**.
 
 ---
 
-### 3. Can I import videos from YouTube, Vimeo, or cloud storage?
+### 3. Can I import videos from external sources like YouTube, Vimeo or cloud storage?
 
 Yes. You can **import videos from any public or signed URL**, including:
-- Vimeo or YouTube video links
-- S3 / Google Cloud Storage / Azure Blob URLs
-- Any HTTPS-accessible file
+- **Vimeo, Bunny, Zoom, Vdocipher, Gumlet, Wistia** or **YouTube video links**.
+- Amazon S3 / Google Cloud Storage / Azure Blob URLs.
+- Any HTTPS-accessible file.
 
 Vidinfra fetches and processes the file automatically once you submit the `input` URL.
 
@@ -39,3 +38,77 @@ Vidinfra fetches and processes the file automatically once you submit the `input
 curl -X POST https://api.vidinfra.io/v1/assets \
   -H "Authorization: Bearer $VIDINFRA_API_KEY" \
   -d '{ "input": "https://example.com/video.mp4" }'
+```
+
+---
+
+### 4. How does Vidinfra handle large uploads?
+
+Vidinfra uses a multipart upload engine that splits large files into smaller chunks.
+
+This ensures reliable transfers even over unstable connections and allows automatic resume if the upload is interrupted. 
+
+### 4. Can I upload videos directly from my local device?
+
+Yes. You can upload videos directly from your computer or mobile device using the Upload Video option in the Vidinfra Dashboard.
+
+Simply drag and drop your file, or select it manually from your file manager.
+
+---
+
+### 5. What happens after upload?
+
+Once uploaded, Vidinfra automatically:
+
+1. Validates the file format and metadata.
+2. Transcodes the video into multiple adaptive renditions (`HLS` + `DASH`).
+3. Generates thumbnails and animated previews.
+4. Makes the video ready for playback or embedding in under a few seconds.
+
+---
+
+### 6. Can I monitor upload progress?
+
+Yes. The upload progress is displayed in real time within the Encoding Queue on your dashboard.
+
+You can track the percentage completed, estimated time, and current processing status.
+
+---
+
+### 7. Where are my uploaded videos stored?
+
+All videos are stored securely in **Tenbyte’s S3-compatible cloud storage**.
+
+This ensures low latency, compliance with local data laws, and high availability.
+
+---
+
+### 8. Does Vidinfra support resumable uploads?
+
+Yes. Vidinfra supports resumable uploads through its **API** and **SDKs**.
+
+If your connection drops mid-upload, the system automatically resumes from the last completed chunk.
+
+---
+
+### 9. Can I upload live streams?
+
+Yes. Vidinfra also supports live video ingestion using **RTMP**.
+
+You can connect popular tools like **OBS**, **Wirecast**, or **Streamyard** to stream live content directly to Vidinfra.
+
+---
+
+### 10. Can I organize my videos by folders or projects?
+
+Yes. You can create multiple libraries or folders to manage projects, campaigns, or different business units separately within your Vidinfra workspace.
+
+### 11. How long does video processing take?
+
+Vidinfra’s **AI-powered compression engine** optimizes processing to make videos stream-ready within seconds, even for large files.
+
+---
+
+### 12. Can developers manage videos via API?
+
+Yes. Vidinfra is **fully API-driven**. Everything available in the dashboard can also be managed through A**PI calls**. You can upload, encode, publish, and track videos programmatically.
