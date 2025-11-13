@@ -173,8 +173,8 @@
                 "expanded": false,
                 "icon": "shield-check",
                 "pages": [
-                  "docs/vidinfra/security/signed-urls",
-                  "docs/vidinfra/security/restricted-access"
+                  "docs/vidinfra/security/country-access-policy",
+                  "docs/vidinfra/security/referrer-policy"
                 ]
               },
               {

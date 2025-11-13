@@ -1,0 +1,31 @@
+---
+title: 'Referrer Access Control'
+description: 'Restrict video playback to approved websites by allowing or blocking specific referrer domains.'
+sidebarTitle: 'Referrer Policy'
+icon: 'user-lock'
+---
+# Referrer Access Policy
+
+**Referrer Access Policy** controls which websites are allowed to load and play your videos.
+
+## 1. Open Security Settings
+To open Security Settings, see Open Security Settings in the [Country Access Policy](/docs/vidinfra/security/signed-urls#1-open-security-settings) section. 
+
+## 2. Allow by Default
+All websites can access your video unless you specify domains to block.
+
+    <Frame caption="Allow by Default">
+        <img src="/images/vidinfra/library-41.png" alt="Allow by Default" />
+    </Frame>
+
+## 3. Deny by Default
+All websites are blocked from accessing your video except the domains you explicitly allow.
+
+    <Frame caption="Deny by Default">
+        <img src="/images/vidinfra/library-42.png" alt="Deny by Default" />
+    </Frame>
+
+## 4. Specify Domain(s)
+Add the domains that should be allowed or blocked based on your chosen rule.
+
+<Danger>Only the specified domains will be permitted according to your policy settings.</Danger>
