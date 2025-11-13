@@ -1,0 +1,58 @@
+---
+title: 'Set Up Webhook'
+description: 'Configure webhooks to receive real-time updates about video events and processing status.'
+sidebarTitle: 'Webhook Setup'
+icon: 'blocks'
+---
+# Configure a New Webhook
+Create a webhook that sends event notifications to your server as videos move through their processing stages.
+
+## Create a Webhook
+To create a new webhook, click **New Webhook** in the top right corner of the dashboard.
+    
+    <Frame caption="Create New Webhook">
+        <img src="/images/vidinfra/library-44.png" alt="Create New Webhook" />
+    </Frame>
+
+Follow these steps to create a new webhook for receiving video event notifications:
+
+### 1. Add a Name
+Enter a name for your webhook under Video Event Notifications. This helps you identify the webhook when you manage multiple integrations.
+
+### 2. Provide the Endpoint URL
+Paste the URL where Vidinfra should send webhook events into the Endpoints field. This must be a valid, publicly accessible endpoint from your server or application.
+
+<Tip>Make sure your webhook endpoint is publicly accessible and returns a 200 response.</Tip>
+
+### 3. Select Events to Monitor
+Choose the video lifecycle events you want to receive notifications for. Available events include:
+
+- **`created`**
+- **`uploading`**
+- **`queued`**
+- **`processing`**
+- **`partial_playable`**
+- **`playable`**
+- **`transcoding`**
+- **`packaging`**
+- **`saving`**
+- **`transcoding_failed`**
+- **`pulling`**
+- **`pulling_failed`**
+- **`failed`**
+
+Select the events relevant to your workflow.
+
+<Warning>Selecting too many event types may generate a high number of webhook calls. Choose only the events your workflow needs.</Warning>
+
+### 4. Add a Secret Token (Optional)
+You can add a Secret Token to secure webhook deliveries. This token allows your server to verify that the request came from Vidinfra.
+
+### 5. Create the Webhook
+Click Create to save your webhook. Your endpoint will now start receiving notifications for the selected events.
+
+    <Frame caption="Create your Webhook">
+        <img src="/images/vidinfra/library-45.png" alt="Create your Webhook" />
+    </Frame>
+
+Your **webhook** is now created and ready to receive events.

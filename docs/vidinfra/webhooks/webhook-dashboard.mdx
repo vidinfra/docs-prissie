@@ -1,0 +1,46 @@
+---
+title: 'Webhook Dashboard'
+description: 'View, manage, and monitor all your webhook integrations from a single dashboard.'
+sidebarTitle: 'Webhook Dashboard'
+icon: 'cassette-tape'
+---
+# Webhooks Overview
+See all active and inactive webhooks and manage their configurations with ease.
+
+## Open the Webhook Settings
+- From the left sidebar, open the **Settings** dropdown and select **Webhook**.
+
+    <Frame caption="Webhook from Library">
+        <img src="/images/vidinfra/library-43.png" alt="Webhook from Library"/>
+    </Frame>
+
+- This will open the webhook dashboard for your video library.
+
+- The Webhooks dashboard shows all the webhook integrations you have created. 
+
+    <Frame caption="Webhook Dashboard">
+        <img src="/images/vidinfra/library-46.png" alt="Webhook Dashboard"/>
+    </Frame>
+
+Each entry provides a quick overview of the endpoint, subscribed events, and the current status of the webhook.
+
+### Name
+Displays the name you assigned to the webhook. This helps you identify different integrations at a glance.
+
+### Endpoint
+- Shows the URL where Vidinfra sends event notifications.
+- Only valid and publicly accessible endpoints will receive webhook requests.
+
+### Events
+Lists the video events the webhook is subscribed to, such as `video.created`, `video.upload.started`, `video.upload.completed`, `video.upload.failed`, `video.queued` and more. 
+
+You can see additional events by selecting the **event count indicator**.
+
+### Status
+Indicates whether the webhook is **active** or **inactive**. An **Active webhook** is currently receiving event updates.
+
+### Date Modified
+Displays the last time the webhook configuration was updated.
+
+### Actions Menu
+Use the options menu (**`three dots`**) to **edit** or **delete** a webhook.
