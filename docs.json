@@ -63,11 +63,10 @@
                 "icon": "user",
                 "pages": [
                   "docs/account/index",
-                  "docs/account/profile",
-                  "docs/account/sign-in",
-                  "docs/account/security",
-                  "docs/account/two-factor-authentication",
-                  "docs/account/sign-out"
+                  "docs/account/account-creation",
+                  "docs/account/profile-settings",
+                  "docs/account/password-configuration",
+                  "docs/account/user-access"
                 ]
               },
               {
