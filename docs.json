@@ -183,9 +183,7 @@
                 "icon": "webhook",
                 "pages": [
                   "docs/vidinfra/webhooks/webhook-dashboard",
-                  "docs/vidinfra/webhooks/setup-webhooks",
-                  "docs/vidinfra/webhooks/webhook-events",
-                  "docs/vidinfra/webhooks/webhook-logs"
+                  "docs/vidinfra/webhooks/setup-webhooks"
                 ]
               }
             ]
