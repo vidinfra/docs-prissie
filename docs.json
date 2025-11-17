@@ -71,45 +71,12 @@
               {
                 "group": "Organization",
                 "expanded": false,
-                "icon": "users",
+                "icon": "building-2",
                 "pages": [
                   "docs/organization/index",
                   "docs/organization/members",
-                  "docs/organization/roles-permissions",
-                  "docs/organization/invitations",
-                  "docs/organization/audit-logs"
-                ]
-              },
-              {
-                "group": "API Keys & Access",
-                "expanded": false,
-                "icon": "shield",
-                "pages": [
-                  "docs/access/api-keys",
-                  "docs/access/token-management",
-                  "docs/access/scopes-and-permissions"
-                ]
-              },
-              {
-                "group": "Billing",
-                "expanded": false,
-                "icon": "credit-card",
-                "pages": [
-                  "docs/billing/overview",
-                  "docs/billing/invoices",
-                  "docs/billing/payment-methods",
-                  "docs/billing/usage",
-                  "docs/billing/plan-upgrade"
-                ]
-              },
-              {
-                "group": "Settings",
-                "expanded": false,
-                "icon": "cog",
-                "pages": [
-                  "docs/settings/general",
-                  "docs/settings/notifications",
-                  "docs/settings/region-preferences"
+                  "docs/organization/api-keys",
+                  "docs/organization/general-settings"
                 ]
               }
             ]
