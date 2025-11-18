@@ -164,18 +164,20 @@
                 "icon": "rocket",
                 "pages": [
                   "docs/cdn/index",
-                  "docs/cdn/create-distribution",
-                  "docs/cdn/manage-distributions"
+                  "docs/cdn/quickstart",
+                  "docs/cdn/cdn-faqs"
                   
                 ]
               },
               {
                 "group": "Distributions",
                 "expanded": false,
-                "icon": "globe",
+                "icon": "shapes",
                 "pages": [
+                  "docs/cdn/distributions/create-distribution",
                   "docs/cdn/distributions/distribution-overview",
                   "docs/cdn/distributions/origins",
+                  "docs/cdn/distributions/ssl",
                   "docs/cdn/distributions/headers",
                   "docs/cdn/distributions/access-rules",
                   "docs/cdn/distributions/cache-rules",
@@ -185,12 +187,14 @@
               {
                 "group": "Analytics",
                 "expanded": false,
-                "icon": "chart-no-axes-column-increasing",
+                "icon": "chart-area",
                 "pages": [
-                  "docs/cdn/analytics/overview",
                   "docs/cdn/analytics/traffic-reports",
+                  "docs/cdn/analytics/request-served",
                   "docs/cdn/analytics/cache-hit-ratio",
-                  "docs/cdn/analytics/regional-performance"
+                  "docs/cdn/analytics/response-classes"
+
+                  
                 ]
               },
               {
@@ -198,9 +202,8 @@
                 "expanded": false,
                 "icon": "trash",
                 "pages": [
-                  "docs/cdn/purge/purge-by-url",
-                  "docs/cdn/purge/purge-all",
-                  "docs/cdn/purge/api-purge"
+                  "docs/cdn/purge/purge-by-pattern",
+                  "docs/cdn/purge/purge-all"
                 ]
               },
               {
@@ -208,9 +211,7 @@
                 "expanded": false,
                 "icon": "shield",
                 "pages": [
-                  "docs/cdn/certificates/ssl-overview",
-                  "docs/cdn/certificates/custom-certificates",
-                  "docs/cdn/certificates/lets-encrypt"
+                  "docs/cdn/certificates/custom-certificates"
                 ]
               }
             ]
