@@ -1,3 +1,27 @@
 ---
-title: "Default page title"
+title: 'Purge All'
+description: 'Clear all cached content from the CDN to ensure users get fresh data from the origin server.'
+sidebarTitle: 'Purge All'
+icon: 'shredder'
 ---
+
+# Purge all Cached Content
+
+The **Purge All** option completely removes all cached content from your CDN distribution. This forces the CDN to re-fetch content from the origin server. 
+
+- **Select Purge All**: Choose the **Purge All** option to clear all cached content.
+
+    <Frame caption="Purge All">
+        <img src="/images/cdn/36.png" alt="Origin" />
+    </Frame>
+
+- **Execute Purge**: Click the **Purge** button to start the cache clearing process.
+
+    <Frame caption="Execute Purge All">
+        <img src="/images/cdn/37.png" alt="Origin" />
+    </Frame>
+
+<Warning>
+    Be cautious when using Purge All, as it will affect global performance until the cache is rebuilt.
+</Warning>
+

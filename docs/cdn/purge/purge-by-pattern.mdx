@@ -1,0 +1,32 @@
+---
+title: 'Purge by Pattern'
+description: 'Remove cached content based on specific patterns to update or clear selected files.'
+sidebarTitle: 'Purge by Pattern'
+icon: 'square-activity'
+---
+
+# Purge your Content by Pattern
+
+The **Purge by Pattern** option allows you to remove cached content based on specific **URL patterns**. 
+
+This is useful when you want to clear specific files or resources, such as **images** or **static files**, without affecting the entire cache.
+
+## 1. Enter Purge Patterns
+- In the input box, enter the URL patterns for the content you want to purge. 
+
+    <Frame caption="Purge by Pattern">
+        <img src="/images/cdn/34.png" alt="Origin" />
+    </Frame>
+
+- Each pattern must start with **`/`**, and you can use **`*`** as a wildcard to specify multiple files. For example:
+    - **`/images/*`** to purge all images
+    - **`/static/css/*`** to purge all CSS files
+
+- You can add up to **10 patterns**, each on a separate line, to target specific content.
+
+## 2. Execute Purge
+- After entering your desired patterns, click **Purge** to clear the cached files matching those patterns.
+
+    <Frame caption="Execute Purge">
+        <img src="/images/cdn/35.png" alt="Origin" />
+    </Frame>

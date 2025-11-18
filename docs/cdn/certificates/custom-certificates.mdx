@@ -1,3 +1,36 @@
 ---
-title: "Default page title"
+title: 'Add SSL Certificate'
+description: 'Upload and manage SSL certificates to secure your domain with HTTPS.'
+sidebarTitle: 'Custom SSL Certificates'
+icon: 'book-key'
 ---
+
+# Add your Custom SSL Certificate
+
+**SSL Certificate** section allows you to securely upload and manage SSL certificates for your domain, ensuring all data is transmitted over HTTPS.
+
+## Upload a New SSL Certificate
+
+### 1. Click on New Certificate 
+- To add a new SSL certificate, click the **+ New Certificate** button.
+
+    <Frame caption="Add new SSL">
+        <img src="/images/cdn/38.png" alt="Origin" />
+    </Frame>
+
+### 2. Enter Certificate Details
+    - **Label**: Give your certificate a name for easy identification.
+    - **Certificate**: Paste the PEM-formatted certificate that you have received from a Certificate Authority (CA), including the BEGIN CERTIFICATE and END CERTIFICATE tags.
+    - **Private Key**: Paste the private key associated with your certificate, ensuring it is in PEM format.
+    - **Chain**: If your certificate includes intermediate certificates, paste them in the Chain section, also in PEM format.
+
+    <Frame caption="Enter Details">
+        <img src="/images/cdn/39.png" alt="Origin" />
+    </Frame>
+
+### 3. Save the Certificate
+After entering all required information, click **Save** to upload and secure your domain.
+
+    <Frame caption="Save the Certificate">
+        <img src="/images/cdn/40.png" alt="Origin" />
+    </Frame>

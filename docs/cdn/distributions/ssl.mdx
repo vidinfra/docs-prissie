@@ -1,0 +1,32 @@
+---
+title: 'SSL Management'
+description: 'Easily manage SSL certificates for secure communication over HTTPS on your Tenbyte CDN distribution.'
+sidebarTitle: 'SSL'
+icon: 'scroll-text'
+---
+
+# SSL Management for Your Distribution
+
+In this section, you can manage SSL certificates to secure your CDN distribution URL, ensuring that all traffic between your users and the CDN is encrypted.
+
+## 1. Choose Your SSL Type
+You can select one of the following SSL options:
+
+1. **Tenbyte SSL (Free)**: This option automatically provides an SSL certificate for your distribution. 
+2. **Let's Encrypt SSL**: It ensures secure HTTPS traffic, but you will need to complete the setup steps.
+3. **Custom SSL**: If you have your own SSL certificate, you can upload it for use with your CDN distribution.
+
+    <Frame caption="Choose Your SSL Type">
+        <img src="/images/cdn/20.png" alt="Origin" />
+    </Frame>
+
+## 2. Additional SSL Settings
+Here you can configure other settings related to SSL:
+
+1. **SNI Hostname**: Set the hostname used for the SSL handshake. 
+2. **Redirect HTTP to HTTPS**: Enable this option to automatically redirect users who access your content via HTTP to the secure HTTPS version. 
+3. **HTTP/2 and HTTP/3**: You can enable or disable support for HTTP/2 and HTTP/3. These newer versions of HTTP offer improved performance and reduced latency for faster content delivery.
+
+    <Frame caption="Additional Settings">
+        <img src="/images/cdn/21.png" alt="Origin" />
+    </Frame>

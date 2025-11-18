@@ -1,3 +1,37 @@
 ---
-title: "Default page title"
+title: 'Manage HTTP Headers'
+description: 'Configure HTTP headers for how your CDN communicates with clients and servers.'
+sidebarTitle: 'Headers'
+icon: 'server'
 ---
+# Configure HTTP Headers
+
+This section allows you to configure HTTP headers for your Tenbyte CDN distribution.
+
+## 1. Host Header
+- Specify the custom Host Header that your CDN servers will use when requesting content from your origin server.
+
+    <Frame caption="Host Header">
+        <img src="/images/cdn/22.png" alt="Host Header" />
+    </Frame>
+
+- Enable the **Host Header** toggle.
+- Enter the **Key** and the **Value**.
+
+## 2. CORS Headers
+- Control how resources are shared across different origins by enabling Cross-Origin Resource Sharing (CORS).
+
+    <Frame caption="CORS Headers">
+        <img src="/images/cdn/23.png" alt="CORS Headers" />
+    </Frame>
+
+- Enable the **CORS Headers** toggle.
+- Choose either **`"*"`** (to allow all origins) or specify a **Specific Origin**. If you select **Specify Origin** you need to provide your **Origin Domain**
+
+## 3. Request Header
+- Add custom headers to requests sent from the CDN to your origin.
+- Enable the Request Header toggle and click **Add Header** to specify the header and its value.
+
+## 4. Response Header
+- Modify or add headers that will be returned from the CDN to users.
+- Enable the **Response Header toggle** and click **Add Header** to set the header and its value.

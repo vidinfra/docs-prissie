@@ -1,0 +1,95 @@
+---
+title: 'Create a CDN Distribution'
+description: 'Set up a new Tenbyte CDN distribution to route traffic through edge locations and cache your content.'
+sidebarTitle: 'Create Distribution'
+icon: 'heart-plus'
+---
+# Set Up Your Distribution
+
+Configure a CDN distribution, add your origin, and start caching content across Tenbyte’s global edge locations.
+
+In a few quick steps, you can create your **first CDN distribution**.
+
+## 1. Create a CDN Distribution
+
+Follow these steps to set up your first CDN distribution in Tenbyte CDN.
+
+### Name Your Distribution
+
+- In the Distribution Name field, enter a clear name for your distribution.
+
+### Choose a Domain Type
+
+Under **Domain Type**, select how the CDN domain will be assigned for your distribution. 
+
+    <Frame caption="Domain Type">
+        <img src="/images/cdn/03.png" alt="Domain Type" />
+    </Frame>
+
+You have two options:
+
+    1. **System Generated:** Tenbyte automatically provides a CDN domain for you.
+    2. **Custom:** Use your own domain for the CDN (e.g., **`cdn.yoursite.com`**).
+
+### Choose a Cache Strategy
+The Cache Strategy determines how Tenbyte CDN caches your content. 
+
+    <Frame caption="Cache Strategy">
+        <img src="/images/cdn/04.png" alt="Cache Strategy" />
+    </Frame>
+
+Select the option that best matches the type of assets you are serving:
+    1. **Static Content:** Full cache with long TTL. Best for files that rarely change, such as images, JavaScript, CSS, fonts, and other static assets.
+    2. **Video on Demand (VOD):** Segmented caching optimized for large media files. Used for MP4, HLS, DASH, and other video playback formats.
+    3. **Livestream:** Short TTL with frequent refresh. Ideal for live streaming workflows where segments update continuously (HLS/DASH live).
+    4. **Dynamic Content:** Minimal caching suitable for APIs, pages with dynamic data, and frequently changing responses. Use this when content must always be fresh.
+
+## 3. Set the Origin
+
+The Origin is the server or storage location where your content is stored. Tenbyte CDN fetches files from this location when serving users. You can set your origin using either a Hostname or an S3 Bucket.
+
+### Hostname Origin
+
+Select Hostname if your files are hosted on a web server, application server, or any publicly reachable URL.
+
+    <Frame caption="Hostname Origin">
+        <img src="/images/cdn/05.png" alt="Hostname Origin" />
+    </Frame>
+
+    - **Origin Label:** Give your origin a name for easy identification.
+    - **Hostname / IP Address:** Enter the server’s full hostname or IP address.
+
+### S3 Bucket Origin
+
+Select S3 Bucket if your files are stored in an **S3-compatible storage service**.
+
+    <Frame caption="S3 Bucket Origin">
+        <img src="/images/cdn/06.png" alt="S3 Bucket Origin" />
+    </Frame>
+
+    - **Origin Label:** Name your origin for internal identification.
+    - **Hostname:** Enter the hostname of your S3-compatible storage.
+    - **Access Key ID:** Provide your storage access key for authenticated access.
+    - **Secret Access Key:** Enter the secret key associated with the access key.
+    - **Bucket:** Specify the bucket name where your files are stored.
+    - **Region:** Choose the region of your S3 bucket.
+
+<Warning>Make sure your access keys and bucket permissions allow the CDN to read files.</Warning>
+
+## Advanced Settings
+
+The Advanced Settings section allows you to configure additional request headers that **Tenbyte CDN** will send to your origin server. 
+
+    - **Host Header:** Use this field to set a custom Host header for CDN requests.
+        1. **Key:** The header name.
+        2. **Value:** The hostname your origin server expects.
+
+<Note>These settings are optional and are used when your origin requires specific headers for routing or authentication.</Note>
+
+Use this option when:
+
+    - Your server uses virtual hosting
+    - You want the CDN to forward a specific domain instead of the default origin URL
+    - Your backend needs a matching Host header for SSL or routing rules
+
+After entering all the required information, click **Create Distribution**. Your CDN distribution will be created, and you’ll see it listed on the Distributions Dashboard.
