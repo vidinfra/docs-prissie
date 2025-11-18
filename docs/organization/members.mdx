@@ -1,3 +1,98 @@
 ---
-title: "Default page title"
+title: "Organize Team Members"
+description: "Manage team members, send invitations, and control user permissions across your Tenbyte workspace."
+sidebarTitle: "Organization Members"
+icon: 'users'
 ---
+
+# Manage Organization Members
+
+From here, you can view existing members, invite new users, assign permissions, and control who can access different parts of your Tenbyte organization.
+
+## 1. Members
+- This page lists all users in your organization along with their roles and connection details.
+
+    <Frame caption="Organization Members">
+        <img src="/images/account/12.png" alt="Organization Members" />
+    </Frame>
+From this dashboard you can view -
+
+   1. **Name** — The member’s full name
+   2. **Email** — Email address used to sign in
+   3. **Connected With** — Sign-in provider like email, Google, or GitHub
+   4. **Role** — Owner, Admin, Member, or custom-defined role
+   5. **Joined At** — The date and time the member joined your workspace
+
+
+Click the **three-dot menu** beside any member to access.
+
+    <Frame caption="Actions">
+        <img src="/images/account/13.png" alt="Actions" />
+    </Frame>
+
+    1. **Manage Permission** — Edit what this member can view or manage
+    2. **Remove Member** — Permanently remove the user from your organization
+<Danger>
+    Removing a member immediately revokes access to all dashboards, APIs, and distributions.
+</Danger>
+
+---
+
+## 2. Invite Member
+- By clicking **Add Members** you can add new users to your organization.
+
+     <Frame caption="Add Members">
+        <img src="/images/account/14.png" alt="Add Members" />
+    </Frame>
+
+    1. **Enter Email Address** - In the Invite Member section, type the email of the person you want to invite.
+    2. **Send Invitation** - Once the email is entered click on **Send invitation**, an invitation will be sent.
+
+    <Frame caption="Send Invitation to your Team Member">
+        <img src="/images/account/15.png" alt="Send Invitation" />
+    </Frame>
+
+<Warning>
+    The invited user must accept the invitation to join your organization.
+</Warning>
+
+- After accepting the invite, the member appears in your Members list. You can also assign permissions to control what they can access
+
+## 3. Permissions
+- Permissions define what a member can view, edit, or delete inside your organization. Permissions are grouped into two areas:
+
+    1. CDN Distribution
+    2. Organization
+
+You can switch between these tabs to assign access rights.
+
+### CDN Distribution Permissions
+- When your organization has one or more CDN distributions, they appear here. 
+
+    <Frame caption="CDN Distribution Permissions">
+        <img src="/images/account/16.png" alt="CDN Distribution Permissions" />
+    </Frame>
+To learn how to create a CDN distribution, visit the [Create CDN Distribution](docs/cdn/distributions/create-distribution) page in the CDN section.
+
+### Organization Permissions
+
+- These permissions control access to global settings within your workspace. 
+
+    <Frame caption="Organization Permissions">
+        <img src="/images/account/17.png" alt="Organization Permissions" />
+    </Frame>
+
+Available permission areas are -
+
+    1. **Members** — Manage users and permissions
+    2. **Billing** — Access billing details, invoices, and payment methods
+    3. **API** — Manage and generate API keys
+
+    For each area, you can choose:
+
+        - **`can view`**
+        - **`can edit`**
+        - **`can edit`** (no delete)
+        - **`no access`**
+
+This gives you full control over what each member can do inside your organization.
