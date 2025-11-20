@@ -258,8 +258,7 @@
                 "pages": [
                   "docs/cloud/networking/vpc",
                   "docs/cloud/networking/firewall",
-                  "docs/cloud/networking/manage-access",
-                  "docs/cloud/networking/security-groups"
+                  "docs/cloud/networking/manage-access"
                 ]
               },
               {
@@ -267,9 +266,15 @@
                 "expanded": false,
                 "icon": "chart-bar",
                 "pages": [
-                  "docs/cloud/monitoring/metrics",
-                  "docs/cloud/monitoring/logs",
-                  "docs/cloud/monitoring/alerts"
+                  "docs/cloud/monitoring/metrics"
+                ]
+              },
+              {
+                "group": "Billing",
+                "expanded": false,
+                "icon": "hand-coins",
+                "pages": [
+                  "docs/cloud/billing/billing"
                 ]
               }
             ]
