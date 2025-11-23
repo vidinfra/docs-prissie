@@ -138,8 +138,11 @@
                 "expanded": false,
                 "icon": "shield-check",
                 "pages": [
+                  "docs/vidinfra/security/dynamic-watermark",
                   "docs/vidinfra/security/country-access-policy",
                   "docs/vidinfra/security/referrer-policy"
+                  
+
                 ]
               },
               {
