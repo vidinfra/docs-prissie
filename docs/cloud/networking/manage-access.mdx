@@ -1,0 +1,89 @@
+---
+title: 'Tenbyte Access Delegations'
+description: 'Create and manage access delegations in Tenbyte Cloud to control user permissions and secure your resources.'
+icon: 'user-star'
+sidebarTitle: 'Access Delegation'
+---
+
+# Tenbyte Access Delegations
+This guide shows you how to create and manage access delegations in Tenbyte Cloud.
+
+## 1. Select Access Delegation from Dashboard
+- From your dashboard, click on **Access Delegation** to manage your **Access**.
+
+    <Frame caption="Select Access Delegation">
+        <img src="/images/cloud/62.png" alt="Select Access Delegation" />
+    </Frame>
+
+- In the Access section of the Tenbyte Cloud dashboard, you can choose between two types of access:
+    1. **Access Delegation**
+    2. **API Token**
+
+    <Frame caption="Choose Type">
+        <img src="/images/cloud/63.png" alt="Choose Type" />
+    </Frame>
+
+## 2. Access Delegation 
+Allows you to delegate access to a user or system, enabling them to manage resources under your account. 
+
+### For Restricted Scope
+Restricted Scope means the user will have access only to the resources tied to the selected billing account.
+
+- Click on **New** to create a **new access delegation**.
+- Under **Scope**, select **Restricted**.
+- Choose the **Billing Account** you wish to share access to.
+- Enter the **email address** of the user you want to delegate access to.
+- Provide an **Access Name**.
+- Click **Create** to send the access invitation to the specified email.
+
+    <Frame caption="Access Delegation for Restricted Scope">
+        <img src="/images/cloud/65.png" alt="Access Delegation for Restricted Scope" />
+    </Frame>
+
+### For Global Scope
+**Global Scope** means the user will have access to all resources under the billing account.
+
+- Follow the same steps as above to create a new access delegation.
+- Under **Scope**, select **Global**.
+- Choose the **Billing Account** you wish to share access to.
+- Enter the **email address** of the user for access delegation.
+- Provide an **Access Name**.
+- Click **Create** to send the access invitation.
+
+    <Frame caption="Access Delegation for Global Scope">
+        <img src="/images/cloud/66.png" alt="Access Delegation for Global Scope" />
+    </Frame>
+
+<Warning>
+    Be cautious when selecting Global, as it grants access to all resources within the billing account.
+</Warning>
+
+
+<Note>
+    The user will receive an invitation to accept access to the specified billing account.
+</Note>
+
+### 3. Access for API Token
+API Token is used to generate a key for interacting with Tenbyte Cloud’s API.
+- Navigate to the **Access** section again and click on **New**.
+- Select **API Token** under Type.
+- Provide an **Access Name** for your API token.
+- Click **Create** to generate the API token.
+
+    <Frame caption="Access for API Token">
+        <img src="/images/cloud/68.png" alt="Access for API Token" />
+    </Frame>
+
+<Note>
+    For API Token, the scope type works similarly to Access Delegations, allowing you to specify restricted or global access.
+</Note>
+
+### 4. Created Access Delegations
+
+- Once the **Access Delegation** is created, you will see the **delegated access listed** under the Access section.
+- The status of the delegated access will be shown as **Pending** until the user accepts the access invitation.
+- Once accepted, the user will be able to perform actions as per the scope of access.
+
+    <Frame caption="Created Access Delegations Lists">
+        <img src="/images/cloud/63.png" alt="Created Access Delegations" />
+    </Frame>

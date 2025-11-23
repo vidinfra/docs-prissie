@@ -1,0 +1,70 @@
+---
+title: 'Tenbyte Cloud Block Storage'
+description: 'Create and manage block storage for your virtual machines in Tenbyte Cloud to expand disk capacity and store data.'
+icon: 'cuboid'
+sidebarTitle: 'Block Storage'
+---
+# Tenbyte Cloud Block Storage
+
+This guide shows you how to **create** and **manage block storage** for your virtual machines in **Tenbyte Cloud**.
+
+
+## 1. Select Compute Section
+- From the left sidebar, click on **Compute** to view your created virtual machines (VMs).
+
+    <Frame caption="View your created Virtual Machines">
+        <img src="/images/cloud/25.png" alt="View your created Virtual Machines" />
+    </Frame>
+
+## 2. Choose Your Virtual Machine
+- In the Compute section, you will see a list of all your created VMs.
+
+    <Frame caption="Select the VM">
+        <img src="/images/cloud/27.png" alt="Select the VM" />
+    </Frame>
+
+- Select the VM you want to manage. 
+
+## 3. Navigate to the Disks Tab
+- After selecting your VM, you will see a detailed overview of the machine.
+- Click on the **Disks** tab to manage storage settings for the selected VM.
+
+    <Frame caption="Navigate to the Disks Tab">
+        <img src="/images/cloud/37.png" alt="Navigate to the Disks Tab" />
+    </Frame>
+
+## 4. View Existing Disks
+- The Disks section will display the disks attached to your VM. 
+
+    <Frame caption="View Existing Disks">
+        <img src="/images/cloud/39.png" alt="View Existing Disks" />
+    </Frame>
+
+- You may see the Boot Disk with details such as:
+
+    - **UUID**: The unique identifier for the disk.
+    - **Size**: The disk size.
+    - **Created**: The creation timestamp.
+    - **Est. Monthly Cost**: The cost for the disk storage.
+
+## 5. Add Additional Disk
+- To add a new disk, click on **Add additional disk**. You can choose the disk size based on your requirements and attach it to the VM.
+- Click on the **Add** to add additional disk.
+
+    <Frame caption="Add Additional Disk">
+        <img src="/images/cloud/38.png" alt="Add Additional Disk" />
+    </Frame>
+
+## 6. Manage Disks
+- You can **resize**, or **delete existing disks**. 
+- Next to the disk you want to resize, click on the **Resize** button.
+- Adjust the disk size according to your needs by modifying the disk size.
+- After setting the desired size, click **Resize** to apply the changes.
+
+    <Frame caption="Resize your Disk">
+        <img src="/images/cloud/41.png" alt="Resize your Disk" />
+    </Frame>
+
+<Warning>
+    It is highly recommended to stop the virtual machine before resizing the boot disk to prevent any issues with the operating system.
+</Warning>

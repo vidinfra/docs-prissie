@@ -1,0 +1,87 @@
+---
+title: 'Tenbyte Firewall'
+description: 'Create and manage firewalls in Tenbyte Cloud to control network traffic and secure your virtual machines.'
+icon: 'brick-wall-fire'
+sidebarTitle: 'Firewall'
+---
+
+# Tenbyte Virtual Private Network (VPC)
+This guide shows you how to create and manage **firewalls** in **Tenbyte Cloud**.
+
+## 1. Select Firewall from Dashboard
+- From your dashboard, click on **Firewall** to create your **Firewall**.
+
+    <Frame caption="Select Firewall">
+        <img src="/images/cloud/51.png" alt="Select Firewall" />
+    </Frame>
+
+## 2. Create a Firewall
+- Choose **Firewall** as the **Type**.
+- Choose the data center where the firewall will be applied.
+
+    <Frame caption="Create a Firewall">
+        <img src="/images/cloud/52.png" alt="Create a Firewall" />
+    </Frame>
+
+### Configure Inbound Rules
+- Under Inbound rules, you can specify the traffic allowed to enter your virtual machine.
+
+    <Frame caption="Configure Inbound Rules">
+        <img src="/images/cloud/53.png" alt="Configure Inbound Rules" />
+    </Frame>
+
+    - **Type**: Select the type of traffic.
+    - **Protocol**: Choose the protocol.
+    - **Port Range**: Specify the port range.
+    - **Sources**: Enter the IP prefixes allowed to access the VM or select Any to allow all incoming traffic.
+
+### Configure Outbound Rules
+- Under Outbound rules, specify which traffic can leave your virtual machine.
+
+    <Frame caption="Configure Inbound Rules">
+        <img src="/images/cloud/54.png" alt="Configure Inbound Rules" />
+    </Frame>
+
+    - **Type**: Select the type of traffic.
+    - **Protocol**: Choose the protocol.
+    - **Port Range**: Specify the port range.
+    - **Destinations*: Select All IP to allow traffic to any destination or specify a target IP range if you want to restrict the destinations.
+
+### Configure Firewall Settings
+- Provide a name for the firewall.
+- Choose the appropriate billing account to associate with the firewall.
+
+<Note>
+    The firewall service is free, but the resources like VMs attached to it will incur additional charges.
+</Note>
+
+- Click **Create** to finish creating the firewall. It will now be available to assign to your virtual machine.
+
+    <Frame caption="Configure Firewall Settings">
+        <img src="/images/cloud/55.png" alt="Configure Firewall Settings" />
+    </Frame>
+
+## 3. Assign Firewall to VM
+- After creating the firewall with the inbound and outbound rules, go to your created VM dashboard.
+- Navigate to the **Firewall section**.
+    
+    <Frame caption="Navigate to Firewall Settings">
+        <img src="/images/cloud/56.png" alt="Configure Firewall Settings" />
+    </Frame>
+- Click on **Attach Firewall**.
+
+    <Frame caption="Attach your Created Firewall">
+        <img src="/images/cloud/57.png" alt="Attach Firewall" />
+    </Frame>
+
+- Select the firewall you created and click on **Add**.
+
+    <Frame caption="Select the firewall">
+        <img src="/images/cloud/58.png" alt="Configure Firewall Settings" />
+    </Frame>
+
+- Once added, the firewall rules will be applied to the VM, ensuring that only allowed traffic can access it.
+
+    <Frame caption="View your Firewall Configurations">
+        <img src="/images/cloud/59.png" alt="Configure Firewall Settings" />
+    </Frame>

@@ -1,0 +1,75 @@
+---
+title: 'Tenbyte Cloud Load Balancer'
+description: 'Configure and manage load balancers in Tenbyte Cloud for optimal traffic distribution and high availability.'
+icon: 'scale'
+sidebarTitle: 'Load Balancer'
+---
+
+# Tenbyte Cloud Load Balancer
+This guide shows you how to set up and manage a Load Balancer in Tenbyte Cloud.
+
+## 1. Select Load Balancer from Dashboard
+- From your **Tenbyte Cloud dashboard**, select **Load Balancers** to begin setting up your load balancer across your virtual machines.
+
+    <Frame caption="Load Balancer from Dashboard">
+        <img src="/images/cloud/18.png" alt="Load Balancer from Dashboard" />
+    </Frame>
+
+## 2. Select Load Balancer Type
+- Choose **Load Balancer** from the available options under Type.
+
+## 3. Location Selection
+- Under Location, select the data center where your resource will be created.
+
+## 4. Public IPv4 Address
+- Enable Public IPv4 if you require an external IP address for the load balancer.
+<Note>
+    Enabling Public IPv4 will add an additional US$2/month charge for the resource.
+</Note>
+
+## 5. Select VPC Network
+- Choose an existing VPC network for your resource or create a new one to isolate and secure your virtual machines.
+
+    <Frame caption="Configure your Load Balancer">
+        <img src="/images/cloud/19.png" alt="Configure your Load Balancer" />
+    </Frame>
+
+## 6. Target Servers
+- Select the **target servers** (VMs) you want the load balancer to distribute traffic to.
+
+    <Frame caption="Select your Target VMs">
+        <img src="/images/cloud/20.png" alt="Select your Target VMs" />
+    </Frame>
+
+## 7. Configure Forwarding Rules
+- Set up forwarding rules to define how the load balancer should route traffic to the VMs:
+    - **Protocol**: Select TCP.
+    - **Port**: Enter the source port.
+    - **Target Port**: Set the target port for the VM.
+- You can add multiple rules if your application requires different ports or protocols.
+
+    <Frame caption="Configure Forwarding Rules">
+        <img src="/images/cloud/21.png" alt="Configure Forwarding Rules" />
+    </Frame>
+
+## 8. Review your Configuration and Create
+- Provide a **Resource Name**. Review the configurations, including the Public IPv4, VPC network, target servers, and forwarding rules. Once everything looks good, click **Create** to set up the load balancer.
+
+    <Frame caption="Create your Load Balancer">
+        <img src="/images/cloud/22.png" alt="Create your Load Balancer" />
+    </Frame>
+
+## 9. View Your Created Load Balancer
+- After creating your **Load Balancer**, you can view and manage it from the Load Balancers section in the **Network tab**.
+
+    <Frame caption="View your Load Balancer">
+        <img src="/images/cloud/24.png" alt="View your Load Balancer" />
+    </Frame>
+
+- The Load Balancer will appear in the Network section with details like:
+    - **Name**: The name you assigned to the load balancer.
+    - **Public IPv4**: The external IP assigned to the load balancer.
+    - **Private IPv4**: The internal IP assigned to the load balancer.
+    - **Target Servers**: The VMs linked to the load balancer. You will see the assigned VMs listed along with their Private IPs.
+    - **Status**: The status of the load balancer.
+- You can manage and configure the load balancer from here, including adjusting settings or adding new target servers.

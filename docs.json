@@ -228,8 +228,8 @@
                 "pages": [
                   "docs/cloud/index",
                   "docs/cloud/quickstart",
-                  "docs/cloud/create-instance",
-                  "docs/cloud/account-setup"
+                  "docs/cloud/account-setup",
+                  "docs/cloud/cloud-faqs"
                 ]
               },
               {
@@ -247,7 +247,6 @@
                 "icon": "database",
                 "pages": [
                   "docs/cloud/storage/block-storage",
-                  "docs/cloud/storage/object-storage",
                   "docs/cloud/storage/backup",
                   "docs/cloud/storage/snapshots"
                 ]
@@ -259,7 +258,7 @@
                 "pages": [
                   "docs/cloud/networking/vpc",
                   "docs/cloud/networking/firewall",
-                  "docs/cloud/networking/security-groups"
+                  "docs/cloud/networking/manage-access"
                 ]
               },
               {
@@ -267,9 +266,15 @@
                 "expanded": false,
                 "icon": "chart-bar",
                 "pages": [
-                  "docs/cloud/monitoring/metrics",
-                  "docs/cloud/monitoring/logs",
-                  "docs/cloud/monitoring/alerts"
+                  "docs/cloud/monitoring/metrics"
+                ]
+              },
+              {
+                "group": "Billing",
+                "expanded": false,
+                "icon": "hand-coins",
+                "pages": [
+                  "docs/cloud/billing/billing"
                 ]
               }
             ]

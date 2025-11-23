@@ -1,0 +1,86 @@
+---
+title: 'Tenbyte VPC'
+description: 'Create and manage Virtual Private Clouds (VPCs) in Tenbyte Cloud to securely isolate your resources and control network traffic.'
+icon: 'shield-check'
+sidebarTitle: 'Tenbyte VPC'
+---
+
+# Tenbyte Virtual Private Network (VPC)
+This guide shows you how to create and manage **Virtual Private Clouds (VPCs)** in **Tenbyte Cloud**.
+
+## 1. Select VPC Network
+- From your dashboard, click on **VPC Network** to create your own VPC network.
+
+    <Frame caption="Select VPC Network">
+        <img src="/images/cloud/42.png" alt="Select VPC Network" />
+    </Frame>
+
+- When you first access the Network section, the default network is named **My Network**
+
+    <Frame caption="Default VPC Network">
+        <img src="/images/cloud/43.png" alt="Default VPC Network" />
+    </Frame>
+
+## 2. Create a New VPC Network
+- To create a new VPC network, click on **Create new** in the Network section.
+
+    <Frame caption="Create a New VPC Network">
+        <img src="/images/cloud/44.png" alt="Create a New VPC Network" />
+    </Frame>
+
+- Choose **VPC network** as the **Type**. This allows you to create a private network to group and isolate your cloud resources.
+- Select the data center where the network will be created.
+- Enter a name for your new VPC.
+- Click **Create** to create the new VPC network.
+
+    <Frame caption="Create a New VPC ">
+        <img src="/images/cloud/45.png" alt="Create a New VPC" />
+    </Frame>
+
+<Note>
+    The VPC network is free of charge, but you will be charged for resources connected to it.
+</Note>
+
+## 3. Assign VPC Network During VM Creation
+- While creating a **new VM**, you can assign the newly created VPC network. To learn how to **create a virtual machine**, check out the [Virtual Machine](/docs/cloud/compute/cloud-vm) page under the **Compute** section of this document. 
+- In the VM creation screen, under VPC network, select the desired network from the dropdown:
+    - My Network (default)
+    - Newly Created
+
+    <Frame caption="Select your VPC">
+        <img src="/images/cloud/46.png" alt="Select your VPC" />
+    </Frame>
+This ensures your VM is connected to the correct network during creation.
+
+## 4. Edit VM Network Settings
+- If you want to change the VPC network after creating the VM, navigate to the **Network Section** in the VM settings.
+
+    <Frame caption="Access VM Network Settings">
+        <img src="/images/cloud/47.png" alt="Access VM Network Settings" />
+    </Frame>
+
+- Click **Add sub-interface** to create additional interfaces or to modify the current one.
+
+    <Frame caption="Add your VPC">
+        <img src="/images/cloud/48.png" alt="Add your VPC" />
+    </Frame>
+
+- Enter the **VLAN ID** for the sub-interface.
+- Select the VPC network you want to associate with the VM.
+
+    <Frame caption="Add your VPC">
+        <img src="/images/cloud/49.png" alt="Add your VPC" />
+    </Frame>
+- Click **Add** to associate the **VPC** network with your **VM**.
+
+    <Frame caption="Add your VPC">
+        <img src="/images/cloud/50.png" alt="Add your VPC" />
+    </Frame>
+
+## 5. Review VPC Network and Resources
+
+After creating or modifying your VPC, you can view the VMs associated with the network. The **My Network** or **new vpc** will list the VMs connected to it, showing the public and private IP addresses.
+
+
+
+

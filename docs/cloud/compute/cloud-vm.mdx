@@ -1,0 +1,124 @@
+---
+title: 'Tenbyte Cloud Virtual Machines'
+description: 'Create, configure, and manage scalable virtual machines in Tenbyte Cloud for your business needs.'
+sidebarTitle: 'Virtual Machines'
+icon: 'monitor-dot'
+---
+
+# Virtual Machines in Tenbyte Cloud
+
+This guide shows you how to easily create and manage high-performance VMs that are secure, cost-effective, and tailored to your needs.
+
+## 1. Select Virtual Machine
+- From your dashboard, click on **Virtual Machine** to create your first VM.
+
+    <Frame caption="Select Virtual Machine">
+        <img src="/images/cloud/9.png" alt="Select Virtual Machine" />
+    </Frame>
+
+## 2. Choose Operating System
+- If you want to install an operating system, select **Operating System** and choose the OS. 
+
+    <Frame caption="Select Operating System">
+        <img src="/images/cloud/11.png" alt="Select Operating System" />
+    </Frame>
+
+You can choose from the following operating systems:
+
+1. **`Ubuntu`**
+2. **`Debian`**
+3. **`Rocky`**
+4. **`CentOS`**
+5. **`OpenSUSE`**
+6. **`AlmaLinux`**
+7. **`Fedora`**
+8. **`Windows (BYOL)`**
+
+## 3. Choose App Catalog
+- If you need an application, select **App Catalog**.
+
+    <Frame caption="Select App Catalog">
+        <img src="/images/cloud/12.png" alt="Select Operating System" />
+    </Frame>
+
+Choose from available applications like: 
+
+1. **`cPanel`**
+2. **`Docker`**
+3. **`Mikrotik`**
+4. **`Moodle`**
+5. **`Node.js`**
+6. **`Cyberpanel`**
+7. **`Mailcoach`**
+8. **`Plesk`**
+9. **`Magento`**
+10. **`pfSense`**
+11. **`WordPress`**
+
+<Note>
+    For both operating systems and applications, you can choose the version that best fits your requirements during the setup process.   
+</Note>
+
+## 4. Choose Empty Disk for ISO Booting
+- If you prefer to install the OS manually via ISO, select Empty disk (for ISO booting). 
+
+## 5. Select your Location
+- Choose your Data center where the resource will be created.
+
+## 6. Select Server Class
+- Choose between **General Purpose** or **Heavy Compute** based on your workload.
+
+    <Frame caption="Select Server Class">
+        <img src="/images/cloud/13.png" alt="Select Server Class" />
+    </Frame>
+    1. **General Purpose**: Suitable for low to medium traffic.
+    2. **Heavy Compute**: Best for high-traffic applications and enterprise-level needs.
+## 7. Configure your VM Size
+- Select the **VM size** based on the resources your application requires.
+- You can customize the configuration of your VM by adjusting the number of CPU cores, RAM, and storage to match your exact needs.
+
+    <Frame caption="Configure VM Size">
+        <img src="/images/cloud/14.png" alt="Configure VM Size" />
+    </Frame>
+## 8. Public IPv4 Address
+- If you require an **external IP** for your VM, **enable Public IPv4**.
+
+<Note>
+    Enabling Public IPv4 will incur an additional US$2/month charge.
+</Note>
+
+## 9. Select VPC Network
+- Choose an existing VPC network or create a new one for private and secure network setup.
+
+    <Frame caption="Public IPv4 and VPC Network">
+        <img src="/images/cloud/15.png" alt="Configure VM Size" />
+    </Frame>
+
+## 10. Fill in User Information and Billing Details
+1. **Username**: Enter a username for your virtual machine. This will be used to log in. 
+2. **Password**: Set a password that meets the security criteria
+3. **Confirm Password**: Re-type the password to ensure it has been entered correctly.
+4. **SSH Public Key**: Paste your SSH public key here if you plan to access your VM securely via SSH. 
+5. **Initialization Script**: Optionally, you can add a custom configuration for the VM by using an initialization script. This can include cloud-init configurations to automatically set up your VM during the creation process.
+6. **Resource Name**: Provide a resource name for your VM. This will be used to generate a suitable hostname for the machine if applicable.
+7. **Estimated Monthly Cost**: This gives you an overview of what you’ll be charged based on the current setup.
+8. **Billing Account**: Choose a billing account to associate with the VM. 
+
+<Warning>
+    If your account has limitations, a notice will appear, indicating these limits. The restriction will be removed once your total top-up reaches US$2,000.
+</Warning>
+
+    
+## 11. Create the VM
+- Once you’ve completed all fields and reviewed your details, click the Create button to finalize the creation of your virtual machine.
+
+   <Frame caption="Create your VM">
+        <img src="/images/cloud/16.png" alt="Create your VM" />
+    </Frame>
+
+## 12. View Your Created Virtual Machine
+- Once your virtual machine (VM) is created, you will see it listed on your VM dashboard.
+
+    <Frame caption="View Your Created Virtual Machine">
+        <img src="/images/cloud/17.png" alt="View Your Created Virtual Machine" />
+    </Frame>
