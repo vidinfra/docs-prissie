@@ -1,0 +1,122 @@
+---
+title: 'Tenbyte Cloud Object Storage'
+description: 'Create and manage object storage buckets in Tenbyte Cloud to store, organize, and securely deliver your application data.'
+icon: 'package-open'
+sidebarTitle: 'Object Storage'
+---
+
+# Tenbyte Cloud Object Storage
+This guide walks you through creating buckets, uploading files, managing permissions, and sharing objects securely.
+
+## 1. Open the Storage Section
+- From the left sidebar, click **Storage**.
+- You will see an empty bucket list if this is your first time.
+
+    <Frame caption="Open the Storage Section">
+        <img src="/images/cloud/82.png" alt="Open the Storage Section" />
+    </Frame>
+
+## 2. Create a New Storage Bucket
+- Click **Create new**.
+- Select **Storage bucket** as the resource type.
+- Enter a bucket name.
+
+    <Frame caption="Create a New Storage Bucket">
+        <img src="/images/cloud/83.png" alt="Create a New Storage Bucket" />
+    </Frame>
+
+<Warning>
+    Bucket names must use lowercase letters, numbers, or dashes. The length must be between 3–63 characters, and the name must be globally unique.
+</Warning>
+
+- Select a billing account.
+- Click **Create**.
+- Your new bucket will now appear in the **Storage** page.
+
+## 3. View Bucket Details
+- Click on your bucket name to open it. 
+
+    <Frame caption="View Bucket Details">
+        <img src="/images/cloud/84.png" alt="View Bucket Details" />
+    </Frame>
+
+Here you can see **Bucket name**, **Type (Storage bucket)**, **Creation time**, **Bucket size**, **Number of files**, **Server endpoint**, and **Billing account**.
+
+- You will also see a section for Storage access keys:
+
+    - Access key ID
+    - Secret access key
+    - Type: Global / Restricted
+
+These keys are used for programmatic access (S3-compatible).
+
+## 4. Upload Files to your Bucket
+
+Inside the bucket, scroll down to the Files section. You can **Create folders**, **Upload files**,  **Download files**, **Delete files**, and **Rename files**.
+- To upload a file Click **Upload**.
+
+    <Frame caption="Upload Files to Your Bucket">
+        <img src="/images/cloud/85.png" alt="Upload Files to Your Bucket" />
+    </Frame>
+
+- Choose any file from your device.
+- The file will appear in the list as soon as the upload completes.
+
+    <Frame caption="Uploaded Files List">
+        <img src="/images/cloud/86.png" alt="Uploaded Files List" />
+    </Frame>
+
+<Tip>
+    You can upload directly inside the root or inside a created folder.
+</Tip>
+
+## 5. File Access Controls
+- Select a file, then open the **Access** menu from the right side of the row.
+
+    <Frame caption="File Access Controls">
+        <img src="/images/cloud/87.png" alt="File Access Controls" />
+    </Frame>
+
+- You will see three options:
+    1. Share temporarily
+    2. Permissions
+    3. Copy Public URL
+
+### Share temporarily
+- Generates a temporary link that expires after a chosen duration.
+
+    <Frame caption="Access Control- Share temporarily">
+        <img src="/images/cloud/88.png" alt="Share temporarily" />
+    </Frame>
+
+- Click **Share temporarily** and select a duration.
+- A temporary URL is generated.
+- Copy and share the URL.
+- The link expires automatically on the displayed time.
+
+### Permissions
+- This controls whether your file is **Private** or **Public**.
+
+    <Frame caption="Access Control- Permissions">
+        <img src="/images/cloud/89.png" alt="Permissions" />
+    </Frame>
+    
+1. **Private (default)**
+    - File can only be accessed using **access keys** or **bucket permissions**.
+    - No public link.
+2. **Public**
+    - Anyone can open the file using the public link.
+    - No authentication required.
+
+- Click **Save** after choosing the desired permission.
+
+### Copy Public URL
+- If the file is set to **Public**, you can copy the URL with one click..
+    
+    <Frame caption="Access Control- Copy Public URL">
+        <img src="/images/cloud/90.png" alt="Copy Public URL" />
+    </Frame>
+<Warning>
+    If the file is Private, the public link remains disabled until you switch permissions to Public.
+</Warning>
+

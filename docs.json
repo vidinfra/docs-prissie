@@ -138,8 +138,11 @@
                 "expanded": false,
                 "icon": "shield-check",
                 "pages": [
+                  "docs/vidinfra/security/dynamic-watermark",
                   "docs/vidinfra/security/country-access-policy",
                   "docs/vidinfra/security/referrer-policy"
+                  
+
                 ]
               },
               {
@@ -247,6 +250,7 @@
                 "icon": "database",
                 "pages": [
                   "docs/cloud/storage/block-storage",
+                  "docs/cloud/storage/object-storage",
                   "docs/cloud/storage/backup",
                   "docs/cloud/storage/snapshots"
                 ]

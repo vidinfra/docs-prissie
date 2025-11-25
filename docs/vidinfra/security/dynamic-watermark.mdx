@@ -1,0 +1,67 @@
+---
+title: 'Dynamic Watermark'
+description: 'Learn how to implement dynamic watermarking for your videos to protect your content and brand.'
+icon: 'video-off'
+sidebarTitle: 'Custom Watermark for Video'
+---
+
+# Custom Watermark for Video
+
+A **custom watermark** is a process where your **brand name** or **company name** is displayed dynamically over a video. 
+
+This **watermark** moves across the video to ensure your content is protected from **unauthorized usage**. This feature is useful for **anti-piracy measures** and for **ensuring your branding is visible throughout the video**.
+
+## Watermark Configuration Example
+
+Below is an example configuration where the watermark includes your **brand name** and a **dynamic user ID** that moves across the screen.
+
+```javascript
+const watermarkConfig: WatermarkConfig = [
+  {
+    text: "MyVideoApp",                         
+    font: "Arial",                              
+    fontSize: 20,                               
+    fillStyle: "rgba(255,255,255,0.8)",         
+    padding: 8,                                 
+    opacity: 0.9,                               
+  },
+  {
+    text: "User: 1827439",                      
+    font: "Roboto",                            
+    fontSize: 18,                               
+    fillStyle: "rgba(255, 255, 255, 0.6)",      
+    strokeStyle: "rgba(0, 0, 0, 0.3)",         
+    padding: 6,                                 
+    opacity: 0.85,                              
+    moveIntervalMs: 3500,                       
+  },
+];
+```
+- **`text`**: The text displayed on the video. This could be your brand name, company name, or any custom information (like a user ID).
+- **`font`**: The font style used for the watermark text (e.g., Arial, Roboto).
+- **`fontSize`**: The size of the text.
+- **`fillStyle`**: The text color and its opacity.
+- **`padding`**: The distance between the watermark and the edges of the video.
+- **`opacity`**: Defines how transparent the watermark is. Lower values make it more transparent.
+- **`moveIntervalMs`**: For dynamic watermarks, this defines how often the watermark moves across the video, useful for anti-piracy and making the watermark harder to remove.
+
+## Encoding Watermark Configuration
+
+Once you’ve set up your watermark configuration, you will need to encode it in **Base64** to embed it in the video processing function. 
+
+Here is a code snippet to **encode** the **watermark configuration**:
+
+```javascript
+function encodeWatermarkConfig(config) {
+  const jsonString = JSON.stringify(config);
+
+  // UTF-8 → Base64 encode
+  return btoa(
+    Array.from(new TextEncoder().encode(jsonString))
+      .map((byte) => String.fromCharCode(byte))
+      .join("")
+  );
+}
+```
+This encoding is necessary because video processing tools often require watermark data in **Base64** encoded format.
+
