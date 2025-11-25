@@ -250,6 +250,7 @@
                 "icon": "database",
                 "pages": [
                   "docs/cloud/storage/block-storage",
+                  "docs/cloud/storage/object-storage",
                   "docs/cloud/storage/backup",
                   "docs/cloud/storage/snapshots"
                 ]
