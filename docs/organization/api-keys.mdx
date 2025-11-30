@@ -7,39 +7,34 @@ icon: "key-round"
 
 # Create and Manage API Keys
 
-From this page, you can generate new API keys, set expiration limits, and assign access scopes to control how each key interacts with your account.
+API keys let your applications connect to Tenbyte without using your main login. This section is where you create new keys, set how long they should stay active, and decide which parts of your account they’re allowed to reach.
+
 
 ## 1. Open the API Keys Page
 
-- From the left sidebar, under the Organization section, click **API Keys**.
-You’ll land on the API Key dashboard. 
+- To get started, open **API Keys** from the Organization menu in the left sidebar. You’ll be taken to a simple dashboard that lists your existing keys.
 
     <Frame caption="Open the API Keys Page">
         <img src="/images/account/19.png" alt="Open the API Keys Page" />
     </Frame>
 
-- If you haven’t created any keys yet, the page will show an empty state with a **Create API Key** button.
-
----
+- If you haven’t created any keys yet, the page will show an empty state with a **Create API Key** option.
 
 ## 2. Create a New API Key
-- Click the **+ Create API Key** button in the top-right corner. Fill Out API Key Details
+- Click **+ Create API Key** in the top-right corner to open the creation form.
 
-    - **Name**- Enter a clear name to identify this token.
+Here’s what you’ll need to fill in:
 
-    - **Expiration**-  Choose how long the API key will remain valid from the dropdown:
-
-        - 1 Month
-        - 6 Months
-        - 12 Months
-        - Unlimited
-
-    - **Scope Access**- Select the services this API key can access.
-
----
+- **Name** — Give the key a short name so you know what it’s used for.  
+- **Expiration** — Choose how long the key should remain valid:
+  - 1 Month  
+  - 6 Months  
+  - 12 Months  
+  - Unlimited  
+- **Scope Access** — Pick the services or areas this key should be able to access.
 
 ## 3. Generate the Key
-- Once all fields are filled in, click **Create**.
+- After completing the fields, select **Create** to generate the key.
 
     <Frame caption="Generate API Key">
         <img src="/images/account/20.png" alt="Generate API Key" />
@@ -51,12 +46,13 @@ You’ll land on the API Key dashboard.
         <img src="/images/account/21.png" alt="Generated API Key" />
     </Frame>
 
----
-
 ## 4. View or Manage Existing Keys
+- Any key you’ve already created will appear in the dashboard.  
+From here, you can:
 
-- All previously created API keys will appear on your API Key dashboard. From here you can:
+    - Check the key’s metadata  
+    - Disable a key if you no longer want it active  
+    - Delete a key entirely  
+    - Create new keys whenever your applications need separate access
 
-    - View key metadata 
-    - Disable or delete keys
-    - Create additional keys when needed
+This setup helps you keep your API usage organized and gives you a clear way to control which systems can interact with your Tenbyte workspace.
