@@ -3,6 +3,7 @@
   "theme": "willow",
   "name": "Product Documentation & Developer Hub",
   "description": "Comprehensive documentation for Vidinfra, the ultimate video infrastructure solution. Explore guides, API references, and tutorials to seamlessly integrate and manage your video content with ease.",
+  
   "colors": {
     "primary": "#029C69",
     "light": "#029C69",
@@ -152,6 +153,14 @@
                 "pages": [
                   "docs/vidinfra/webhooks/webhook-dashboard",
                   "docs/vidinfra/webhooks/setup-webhooks"
+                ]
+              },
+              {
+                "group": "SDK",
+                "expanded": false,
+                "icon": "file-code",
+                "pages": [
+                  "docs/vidinfra/sdk/player-sdk"
                 ]
               }
             ]
@@ -309,6 +318,17 @@
             }
           }
         ]
+      },
+      {
+        "tab": "Changelog",
+        "groups": [
+          {
+            "group": "Changelog",
+            "pages": [
+              "changelog"
+            ]
+          }
+        ]
       }
     ],
     "global": {
@@ -327,6 +347,8 @@
       "light": "#FD5B20"
     }
   },
+
+  
   "navbar": {
     "links": [
       {
@@ -338,6 +360,7 @@
       "type": "button",
       "label": "Dashboard",
       "href": "https://console.tenbyte.io"
+      
     }
   },
   "contextual": {

@@ -8,57 +8,100 @@ mode: "wide"
 
 # Start building with Tenbyte
 
-Welcome to the **Tenbyte Developer Hub!**
-This hub is designed to help you quickly and effectively integrate **Tenbyte’s edge and media infrastructure** into your projects.
+Welcome to the **Tenbyte Developer Hub**. This page help you to understand what you can build with Tenbyte and guide you to the right tools without slowing you down. 
 
-Across **Tenbyte Cloud**, **CDN**, and **Vidinfra**, this hub supports you in **setting up servers**, **managing media**, and **delivering content** globally with consistent performance.
+## What is Tenbyte?
 
----
+Tenbyte is a cloud and video infrastructure provider operating with Tier III data centers and enterprise-grade hardware. It focuses on reliable compute, S3-compatible T2 block storage, global CDN delivery, and a complete video platform for streaming and media workflows
 
-## Tenbyte’s Core Services
-
-### CDN
-T**enbyte’s Global CDN** speeds up content delivery using an **intelligent edge network**. With **PoPs** placed across multiple regions, it **reduces latency** and **ensures fast load times** for users anywhere in the world.
-
-**Key features:**
-- **150+ global edge** locations
-- Smart Routing with **multi-CDN** redundancy
-- On the fly image optimization
-- Full **SSL/TLS** and **HTTP/3** support
-- **Cache rules** and **edge configuration** via API
-- **High-traffic** handling capacity (up to 50 Tbps)
-- Real-time purging
-
-[Learn more →](/docs/cdn)
-
----
-
-### Vidinfra
-**Vidinfra** is Tenbyte’s end-to-end **video infrastructure platform** for developers.
-Ingest, transcode, package, deliver, and analyze video with a unified API — built for global scale and simplicity.
-
-**Key features:**
-- **`HLS`** & **`DASH`** adaptive streaming
-- Smart Routing multi-CDN playback
-- **AI-powered compression** for smoother playback
-- Automatic optimization and encoding
-- Player customization with branding and controls
-- **Built-in DRM**, **signed URLs**, and **analytics**
-
-[Explore Vidinfra →](/docs/vidinfra)
-
----
+## Tenbyte Services
+<Columns cols={3}>
+  <Card title="Tenbyte Cloud" icon="cloud" href="/docs/cloud" arrow="true">
+    Deploy and manage servers.
+  </Card>
+  <Card title="Tenbyte CDN" icon="earth" href="/docs/cdn" arrow="true">
+    Speed up your delivery.
+  </Card>
+   <Card title="Tenbyte Vidinfra" icon="square-play" href="/docs/vidinfra" arrow="true">
+    Upload, encode, stream video.
+  </Card>
+</Columns>
 
 ### Tenbyte Cloud
-**Tenbyte Cloud** brings **compute**, **storage**, and **edge delivery** together to support your media and application needs. It offers a unified environment for running workloads and serving content efficiently.
 
-**Key features:**
-- **Unlimited bandwidth**
-- **Backup** and **snapshot** support
-- **Built-in firewall** and **DDoS filtering**
-- Dedicated Private Cloud Options
-- **Affordable Pricing Model**
-- Seamless integration with CDN and Vidinfra
+**Tenbyte Cloud** gives you virtual machines and storage you can rely on for everyday workloads. You can deploy different servers, attach block storage, assign public IPs, and set up your own VPC environment.
 
-[Deploy with Cloud →](/docs/cloud)
+<Accordion title="Start Reading the Tenbyte Cloud Guides">
+  Explore the core components of Tenbyte Cloud. Each section explains how the feature works and how to use it in your projects.
 
+- [Virtual Machine](/docs/cloud/compute/cloud-vm)
+- [Load Balancer](/docs/cloud/compute/load-balancers)
+- [Block Storage](/docs/cloud/storage/block-storage)
+- [T2 Object Storage](/docs/cloud/storage/object-storage)
+- [Backup](/docs/cloud/storage/backup)
+- [Snapshots](/docs/cloud/storage/snapshots)
+- [Virtual Private Cloud](/docs/cloud/networking/vpc)
+- [Firewall](/docs/cloud/networking/firewall)
+- [Access Delegation](/docs/cloud/networking/manage-access)
+- [Metrics](/docs/cloud/monitoring/metrics)
+- [Billing](/docs/cloud/billing/billing)
+
+</Accordion>
+
+### Tenbyte Content Delivery Network (CDN)
+
+**Tenbyte CDN** helps websites, apps, and video platforms load faster. It uses a mix of global PoPs, local PoPs, and Multi-CDN routing so users get shorter load times no matter where they are.
+
+<Accordion title="Start Reading the Tenbyte CDN Guides">
+  This section collects the main parts of the CDN service. Each guide walks through how the feature works and how to use it when setting up or managing a distribution.
+
+- [Create Distributions](/docs/cdn/distributions/create-distribution)
+- [Distribution Overview](/docs/cdn/distributions/distribution-overview)
+- [Origins](/docs/cdn/distributions/origins)
+- [SSL Certificate](/docs/cdn/distributions/ssl)
+- [Headers](/docs/cdn/distributions/headers)
+- [Access Rules](/docs/cdn/distributions/access-rules)
+- [Cache Rules](/docs/cdn/distributions/cache-rules)
+- [Image Optimizer](/docs/cdn/distributions/image-optimizer)
+- [Traffic Reports](/docs/cdn/analytics/traffic-reports)
+- [Cache Hit Ratio](/docs/cdn/analytics/cache-hit-ratio)
+- [Response Classes](/docs/cdn/analytics/response-classes)
+- [Purge by Pattern](/docs/cdn/purge/purge-by-pattern)
+- [Purge All](/docs/cdn/purge/purge-all)
+- [Custom Certificates](/docs/cdn/certificates/custom-certificates)
+
+</Accordion>
+
+### Tenbyte Vidinfra
+
+**Vidinfra** is Tenbyte’s video platform. It takes care of upload, encoding, storage, and playback, and it works for both live and on-demand video. 
+
+<Accordion title="Start Reading the Tenbyte Vidinfra Guides">
+  This section covers the main parts of the Vidinfra platform. Each guide explains how the feature works and how to use it when uploading, encoding, delivering, or managing video content.
+
+- [Manage Library Settings](/docs/vidinfra/manage-library/library-settings)
+- [Library Analytics](/docs/vidinfra/manage-library/analytics)
+- [Upload Videos](/docs/vidinfra/manage-videos/upload-videos)
+- [Video Settings](/docs/vidinfra/manage-videos/video-settings)
+- [Player Themes](/docs/vidinfra/player-customization/player-themes)
+- [Adaptive Bitrate Streaming](/docs/vidinfra/transcoding-drm/adaptive-bitrate-streaming)
+- [DRM Integration](/docs/vidinfra/transcoding-drm/drm-integration)
+- [Dynamic Watermark](/docs/vidinfra/security/dynamic-watermark)
+- [Country Access Policy](/docs/vidinfra/security/country-access-policy)
+- [Referrer Policy](/docs/vidinfra/security/referrer-policy)
+- [Webhook Dashboard](/docs/vidinfra/webhooks/webhook-dashboard)
+- [Setup Webhook](/docs/vidinfra/webhooks/setup-webhooks)
+
+</Accordion>
+
+## Why Users Choose Tenbyte
+Tenbyte keeps things simple:
+
+- Pricing is predictable and billed in differrnt local currency.
+- Tier III data centers and enterprise hardware provide steady performance.
+- Compute, storage, CDN, and video tools live in one place.
+- A regional support team is available at any hour.
+
+> These points make Tenbyte easier to work with compared to platforms that depend on international routing or currency conversion.
+
+If you already feel confident with these guides, you’re welcome to browse the [Tenbyte website](https://beta.tenbyte.io/) to explore our platform further.
