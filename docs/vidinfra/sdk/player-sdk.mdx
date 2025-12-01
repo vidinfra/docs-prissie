@@ -1,0 +1,387 @@
+---
+title: 'Player SDK'
+description: 'Control your video players inside iframes.'
+sidebarTitle: 'Player SDK'
+icon: 'list-video'
+---
+
+# Tenbyte Player SDK
+
+The Tenbyte Player SDK is a lightweight, type-safe JavaScript library designed to control video players inside iframes. It leverages the power of the postMessage API for secure, real-time communication between the parent page and embedded video players. Whether you're integrating a video player into your app or building custom controls, the Tenbyte Player SDK makes it easy and efficient.
+
+This documentation provides an overview of the library’s features, installation, usage instructions, and examples to help you get started quickly.
+
+## Key Features
+
+- **Unified API**: One class manages both controlling existing iframes and embedding new players.
+- **Type-safe**: Full TypeScript support with comprehensive type definitions for a reliable development - experience.
+- **Framework-agnostic**: Works seamlessly with any JavaScript framework or plain JavaScript.
+- **Secure**: Built-in origin validation for postMessage communication to ensure safe interactions.
+- **Event-driven**: Listen to real-time player events such as play, pause, and time updates.
+- **Lightweight**: The SDK is approximately 15KB when minified, making it efficient and easy to use.
+
+## Installation
+### NPM Installation
+
+To install the Tenbyte Player SDK via npm, run the following command:
+
+```bash
+npm install @tenbyte/player
+```
+
+### CDN Installation
+
+Alternatively, you can load the SDK via a CDN:
+```html
+<script src="https://unpkg.com/@tenbyte/player/dist/player.global.js"></script>
+```
+This method allows you to use the SDK without needing to install it locally, making it easy to integrate into static or non-Node.js projects.
+
+## Quick Start
+
+The Tenbyte Player SDK allows you to control existing iframe players and create embedded players on the fly. Below are the basic instructions for both use cases.
+
+### Controlling an Existing Iframe
+
+To control a player inside an existing iframe, use the **`Player`** class:
+
+```JavaScript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("iframe");
+
+player.on("play", () => {
+  console.log("Video started playing");
+});
+
+await player.whenReady();
+await player.play();
+```
+### Create an Embedded Player
+
+To automatically create and embed a Tenbyte video player, use the following:
+
+```JavaScript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("vidinfra-player", {
+  libraryId: default,
+  videoId: default,
+  playerId: default,
+  autoplay: false,
+  loop: false,
+  muted: false,
+  controls: true,
+  preload: true,
+  aspectRatio: "16:9"
+});
+
+player.setVolume(0.5);
+```
+<Note>
+    To learn how to copy a video ID, check the [Quickstart Guide](/docs/vidinfra/quickstart#copy-your-video-id) in the Vidinfra section.
+</Note>
+
+## Usage
+
+### Controlling an Existing Iframe
+If you already have an iframe in your HTML, you can control it by passing the iframe element or a CSS selector.
+
+#### Javascript 
+```Javascript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("#player-iframe");
+
+await player.whenReady();
+await player.play();
+```
+
+#### CDN
+```html
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe
+  id="vidinfra-iframe-player"
+    src="https://player.vidinfra.com/{librayID}/default/{videoID}?autoplay=false&loop=false&muted=false&controls=true&preload=true"
+    loading="lazy"
+    style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true">
+  </iframe>
+</div>
+```
+### Creating an Embedded Player
+You can dynamically create an embedded player by specifying a target element for the player:
+
+#### Javascript
+```Javascript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("vidinfra-player", {
+  libraryId: default,
+  videoId: default,
+  playerId: default,
+  autoplay: false,
+  loop: false,
+  muted: false,
+  controls: true,
+  preload: true,
+  aspectRatio: "16:9"
+});
+```
+#### CDN
+```html
+<div id="vidinfra-player"></div>
+
+<script src="https://unpkg.com/@vidinfra/player/dist/player.global.js"></script>
+<script>
+  const player = new Vidinfra.Player("vidinfra-player", {
+    libraryId: default,
+    videoId: default,
+    playerId: default,
+    autoplay: false,
+    loop: false,
+    muted: false,
+    controls: true,
+    preload: true,
+    aspectRatio: "16:9"
+  });
+</script>
+```
+## API Reference
+
+### Constructor
+```Javascript
+new Player(element: HTMLIFrameElement | HTMLElement | string)
+new Player(element: HTMLElement | string, options: PlayerOptions)
+```
+
+#### Parameters
+- **`element`** - An iframe element, CSS selector for an iframe, or a container element for embedding
+- **`options`** - Configuration options for creating an embedded player (required when creating an embed)
+
+### PlayerOptions
+
+```Javascript
+interface PlayerOptions {
+  // Vidinfra player (required)
+  libraryId: string | number;
+  videoId: string | number;
+  playerId?: string | number; // Optional, defaults to 'default'
+
+  // Display options
+  width?: number | string;
+  height?: number | string;
+  aspectRatio?: string; // e.g., "16:9", "4:3"
+
+  // Playback options
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  preload?: boolean;
+
+  // Advanced options
+  loading?: "lazy" | "eager";
+  allow?: string;
+  className?: string;
+  baseUrl?: string;
+}
+```
+### Playback Methods
+- **`play(): Promise<void>`**: Start video playback.
+- **`pause(): Promise<void>`**: Pause video playback.
+- **`togglePlay(): Promise<void>`**: Toggle between play and pause states.
+- **`seek(time: number): Promise<void>`**: Seek to a specific time in seconds.
+- **`setPlaybackRate(rate: number): Promise<void>`**: Set playback speed (e.g., 0.5, 1.0, 2.0).
+- **`getPlaybackRate(): Promise<number>`**: Get current playback rate.
+- **`getCurrentTime(): Promise<number>`**: Get current playback position in seconds.
+- **`getDuration(): Promise<number>`**: Get total video duration in seconds.
+- **`getPaused(): Promise<boolean>`**: Check if video is currently paused.
+
+### Volume Methods
+- **`setVolume(volume: number): Promise<void>`**: Set volume level (0-1).
+- **`getVolume(): Promise<number>`**: Get current volume level.
+- **`mute(): Promise<void>`**: Mute audio.
+- **`unmute(): Promise<void>`**: Unmute audio.
+- **`setMuted(muted: boolean): Promise<void>`**: Set muted state.
+- **`getMuted(): Promise<boolean>`**: Get current muted state.
+
+### Display Methods
+- **`toggleFullscreen(): Promise<void>`**: Toggle fullscreen mode.
+- **`requestFullscreen(): Promise<void>`**: Enter fullscreen mode.
+- **`exitFullscreen(): Promise<void>`**: Exit fullscreen mode.
+- **`showControls(): Promise<void>`**: Show player controls.
+- **`hideControls(): Promise<void>`**: Hide player controls.
+- **`setControlsVisible(visible: boolean): Promise<void>`**: Set controls visibility.
+
+### Watermark Methods
+**`addWatermark(config: WatermarkConfig): Promise<void>`**: Add a watermark overlay to the video.
+```Javascript
+interface WatermarkConfig {
+  text: string;
+  color?: string;
+  opacity?: number;
+  fontSize?: number;
+}
+```
+### Utility Methods
+- **`isReady(): boolean`**: Check if player is ready to receive commands.
+- **`whenReady(): Promise<void>`**: Returns a promise that resolves when the player is ready.
+- **`getIframe(): HTMLIFrameElement`**: Get the iframe element.
+- **`getWrapper(): HTMLElement | null`**: Get the wrapper element (only available for embedded players).
+- **`getSrc(): string`**: Get the iframe source URL.
+- **`update(options: Partial<PlayerOptions>): void`**: Update player options (only available for embedded players).
+- **`destroy(): void`**: Clean up event listeners and remove the player.
+
+### Event Methods
+- **`on(event: string, callback: Function): this`**: Register an event listener.
+- **`off(event: string, callback?: Function): this`**: Remove an event listener.
+- **`once(event: string, callback: Function): this`**: Register a one-time event listener.
+
+### Events
+The player emits the following events:
+
+- **`ready`** - Player is ready to receive commands
+- **`play`** - Playback has started
+- **`playing`** - Playback is playing
+- **`pause`** - Playback has paused
+- **`ended`** - Playback has ended
+- **`timeupdate`** - Playback position changed
+- **`volumechange`** - Volume or muted state changed
+- **`seeking`** - Seeking started
+- **`seeked`** - Seeking completed
+- **`waiting`** - Waiting for data
+- **`canplay`** - Enough data to play
+- **`canplaythrough`** - Can play through without buffering
+- **`loadedmetadata`** - Metadata loaded
+- **`loadeddata`** - Frame data loaded
+- **`durationchange`** - Duration changed
+- **`ratechange`** - Playback rate changed
+- **`fullscreenchange`** - Fullscreen state changed
+- **`error`** - Playback error occurred
+
+## Examples
+### Basic Playback Control
+```Javascript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("#player-iframe");
+
+await player.whenReady();
+
+document.getElementById("play-btn").addEventListener("click", () => {
+  player.play();
+});
+
+document.getElementById("pause-btn").addEventListener("click", () => {
+  player.pause();
+});
+
+player.on("timeupdate", (state) => {
+  const currentTime = Math.floor(state.currentTime);
+  const duration = Math.floor(state.duration);
+  console.log(`${currentTime}s / ${duration}s`);
+});
+```
+### Volume Control
+```Javascript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("#player-iframe");
+
+await player.whenReady();
+
+const volumeSlider = document.getElementById("volume");
+volumeSlider.addEventListener("input", (e) => {
+  const volume = e.target.value / 100;
+  player.setVolume(volume);
+});
+
+const muteBtn = document.getElementById("mute");
+muteBtn.addEventListener("click", async () => {
+  const isMuted = await player.getMuted();
+  player.setMuted(!isMuted);
+});
+```
+
+### Creating and Controlling an Embed
+```Javascript
+import { Player } from "@vidinfra/player";
+
+const player = new Player("vidinfra-player", {
+  libraryId: default,
+  videoId: default,
+  playerId: default,
+  autoplay: false,
+  loop: false,
+  muted: false,
+  controls: true,
+  preload: true,
+  aspectRatio: "16:9"
+});
+
+player.on("ready", () => {
+  console.log("Player created and ready");
+});
+
+player.on("play", () => {
+  console.log("Video playing");
+});
+
+setTimeout(() => {
+  player.update({ loop: true });
+}, 5000);
+```
+### TypeScript Example
+
+```Javascript
+import { Player, PlayerOptions, WatermarkConfig } from "@vidinfra/player";
+
+const options: PlayerOptions = {
+  libraryId: default,
+  videoId: default,
+  playerId: default,
+  autoplay: false,
+  loop: false,
+  muted: false,
+  controls: true,
+  preload: true,
+  aspectRatio: "16:9"
+};
+
+const player = new Player("vidinfra-player", options);
+
+await player.whenReady();
+
+const volume: number = await player.getVolume();
+const duration: number = await player.getDuration();
+
+const watermark: WatermarkConfig = {
+  text: "Confidential",
+  color: "#ffffff",
+  opacity: 0.3,
+  fontSize: 24
+};
+
+await player.addWatermark(watermark);
+```
+### Security
+The Player automatically validates the origin of postMessage communications based on the iframe's source URL. For iframe-side implementations, you should also validate the origin of incoming messages:
+```Javascript
+window.addEventListener("message", (event) => {
+  const allowedOrigin = "https://trusted-parent.com";
+  if (event.origin !== allowedOrigin) return;
+  
+  // Handle message
+});
+```
+## Browser Support
+- Modern browsers with ES6+ support
+- Requires **`postMessage`** API
+- Fullscreen API support varies by browser
+## TypeScript
+Full TypeScript definitions are included with the package:
+```Javascript
+import { Player, PlayerOptions, WatermarkConfig, WatermarkOptions } from "@vidinfra/player";
+```
