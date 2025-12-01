@@ -5,9 +5,9 @@ sidebarTitle: 'Player SDK'
 icon: 'list-video'
 ---
 
-# Tenbyte Player SDK
+# Web Player SDK
 
-The Tenbyte Player SDK is a lightweight, type-safe JavaScript library designed to control video players inside iframes. It leverages the power of the postMessage API for secure, real-time communication between the parent page and embedded video players. Whether you're integrating a video player into your app or building custom controls, the Tenbyte Player SDK makes it easy and efficient.
+The Vidinfra Player SDK is a lightweight, type-safe JavaScript library designed to control video players inside iframes. It leverages the power of the postMessage API for secure, real-time communication between the parent page and embedded video players. Whether you're integrating a video player into your app or building custom controls, the Player SDK makes it easy and efficient.
 
 This documentation provides an overview of the library’s features, installation, usage instructions, and examples to help you get started quickly.
 
@@ -23,23 +23,23 @@ This documentation provides an overview of the library’s features, installatio
 ## Installation
 ### NPM Installation
 
-To install the Tenbyte Player SDK via npm, run the following command:
+To install the Vidinfra Player SDK via npm, run the following command:
 
 ```bash
-npm install @tenbyte/player
+npm install @vidinfra/player
 ```
 
 ### CDN Installation
 
 Alternatively, you can load the SDK via a CDN:
 ```html
-<script src="https://unpkg.com/@tenbyte/player/dist/player.global.js"></script>
+<script src="https://unpkg.com/@vidinfra/player/dist/player.global.js"></script>
 ```
 This method allows you to use the SDK without needing to install it locally, making it easy to integrate into static or non-Node.js projects.
 
 ## Quick Start
 
-The Tenbyte Player SDK allows you to control existing iframe players and create embedded players on the fly. Below are the basic instructions for both use cases.
+The Player SDK allows you to control existing iframe players and create embedded players on the fly. Below are the basic instructions for both use cases.
 
 ### Controlling an Existing Iframe
 
@@ -59,7 +59,7 @@ await player.play();
 ```
 ### Create an Embedded Player
 
-To automatically create and embed a Tenbyte video player, use the following:
+To automatically create and embed the video player, use the following:
 
 ```JavaScript
 import { Player } from "@vidinfra/player";
