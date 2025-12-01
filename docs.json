@@ -154,6 +154,14 @@
                   "docs/vidinfra/webhooks/webhook-dashboard",
                   "docs/vidinfra/webhooks/setup-webhooks"
                 ]
+              },
+              {
+                "group": "SDK",
+                "expanded": false,
+                "icon": "file-code",
+                "pages": [
+                  "docs/vidinfra/sdk/player-sdk"
+                ]
               }
             ]
           },
