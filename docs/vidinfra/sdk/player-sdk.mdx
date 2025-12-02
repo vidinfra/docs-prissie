@@ -41,9 +41,9 @@ This method allows you to use the SDK without needing to install it locally, mak
 
 The Player SDK allows you to control existing iframe players and create embedded players on the fly. Below are the basic instructions for both use cases.
 
-### Controlling an Existing Iframe
+### Control an Existing Iframe
 
-To control a player inside an existing iframe, use the **`Player`** class:
+If you already have an iframe on your page and want to control the video player inside it, you can easily use the **`Player`** class. With just a few lines of code, you can target an existing iframe, wait for it to be ready, and start playing the video.
 
 ```JavaScript
 import { Player } from "@vidinfra/player";
@@ -57,9 +57,9 @@ player.on("play", () => {
 await player.whenReady();
 await player.play();
 ```
-### Create an Embedded Player
+### Creating an Embedded Player
 
-To automatically create and embed the video player, use the following:
+If you want to embed a video player directly into your page, Vidinfra can automatically create and inject an iframe for you. You can configure the player with your desired settings like autoplay, volume, and aspect ratio.
 
 ```JavaScript
 import { Player } from "@vidinfra/player";
@@ -161,6 +161,7 @@ new Player(element: HTMLElement | string, options: PlayerOptions)
 - **`options`** - Configuration options for creating an embedded player (required when creating an embed)
 
 ### PlayerOptions
+The PlayerOptions defines all the customizable settings for configuring a Vidinfra player. Here, you specify key details about the video and player behavior. You can set the video’s library ID, video ID, and the player’s size, playback options, and more.
 
 ```Javascript
 interface PlayerOptions {
@@ -189,34 +190,108 @@ interface PlayerOptions {
 }
 ```
 ### Playback Methods
-- **`play(): Promise<void>`**: Start video playback.
-- **`pause(): Promise<void>`**: Pause video playback.
-- **`togglePlay(): Promise<void>`**: Toggle between play and pause states.
-- **`seek(time: number): Promise<void>`**: Seek to a specific time in seconds.
-- **`setPlaybackRate(rate: number): Promise<void>`**: Set playback speed (e.g., 0.5, 1.0, 2.0).
-- **`getPlaybackRate(): Promise<number>`**: Get current playback rate.
-- **`getCurrentTime(): Promise<number>`**: Get current playback position in seconds.
-- **`getDuration(): Promise<number>`**: Get total video duration in seconds.
-- **`getPaused(): Promise<boolean>`**: Check if video is currently paused.
+These methods control the basic playback behavior of the video. They include actions like starting, pausing, seeking, and changing playback speed.
 
+Start video playback.
+```Javascript
+play(): Promise<void>
+``` 
+Pause video playback.
+```Javascript
+pause(): Promise<void> 
+```
+Toggle between play and pause states.
+```Javascript
+togglePlay(): Promise<void>
+```
+Seek to a specific time in seconds.
+```Javascript
+seek(time: number): Promise<void> 
+```
+Set playback speed (e.g., 0.5, 1.0, 2.0).
+```Javascript
+setPlaybackRate(rate: number): Promise<void> 
+```
+Get current playback rate.
+```Javascript
+getPlaybackRate(): Promise<number> 
+```
+Get current playback position in seconds.
+```Javascript
+getCurrentTime(): Promise<number> 
+```
+Get total video duration in seconds.
+```Javascript
+getDuration(): Promise<number> 
+```
+Check if video is currently paused.
+```Javascript
+getPaused(): Promise<boolean> 
+```
 ### Volume Methods
-- **`setVolume(volume: number): Promise<void>`**: Set volume level (0-1).
-- **`getVolume(): Promise<number>`**: Get current volume level.
-- **`mute(): Promise<void>`**: Mute audio.
-- **`unmute(): Promise<void>`**: Unmute audio.
-- **`setMuted(muted: boolean): Promise<void>`**: Set muted state.
-- **`getMuted(): Promise<boolean>`**: Get current muted state.
+These methods manage the audio settings for the player. You can adjust the volume, mute, or check the current audio state.
+
+Set volume level (0-1).
+```Javascript
+setVolume(volume: number): Promise<void>
+```
+Get current volume level.
+```Javascript
+getVolume(): Promise<number>
+```
+Mute audio.
+```Javascript
+mute(): Promise<void>
+```
+Unmute audio.
+```Javascript
+unmute(): Promise<void>
+```
+Set muted state.
+```Javascript
+setMuted(muted: boolean): Promise<void>
+```
+Get current muted state.
+```Javascript
+getMuted(): Promise<boolean>
+```
 
 ### Display Methods
-- **`toggleFullscreen(): Promise<void>`**: Toggle fullscreen mode.
-- **`requestFullscreen(): Promise<void>`**: Enter fullscreen mode.
-- **`exitFullscreen(): Promise<void>`**: Exit fullscreen mode.
-- **`showControls(): Promise<void>`**: Show player controls.
-- **`hideControls(): Promise<void>`**: Hide player controls.
-- **`setControlsVisible(visible: boolean): Promise<void>`**: Set controls visibility.
+These methods manage the visual behavior of the player, including fullscreen and control visibility.
 
+Toggle fullscreen mode.
+```Javascript
+toggleFullscreen(): Promise<void> 
+```
+Enter fullscreen mode.
+```Javascript
+requestFullscreen(): Promise<void> 
+```
+Exit fullscreen mode.
+```Javascript
+exitFullscreen(): Promise<void> 
+```
+Show player controls.
+```Javascript
+showControls(): Promise<void> 
+```
+Hide player controls.
+```Javascript
+hideControls(): Promise<void> 
+```
+Set controls visibility.
+```Javascript
+setControlsVisible(visible: boolean): Promise<void> 
+```
 ### Watermark Methods
-**`addWatermark(config: WatermarkConfig): Promise<void>`**: Add a watermark overlay to the video.
+These methods add a watermark to your video, which can be customized with text and styling options.
+
+Add a watermark overlay to the video.
+```Javascript
+addWatermark(config: WatermarkConfig): Promise<void> 
+```
+WatermarkConfig:
+
 ```Javascript
 interface WatermarkConfig {
   text: string;
@@ -226,40 +301,77 @@ interface WatermarkConfig {
 }
 ```
 ### Utility Methods
-- **`isReady(): boolean`**: Check if player is ready to receive commands.
-- **`whenReady(): Promise<void>`**: Returns a promise that resolves when the player is ready.
-- **`getIframe(): HTMLIFrameElement`**: Get the iframe element.
-- **`getWrapper(): HTMLElement | null`**: Get the wrapper element (only available for embedded players).
-- **`getSrc(): string`**: Get the iframe source URL.
-- **`update(options: Partial<PlayerOptions>): void`**: Update player options (only available for embedded players).
-- **`destroy(): void`**: Clean up event listeners and remove the player.
+These methods help you interact with the player’s internal state and configuration.
+
+Check if player is ready to receive commands.
+```Javascript
+isReady(): boolean 
+```
+Returns a promise that resolves when the player is ready.
+```Javascript
+whenReady(): Promise<void>
+```
+Get the iframe element.
+```Javascript
+getIframe(): HTMLIFrameElement
+```
+Get the wrapper element (only available for embedded players).
+```Javascript
+getWrapper(): HTMLElement | null
+```
+Get the iframe source URL.
+```Javascript
+getSrc(): string
+```
+Update player options (only available for embedded players).
+```Javascript
+update(options: Partial<PlayerOptions>): void
+```
+Clean up event listeners and remove the player.
+```Javascript
+destroy(): void
+```
 
 ### Event Methods
-- **`on(event: string, callback: Function): this`**: Register an event listener.
-- **`off(event: string, callback?: Function): this`**: Remove an event listener.
-- **`once(event: string, callback: Function): this`**: Register a one-time event listener.
+These methods allow you to listen for events like play, pause, and custom player events.
+
+Register an event listener.
+```Javascript
+on(event: string, callback: Function): this
+```
+Remove an event listener.
+```Javascript
+off(event: string, callback?: Function): this
+```
+Register a one-time event listener.
+```Javascript
+once(event: string, callback: Function): this 
+```
 
 ### Events
 The player emits the following events:
 
-- **`ready`** - Player is ready to receive commands
-- **`play`** - Playback has started
-- **`playing`** - Playback is playing
-- **`pause`** - Playback has paused
-- **`ended`** - Playback has ended
-- **`timeupdate`** - Playback position changed
-- **`volumechange`** - Volume or muted state changed
-- **`seeking`** - Seeking started
-- **`seeked`** - Seeking completed
-- **`waiting`** - Waiting for data
-- **`canplay`** - Enough data to play
-- **`canplaythrough`** - Can play through without buffering
-- **`loadedmetadata`** - Metadata loaded
-- **`loadeddata`** - Frame data loaded
-- **`durationchange`** - Duration changed
-- **`ratechange`** - Playback rate changed
-- **`fullscreenchange`** - Fullscreen state changed
-- **`error`** - Playback error occurred
+| **Event**             | **Description**                                      |
+|-------------------|--------------------------------------------------|
+| **`ready`**         | Player is ready to receive commands              |
+| **`play`**          | Playback has started                             |
+| **`playing`**       | Playback is playing                              |
+| **`pause`**         | Playback has paused                              |
+| **`ended`**         | Playback has ended                               |
+| **`timeupdate`**    | Playback position changed                        |
+| **`volumechange`**  | Volume or muted state changed                    |
+| **`seeking`**       | Seeking started                                  |
+| **`seeked`**        | Seeking completed                                |
+| **`waiting`**       | Waiting for data                                 |
+| **`canplay`**       | Enough data to play                              |
+| **`canplaythrough`**| Can play through without buffering               |
+| **`loadedmetadata`**| Metadata loaded                                  |
+| **`loadeddata`**    | Frame data loaded                                |
+| **`durationchange`**| Duration changed                                 |
+| **`ratechange`**    | Playback rate changed                            |
+| **`fullscreenchange`**| Fullscreen state changed                      |
+| **`error`**         | Playback error occurred                          |
+
 
 ## Examples
 ### Basic Playback Control
