@@ -160,7 +160,8 @@
                 "expanded": false,
                 "icon": "file-code",
                 "pages": [
-                  "docs/vidinfra/sdk/player-sdk"
+                  "docs/vidinfra/sdk/player-sdk",
+                  "docs/vidinfra/sdk/uploader-sdk"
                 ]
               }
             ]
@@ -192,8 +193,29 @@
                   "docs/cdn/distributions/ssl",
                   "docs/cdn/distributions/headers",
                   "docs/cdn/distributions/access-rules",
-                  "docs/cdn/distributions/cache-rules",
-                  "docs/cdn/distributions/image-optimizer"
+                  "docs/cdn/distributions/cache-rules"
+                ]
+              },
+              {
+                "group": "Image Optimization",
+                "expanded": false,
+                "icon": "image-upscale",
+                "pages": [
+                  {
+                    "group": "Image Integration Guide",
+                    "expanded": false,
+                    "icon": "image-up",
+                    "pages": [
+                      "docs/cdn/image-optimization/integration-guide/index",
+                      "docs/cdn/image-optimization/integration-guide/nextjs",
+                      "docs/cdn/image-optimization/integration-guide/react-native",
+                      "docs/cdn/image-optimization/integration-guide/android-ios",
+                      "docs/cdn/image-optimization/integration-guide/shopify",
+                      "docs/cdn/image-optimization/integration-guide/astro",
+                      "docs/cdn/image-optimization/integration-guide/nuxt"
+                  
+                    ]
+                  }
                 ]
               },
               {
@@ -206,7 +228,6 @@
                   "docs/cdn/analytics/cache-hit-ratio",
                   "docs/cdn/analytics/response-classes"
 
-                  
                 ]
               },
               {
@@ -254,9 +275,9 @@
                 ]
               },
               {
-                "group": "Storage",
+                "group": "Storage and Backup",
                 "expanded": false,
-                "icon": "database",
+                "icon": "database-backup",
                 "pages": [
                   "docs/cloud/storage/block-storage",
                   "docs/cloud/storage/object-storage",

@@ -1,0 +1,97 @@
+---
+title: 'Astro.js'
+description: 'Learn how to set up Tenbyte Image Optimization across various platforms.'
+sidebarTitle: 'Astro.js'
+icon: 'braces'
+---
+# Tenbyte Image Integration for Astro.js
+
+Use Tenbyte Image Optimization to deliver lighter, faster images in your Astro project. 
+
+This guide walks you through the setup process, how to use the integration in your components, and the options available to tailor image delivery to your needs.
+
+## Installation & Setup
+
+### 1. Create a Tenbyte Astro Component
+- Create **`src/components/TenbyteImage.astro`**
+```javascript Javascript
+---
+// TenbyteImage.astro
+const { src, alt = "", style = "", ...rest } = Astro.props;
+---
+<img
+  data-src={src}
+  alt={alt}
+  style={style}
+  {...rest}
+/>
+```
+### 2. Load Tenbyte JS and Configure in Global Layout
+- Add to your main layout (e.g., src/layouts/BaseLayout.astro):
+```html HTML
+<head>
+  <!-- Tenbyte Configuration -->
+  <script>
+    window.TENBYTE_CONFIG = {
+      hosts: [
+        {
+          current: "example.com",      // Your site’s domain
+          tenbyte: "mysubdomain.tenbytecdn.com" // Your Tenbyte source
+        }
+      ],
+      lazy_load: true
+    };
+  </script>
+  <script
+    src="https://cdn.jsdelivr.net/npm/tenbyte.js@2.1/dist/tenbyte.min.js"
+    id="tenbyte-sdk-script"
+    sync
+  ></script>
+</head>
+```
+
+<Warning>
+  Update "**`example.com`**" and "**`your-tenbyte-domain`**" to match the domain where your images are hosted and the Tenbyte domain provided to your account.
+</Warning>
+
+## Usage
+Import and use the Tenbyte image component in your Astro pages:
+```javascript Javascript
+---
+import TenbyteImage from '../components/TenbyteImage.astro';
+---
+<TenbyteImage
+  src="https://yourdomain.com/images/photo.jpg"
+  alt="Alt text for SEO"
+  style="width: 400px;"
+/>
+```
+Use the **`data-src`** attribute when loading images so Tenbyte can optimize them automatically. It supports both lazy loading and responsive images.
+## Image Transformations
+- Pass additional Tenbyte parameters inside src URL:
+```javascript Javascript
+<TenbyteImage
+  src="https://yourdomain.com/images/photo.jpg?w=400&format=webp"
+  alt="Optimized"
+  style="width: 400px;"
+/>
+```
+## Advanced
+- You can pass any standard HTML **`<img>`** attribute as a prop.
+- SSR is fully supported, and the output renders as regular **`<img>`** tags.
+- For static Astro builds, images are still delivered in an optimized form through Tenbyte.
+
+## Example
+
+```javascript Javascript
+<TenbyteImage
+  src="https://demo.tenbyte.io/logo.png?w=300"
+  alt="Company logo"
+  style="width:300px;"
+/>
+```
+## Troubleshooting
+
+- Make sure your Tenbyte image domain or source settings are configured correctly.
+- Use **`data-src`** instead of **`src`** so images can be processed by Tenbyte.
+- Ensure the Tenbyte image script loads before your images appear on the page.

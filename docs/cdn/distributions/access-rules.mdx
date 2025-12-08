@@ -31,24 +31,31 @@ This section lets you define the main access rules. You can configure settings f
 ### Country Access Policy
 - Controls access based on the **user's country**.
 
-    <Frame caption="Country Access Policy">
+    <Frame caption="Country Access Policy - Allow by Default">
         <img src="/images/cdn/25.png" alt="Country Access Policy" />
     </Frame>
 
 - You can either **allow access** by default for all countries or **deny access** by default and then specify exceptions.
 - If you deny access by default, you can choose specific countries to allow access.
 
+    <Frame caption="Country Access Policy - Deny by Default">
+        <img src="/images/cdn/49.png" alt="Country Access Policy" />
+    </Frame>
+
 
 ### IP Access Policy
 - Allows you to control access based on **IP addresses**.
 
-<Frame caption="IP Access Policy">
+    <Frame caption="IP Access Policy">
         <img src="/images/cdn/26.png" alt="IP Access Policy" />
     </Frame>
 
 - Allow access by default means anyone can access the content, and you only specify exceptions.
 - Deny access by default means access is blocked unless you specify which IP addresses or ranges are allowed.
 - You can use CIDR notation to define allowed or denied IP ranges.
+    <Frame caption="CIDR Notation">
+        <img src="/images/cdn/50.png" alt="IP Access Policy" />
+    </Frame>
 
 ### Referrer Access Policy
 - Controls access based on the **referring domain**.
