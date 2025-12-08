@@ -6,10 +6,10 @@ sidebarTitle: 'Firewall'
 ---
 
 # Tenbyte Firewall
-This guide shows you how to create and manage **firewalls** in **Tenbyte Cloud**.
+This guide explains how to create and manage firewalls in Tenbyte Cloud. A firewall controls which traffic can reach or leave your VM through inbound and outbound rules. You will learn how to set these rules and attach the firewall to a VM from the dashboard.
 
 ## 1. Select Firewall from Dashboard
-- From your dashboard, click on **Firewall** to create your **Firewall**.
+- Open your Cloud dashboard. From dashboard, click on **Firewall** to create your **Firewall**.
 
     <Frame caption="Select Firewall">
         <img src="/images/cloud/51.png" alt="Select Firewall" />
@@ -24,7 +24,7 @@ This guide shows you how to create and manage **firewalls** in **Tenbyte Cloud**
     </Frame>
 
 ### Configure Inbound Rules
-- Under Inbound rules, you can specify the traffic allowed to enter your virtual machine.
+- Inbound rules control traffic entering your virtual machine. Under Inbound rules, you can specify the traffic allowed to enter your virtual machine.
 
     <Frame caption="Configure Inbound Rules">
         <img src="/images/cloud/53.png" alt="Configure Inbound Rules" />
@@ -34,9 +34,10 @@ This guide shows you how to create and manage **firewalls** in **Tenbyte Cloud**
     - **Protocol**: Choose the protocol.
     - **Port Range**: Specify the port range.
     - **Sources**: Enter the IP prefixes allowed to access the VM or select Any to allow all incoming traffic.
+- Use inbound rules to allow only the ports required by your application and block all others.
 
 ### Configure Outbound Rules
-- Under Outbound rules, specify which traffic can leave your virtual machine.
+- Outbound rules control traffic leaving your virtual machine. Under Outbound rules, specify which traffic can leave your virtual machine.
 
     <Frame caption="Configure Inbound Rules">
         <img src="/images/cloud/54.png" alt="Configure Inbound Rules" />
@@ -48,8 +49,8 @@ This guide shows you how to create and manage **firewalls** in **Tenbyte Cloud**
     - **Destinations*: Select All IP to allow traffic to any destination or specify a target IP range if you want to restrict the destinations.
 
 ### Configure Firewall Settings
-- Provide a name for the firewall.
-- Choose the appropriate billing account to associate with the firewall.
+- Enter a name for the firewall.
+- Select the billing account that this firewall belongs to.
 
 <Note>
     The firewall service is free, but the resources like VMs attached to it will incur additional charges.
