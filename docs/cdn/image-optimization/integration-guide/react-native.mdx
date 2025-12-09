@@ -1,0 +1,136 @@
+---
+title: 'React Native'
+description: 'Set up Tenbyte Image Optimization in your React Native project to load compressed, device-friendly images on the fly'
+sidebarTitle: 'React Native'
+icon: 'braces'
+---
+# Integrate Tenbyte Image Optimization with React Native
+
+To keep this guide focused, we’ll assume you already have your React Native environment set up and a basic project running.
+
+All changes in this example will be made directly in App.js, but you can structure your files however you prefer.
+
+## Create a TenbyteImage Component
+
+You’ll create a reusable component that loads remote images through Tenbyte’s optimization service. This component can be placed anywhere in your app where you want to display optimized images.
+
+You can save it at **`./components/TenbyteImage.js`** or any folder that fits your project layout.
+
+```javascript ./components/TenbyteImage.js
+import React, { useState, useMemo } from "react";
+import { Image, StyleSheet } from "react-native";
+import {PixelRatio} from 'react-native';
+import PropTypes from "prop-types";
+
+function extractHostname(url) {
+    var hostname;
+    //find & remove protocol (http, ftp, etc.) and get hostname
+  
+    if (url.indexOf("//") > -1) {
+      hostname = url.split('/')[2];
+    } else {
+      hostname = url.split('/')[0];
+    }
+  
+    //find & remove port number
+    hostname = hostname.split(':')[0];
+    //find & remove "?"
+    hostname = hostname.split('?')[0];
+  
+    return hostname;
+}
+
+function TenbyteScaledImage({ style, source, ...restProps }) {
+
+    const flattenedStyles = useMemo(() => StyleSheet.flatten(style), [style]);
+
+    if (
+        typeof flattenedStyles.width !== "number" &&
+        typeof flattenedStyles.height !== "number"
+    ) {
+        throw new Error("TenbyteScaledImage requires either width or height");
+    }
+
+    const [size, setSize] = useState({
+        width: flattenedStyles.width,
+        height: flattenedStyles.height,
+    });
+
+    let tenbyteConfig = {
+        hosts: [{
+            current: "{{example.com}}",
+            tenbyte: "{{mysubdomain}}.tenbytecdn.com"
+        }]
+    }
+
+    let matchedHost = tenbyteConfig.hosts.find(o => o.current === extractHostname(source.uri));
+    
+    let tenbyteSourceURL = source.uri.replace(matchedHost.current, matchedHost.tenbyte);
+    if (tenbyteSourceURL.indexOf("?") !== -1) {
+        tenbyteSourceURL += ("&width="+flattenedStyles.width)+("&dpr="+parseInt(PixelRatio.get()))
+    }else{
+        tenbyteSourceURL += ("?width="+flattenedStyles.width)+("&dpr="+parseInt(PixelRatio.get()))
+    }
+
+    return <Image source={{ uri: tenbyteSourceURL }} style={[style, size]} {...restProps} />;
+}
+
+TenbyteScaledImage.propTypes = {
+  source: PropTypes.object.isRequired,
+  style: PropTypes.object
+};
+
+TenbyteScaledImage.defaultProps = {
+  style: {}
+};
+
+export default TenbyteScaledImage;
+``` 
+
+<Note> Replace `your-domain` in the code with the Tenbyte image domain assigned to your account. Also update `source-domain` to match the domain where your original images are hosted. </Note>
+
+## Import the component and swap it in for `<Image />`
+
+```javascript App.js
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ *
+ * @format
+ * @flow strict-local
+ */
+
+import React from 'react';
+import type {Node} from 'react';
+import {
+  StyleSheet,
+  View,
+} from 'react-native';
+
+// Import the component created in the previous step.
+import TenbyteScaledImage from "./components/TenbyteImage";
+
+
+const App: () => Node = () => {
+
+
+  return (
+    <View style={styles.container}>
+      <TenbyteScaledImage
+        style={{height: 200, width: 200}}
+        source={{uri: "{{url_to_image}}"}}
+      />
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: 50,
+  },
+});
+
+export default App;
+```
+
+> Congratulations!! Your Tenbyte setup is complete. Images in your app will now be optimized and delivered in the best size for every user.

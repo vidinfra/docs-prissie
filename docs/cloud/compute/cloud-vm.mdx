@@ -7,14 +7,15 @@ icon: 'monitor-dot'
 
 # Virtual Machines in Tenbyte Cloud
 
-This guide shows you how to easily create and manage high-performance VMs that are secure, cost-effective, and tailored to your needs.
+This guide walks you through the complete process of creating a virtual machine (VM) in **Tenbyte Cloud**. You’ll learn how to select an OS or app image, configure the machine type, set up networking, and finalize your resource.
 
 ## 1. Select Virtual Machine
-- From your dashboard, click on **Virtual Machine** to create your first VM.
+- To begin, open your Tenbyte Cloud dashboard and choose Virtual Machine from the list of available services.
 
     <Frame caption="Select Virtual Machine">
         <img src="/images/cloud/9.png" alt="Select Virtual Machine" />
     </Frame>
+- This takes you to the VM creation page where all configuration options are listed.
 
 ## 2. Choose Operating System
 - If you want to install an operating system, select **Operating System** and choose the OS. 
@@ -33,6 +34,10 @@ You can choose from the following operating systems:
 6. **`AlmaLinux`**
 7. **`Fedora`**
 8. **`Windows (BYOL)`**
+
+<Note>
+    Each OS image is maintained and updated regularly to provide a reliable foundation for your workloads.
+</Note>
 
 ## 3. Choose App Catalog
 - If you need an application, select **App Catalog**.
@@ -60,26 +65,35 @@ Choose from available applications like:
 </Note>
 
 ## 4. Choose Empty Disk for ISO Booting
-- If you prefer to install the OS manually via ISO, select Empty disk (for ISO booting). 
+- If you plan to install an operating system manually using an ISO image, choose Empty disk. 
 
 ## 5. Select your Location
 - Choose your Data center where the resource will be created.
 
+<Tip>
+    Selecting a region close to your users or infrastructure can improve performance and lower latency.
+</Tip>
+
 ## 6. Select Server Class
-- Choose between **General Purpose** or **Heavy Compute** based on your workload.
+- Choose between **General Purpose** or **Heavy Compute** based on your workload type.
 
     <Frame caption="Select Server Class">
         <img src="/images/cloud/13.png" alt="Select Server Class" />
     </Frame>
-    1. **General Purpose**: Suitable for low to medium traffic.
-    2. **Heavy Compute**: Best for high-traffic applications and enterprise-level needs.
+    1. **General Purpose**: Ideal for everyday applications, low to medium traffic workloads, and business systems.
+    2. **Heavy Compute**: Recommended for high-traffic systems, intensive compute tasks, and enterprise workloads.
 ## 7. Configure your VM Size
 - Select the **VM size** based on the resources your application requires.
-- You can customize the configuration of your VM by adjusting the number of CPU cores, RAM, and storage to match your exact needs.
+- You can configure -
+    - **CPU Cores** – Match the number of cores to your processing demands.
+    - **Memory (RAM)** – Select memory based on your application size and performance needs.
+    - **Storage** – Choose the disk size appropriate for your files, databases, or workloads.
 
     <Frame caption="Configure VM Size">
         <img src="/images/cloud/14.png" alt="Configure VM Size" />
     </Frame>
+    
+- This flexible configuration lets you build a VM that fits your exact use case.
 ## 8. Public IPv4 Address
 - If you require an **external IP** for your VM, **enable Public IPv4**.
 
@@ -93,12 +107,21 @@ Choose from available applications like:
     <Frame caption="Public IPv4 and VPC Network">
         <img src="/images/cloud/15.png" alt="Configure VM Size" />
     </Frame>
+- If you want to set up your own VPC network, you can follow the steps in the [Tenbyte VPC](/docs/cloud/networking/vpc) page found in the **Networking and Security** section.
 
 ## 10. Fill in User Information and Billing Details
 1. **Username**: Enter a username for your virtual machine. This will be used to log in. 
 2. **Password**: Set a password that meets the security criteria
 3. **Confirm Password**: Re-type the password to ensure it has been entered correctly.
-4. **SSH Public Key**: Paste your SSH public key here if you plan to access your VM securely via SSH. 
+4. **SSH Public Key**: If you prefer passwordless SSH access, add your SSH key here. Select **SSH Keys**, and a pop-up will appear where you can enter a key name and paste your public key. Use the format:
+**`ssh-keytype base64_encoded_key optional_comment`**.
+    <Frame caption="Add your SSH Public Key">
+        <img src="/images/cloud/92.png" alt="Configure VM Size" />
+    </Frame>
+    <Note>
+        Only single-line keys are accepted. Make sure the key is not wrapped, contains no extra spaces, and matches one of the supported key types.
+    </Note>
+
 5. **Initialization Script**: Optionally, you can add a custom configuration for the VM by using an initialization script. This can include cloud-init configurations to automatically set up your VM during the creation process.
 6. **Resource Name**: Provide a resource name for your VM. This will be used to generate a suitable hostname for the machine if applicable.
 7. **Estimated Monthly Cost**: This gives you an overview of what you’ll be charged based on the current setup.

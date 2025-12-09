@@ -1,0 +1,34 @@
+---
+title: 'Nuxt'
+description: 'Learn how to connect Tenbyte Image Optimization to your Nuxt project and serve optimized images directly through your application.'
+sidebarTitle: 'Nuxt'
+icon: 'braces'
+---
+# Nuxt Integration Guide
+
+To use Tenbyte Image Optimization in Nuxt, you only need to define the base URL for your Tenbyte image service. 
+
+Once configured, Nuxt will route your image requests through Tenbyte and return optimized versions automatically.
+
+```typescript nuxt.config.ts
+export default defineNuxtConfig({
+  image: {
+    gumlet: {
+      baseURL: 'https://demo.tenbyte.io'
+    }
+  }
+})
+```
+
+To use Tenbyte as your image provider, you can start with the following configuration snippet:
+```vue
+<NuxtImg
+  provider="tenbyte"
+  src="/sea.jpeg"
+  width="300"
+  height="500"
+  fit="cover"
+  :modifiers="{ format: 'auto', compress: 'true' }"
+/>
+```
+The component will output a 300×500 optimized image, applying compression and using next gen formats for browsers that support them.

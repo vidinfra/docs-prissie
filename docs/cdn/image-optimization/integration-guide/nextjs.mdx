@@ -1,0 +1,44 @@
+---
+title: 'Next.js'
+description: 'Integrate Tenbyte Image Optimization with Next.js to deliver optimized, fast-loading images across your application.'
+sidebarTitle: 'Next.js'
+icon: 'braces'
+---
+# Integrate Tenbyte Image Optimization with Next.js
+
+Next.js (v10 and above) includes built-in image optimization, and you can connect it to Tenbyte Image Optimization with only a few lines of configuration. 
+
+By using a custom image loader, your Next.js app can fetch correctly sized images directly from the Tenbyte service. Here’s the simplest way to set up a custom loader for Tenbyte.
+
+<CodeGroup>
+
+```javascript utils/imageloader.js
+export default function tenbyteLoader({ src, width, quality }) {
+    if(src.includes("<CURRENT_IMAGE_DOMAIN>")){
+        let parsedUrl = new URL(src);
+        parsedUrl.hostname = "<your_tenbyte_subdomain>.tenbytecdn.com";
+        parsedUrl.searchParams.set("w", width);
+        parsedUrl.searchParams.set("q", quality || 80);
+        return parsedUrl.toString();
+    } else {
+        return `${src}?w=${width}&q=${quality || 80}`;
+    }
+}
+```
+
+```javascript next.config.js
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  distDir: 'build',
+  images: {
+    loader: 'custom',
+    loaderFile: './utils/imageloader.js',
+  },
+  //... other config
+}
+
+module.exports = nextConfig
+```
+</CodeGroup>
+
+To learn more about image optimization in Next.js, you can check the official Next.js [Image Optimization](https://nextjs.org/docs/app/api-reference/components/image#loader) documentation.

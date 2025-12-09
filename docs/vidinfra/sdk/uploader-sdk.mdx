@@ -1,0 +1,431 @@
+---
+title: 'Vidinfra Uploader SDK'
+description: 'Control your video players inside iframes.'
+sidebarTitle: 'Uploader SDK'
+icon: 'monitor-up'
+---
+# VidInfra Uploader SDK
+A modern TypeScript based upload SDK designed for handling large video files with consistency and control. The SDK includes multipart upload logic, progress insights, drag and drop helpers & lifecycle management features that simplify video ingestion workflows.
+
+## Features
+
+- **Video Upload**-  Handles large video files through multipart upload. Uploads are split into smaller parts, improving stability on slow or unstable networks.
+
+- **Progress Tracking**- Reports real-time progress as each part uploads. You get uploaded bytes, overall percentage, estimated speed, and expected completion time.
+
+- **Drag & Drop**- Includes optional helpers for building a drag-and-drop upload zone. Works with standard DOM elements and requires minimal setup.
+
+- **Pause and Resume**- Upload sessions can be paused at any time. The SDK keeps track of completed parts so the process can resume without starting over.
+
+- **Batch Upload**- Accepts one or many files in a single call. Each upload runs independently, allowing you to manage or track them individually.
+
+- **Secure by Design**- Uses short-lived tokens to authenticate requests. Upload endpoints never expose secret keys.
+
+- **Customizable**- Ships with minimal UI helpers so you can apply your own styling or integrate it into an existing design system.
+
+- **Responsive**- Supports desktop and mobile environments with no additional configuration.
+
+- **Universal Build**- Distributed in CommonJS, ESM, and UMD formats. You can use it in modern bundlers, Node.js environments, or direct browser imports.
+
+- **TypeScript Support**- Full TypeScript support with accurate type definitions for safer and cleaner integration.
+
+## Installation
+This section provides the installation commands for adding the Vidinfra Uploader SDK to a project using **`npm`**, **`yarn`**, or **`pnpm`**. It’s the initial setup step required before using the uploader.
+
+```bash
+npm install @vidinfra/uploader
+```
+Or,
+```bash
+yarn add @vidinfra/uploader
+```
+Or,
+```bash
+npm install @vidinfra/uploader
+```
+
+## Quick Start
+### ES Modules (Modern Bundlers)
+This section shows how to initialize the Vidinfra Uploader SDK inside a modern JavaScript project. It sets the **upload endpoint**, **JWT token**, **target element**, and **metadata**. It also listens for a successful upload and logs when the file is complete.
+
+```Javascript
+import VidInfraUploader from "@vidinfra/uploader";
+import "@vidinfra/uploader/styles.css";
+
+const uploader = new VidInfraUploader({
+  endpoint:
+    "https://api.tenbyte.io/v1/stream/libraries/YOUR_LIBRARY_ID/uploads",
+  uploadToken: "YOUR_JWT_TOKEN",
+  target: "#uploader",
+  metadata: {
+    libraryId: "YOUR_LIBRARY_ID",
+  },
+});
+
+uploader.on("upload-success", (file, response) => {
+  console.log("Upload complete:", file.name);
+});
+```
+### UMD (Browser Script Tag)
+This code block loads the Vidinfra Uploader in a browser using a script tag, applies the stylesheet, creates an uploader element, and initializes the uploader with the upload endpoint and token.
+```Javascript
+<link
+  rel="stylesheet"
+  href="https://unpkg.com/@vidinfra/uploader/dist/styles.css"
+/>
+<div id="uploader"></div>
+<script src="https://unpkg.com/@vidinfra/uploader/dist/index.umd.js"></script>
+<script>
+  const uploader = new VidInfraUploader({
+    endpoint:
+      "https://api.tenbyte.io/v1/stream/libraries/YOUR_LIBRARY_ID/uploads",
+    uploadToken: "YOUR_JWT_TOKEN",
+    target: "#uploader",
+  });
+</script>
+```
+## Configuration
+This section explains the available settings for the Vidinfra Uploader. It shows the required fields and the optional options you can use to control metadata, upload behavior, and UI targets.
+
+```Javascript
+const uploader = new VidInfraUploader({
+  // Required
+  endpoint: string, // API endpoint
+  uploadToken: string, // JWT token
+
+  // Optional
+  target: string | HTMLElement, // DOM target
+  metadata: {
+    libraryId: string,
+    folderId: string,
+  },
+  maxNumberOfFiles: number,
+  autoProceed: boolean, // Auto-start upload
+  dragDrop: boolean, // Enable drag & drop
+  note: string, // Custom dropzone text
+});
+```
+### Supported File Formats
+The Vidinfra Uploader accepts a wide range of video and audio formats. These formats are commonly used across recording tools, editing software, and streaming workflows, ensuring smooth uploads from most devices.
+
+#### Videos
+
+| Format | MIME Type | Details |
+|--------|-----------|---------|
+| **.mp4** | video/mp4 | Works on all devices; ideal for streaming and general uploads |
+| **.mkv** | video/x-matroska | High-quality container; supports multiple audio tracks and subtitles |
+| **.mov** | video/quicktime | Apple format; common in editing workflows and camera exports |
+| **.avi** | video/x-msvideo | Older Windows format; used for legacy video sources |
+
+#### Audio
+
+| Format | MIME Type | Details |
+|--------|-----------|---------|
+| **.mp3** | audio/mpeg | Most common compressed audio format; widely supported |
+| **.wav** | audio/wav | Uncompressed, high-quality audio; used in production and editing |
+| **.aac** | audio/aac | Efficient compressed audio; good quality at smaller file sizes |
+| **.m4a** | audio/mp4 | MPEG-4 audio container; common for music and high-quality audio exports |
+
+### Theming
+This code block shows how to customize the uploader's colors and fonts. It lets you match the Vidinfra Uploader UI with your brand styling.
+```Javascript
+const uploader = new VidInfraUploader({
+  endpoint: "YOUR_ENDPOINT",
+  uploadToken: "YOUR_TOKEN",
+  target: "#uploader",
+  theme: {
+    primaryColor: "#9333EA", // Purple primary color
+    primaryLight: "#F3E8FF", // Light purple background
+    primaryShadow: "rgba(147, 51, 234, 0.1)", // Shadow color
+    textColor: "#111111", // Main text color
+    textSecondary: "#666666", // Secondary text color
+    backgroundColor: "#ffffff", // Background color
+    borderColor: "#e5e7eb", // Border color
+    successColor: "#10B981", // Success state color
+    errorColor: "#EF4444", // Error state color
+    fontFamily: "Inter, system-ui, sans-serif", // Custom font
+  },
+});
+```
+### Branding
+This code block controls the “Powered by Vidinfra” footer. You can keep it visible or turn it off by setting branding to true or false.
+Configure the "Powered by VidInfra" footer:
+```Javascript
+// Show branding (default behavior)
+const uploader = new VidInfraUploader({
+  endpoint: "YOUR_ENDPOINT",
+  target: "#uploader",
+  branding: true, // default, can be omitted
+});
+
+// Hide branding
+const uploader = new VidInfraUploader({
+  endpoint: "YOUR_ENDPOINT",
+  target: "#uploader",
+  branding: false,
+});
+```
+## API Reference
+### Methods
+This section lists the main methods of the Vidinfra Uploader. It explains how to control uploads, manage files, check the uploader state, update options, and remove the uploader when you’re done.
+
+```Javascript
+// Upload control
+await uploader.upload()
+uploader.pauseAll()
+uploader.resumeAll()
+uploader.cancelAll()
+
+// File management
+await uploader.addFile(file: File)
+uploader.removeFile(fileId: string)
+uploader.clear()
+
+// State
+uploader.getState()
+uploader.getFiles()
+
+// Configuration
+uploader.setOptions(options)
+uploader.setMeta(metadata)
+uploader.destroy()
+```
+### Events
+This section shows all events you can listen to in the Vidinfra Uploader. It covers file-added, upload progress, success, errors, completion, and pause/resume/cancel actions so you can react to each step of the upload flow.
+
+```Javascript
+uploader.on("file-added", (file) => {});
+uploader.on("upload-start", () => {});
+uploader.on("upload-progress", (file, progress) => {});
+
+// Access API response after successful upload
+uploader.on("upload-success", (file, response) => {
+  console.log("File uploaded:", file.name);
+  console.log("S3 Key:", response.body.key);
+  console.log("S3 Location:", response.body.location);
+  console.log("Upload URL:", response.uploadURL);
+  // Full response body contains: { key, location }
+});
+
+uploader.on("upload-error", (file, error) => {});
+uploader.on("complete", (result) => {
+  // Access all successful uploads
+  result.successful.forEach((file) => {
+    console.log("Key:", file.response.body.key);
+    console.log("Location:", file.response.body.location);
+  });
+});
+uploader.on("pause-all", () => {});
+uploader.on("resume-all", () => {});
+uploader.on("cancel-all", () => {});
+```
+### Response Structure
+This section explains what data you get back after a successful upload. It returns the upload URL and the S3 details such as key, full file location, and video ID.
+
+```Javascript
+{
+  status: 200,
+  uploadURL: string,  // The final upload URL
+  body: {
+    key: string,      // S3 object key
+    location: string  // Full S3 URL to the uploaded file
+    video_id: string //
+  }
+}
+```
+## Package Formats
+This table shows all build formats included in the Vidinfra Uploader package. It explains which file to use for Node.js, modern bundlers, browsers, UMD script tags, development builds, and TypeScript types.
+
+| Format        | File                         | Size  | Usage                                   |
+|---------------|-------------------------------|-------|-----------------------------------------|
+| **CommonJS**  | `dist/index.cjs.js`           | 172KB | Node.js, older bundlers                 |
+| **ES Module** | `dist/index.esm.js`           | 171KB | Modern bundlers (Vite, Webpack 5)       |
+| **ESM Browser** | `dist/index.browser.esm.js` | 219KB | Browser with `type="module"`            |
+| **UMD**       | `dist/index.umd.js`           | 79KB  | Browser `<script>` tag (minified)       |
+| **UMD Dev**   | `dist/index.umd.dev.js`       | 242KB | Browser with sourcemap                  |
+| **TypeScript**| `dist/index.d.ts`             | -     | Type definitions                         |
+
+### CDN Links
+This section shows two CDN options (**`unpkg`** and **`jsDelivr`**) for loading the Vidinfra Uploader directly in the browser using a **`<script>`** tag.
+
+```Javascript
+<!-- unpkg -->
+<script src="https://unpkg.com/@vidinfra/uploader/dist/index.umd.js"></script>
+
+<!-- jsDelivr -->
+<script src="https://cdn.jsdelivr.net/npm/@vidinfra/uploader/dist/index.umd.js"></script>
+```
+
+## Framework Examples
+This section lists example integrations for popular frameworks, showing how to use the Vidinfra Uploader in React, Vue, Svelte, Next.js, Laravel, and WordPress.
+
+<Accordion title="React">
+  This example shows how to set up the Vidinfra Uploader inside a React component. It initializes the uploader in useEffect, stores the instance, and destroys it when the component unmounts.
+
+```Javascript
+import { useEffect, useRef } from "react";
+import VidInfraUploader from "@vidinfra/uploader";
+import "@vidinfra/uploader/styles.css";
+
+function VideoUploader() {
+  const uploaderRef = useRef(null);
+
+  useEffect(() => {
+    const uploader = new VidInfraUploader({
+      endpoint: "YOUR_ENDPOINT",
+      uploadToken: "YOUR_TOKEN",
+      target: "#uploader",
+    });
+
+    uploaderRef.current = uploader;
+    return () => uploader.destroy();
+  }, []);
+
+  return <div id="uploader"></div>;
+}
+```  
+</Accordion>
+
+<Accordion title="Vue 3">
+  This example shows how to initialize the Vidinfra Uploader in a Vue 3 component. It creates the uploader in **`onMounted`** and attaches it to a div in the template.
+
+```Javascript
+<script setup>
+import { onMounted, ref } from "vue";
+import VidInfraUploader from "@vidinfra/uploader";
+import "@vidinfra/uploader/styles.css";
+
+const uploader = ref(null);
+
+onMounted(() => {
+  uploader.value = new VidInfraUploader({
+    endpoint: "YOUR_ENDPOINT",
+    uploadToken: "YOUR_TOKEN",
+    target: "#uploader",
+  });
+});
+</script>
+
+<template>
+  <div id="uploader"></div>
+</template>
+```  
+</Accordion>
+
+<Accordion title="Svelte">
+  This example shows how to set up the Vidinfra Uploader in a Svelte component. It loads the uploader inside **`onMount`** and connects it to the uploader div.
+
+```Javascript
+<script>
+import { onMount } from 'svelte';
+import VidInfraUploader from '@vidinfra/uploader';
+import '@vidinfra/uploader/styles.css';
+
+let uploader;
+
+onMount(() => {
+  uploader = new VidInfraUploader({
+    endpoint: 'YOUR_ENDPOINT',
+    uploadToken: 'YOUR_TOKEN',
+    target: '#uploader',
+  });
+});
+</script>
+
+<div id="uploader"></div>
+```  
+</Accordion>
+
+<Accordion title="Next.js">
+  This example shows how to load the Vidinfra Uploader in a Next.js client component. It imports the uploader dynamically inside **`useEffect`** and attaches it to the uploader div.
+```Javascript
+"use client";
+import { useEffect } from "react";
+
+export default function Uploader() {
+  useEffect(() => {
+    import("@vidinfra/uploader/styles.css");
+    import("@vidinfra/uploader").then((module) => {
+      const VidInfraUploader = module.default;
+      new VidInfraUploader({
+        endpoint: "YOUR_ENDPOINT",
+        uploadToken: "YOUR_TOKEN",
+        target: "#uploader",
+      });
+    });
+  }, []);
+
+  return <div id="uploader"></div>;
+}
+```  
+</Accordion>
+
+<Accordion title="Laravel">
+  This example shows how to use the Vidinfra Uploader in a Laravel project. The Blade file loads the script, and the JavaScript file initializes the uploader using values from environment variables.
+```Php
+{{-- Blade Template --}}
+@vite(['resources/js/uploader.js'])
+<div id="uploader"></div>
+<button id="upload-btn">Upload</button>
+```  
+
+```Javascript
+// resources/js/uploader.js
+import VidInfraUploader from "@vidinfra/uploader";
+import "@vidinfra/uploader/styles.css";
+
+const uploader = new VidInfraUploader({
+  endpoint: import.meta.env.VITE_UPLOAD_ENDPOINT,
+  uploadToken: import.meta.env.VITE_UPLOAD_TOKEN,
+  target: "#uploader",
+});
+```
+</Accordion>
+
+<Accordion title="Wordpress">
+  This example shows how to use the Vidinfra Uploader in WordPress. It enqueues the uploader script and stylesheet, then initializes the uploader in a shortcode or template using values from WordPress settings.
+
+```Php
+<?php
+// Enqueue in functions.php or plugin
+wp_enqueue_script(
+    'vidinfra-uploader',
+    'https://unpkg.com/@vidinfra/uploader/dist/index.umd.js',
+    array(),
+    '1.0.0',
+    true
+);
+
+wp_enqueue_style(
+    'vidinfra-uploader-styles',
+    'https://unpkg.com/@vidinfra/uploader/dist/styles.css'
+);
+```  
+
+```Javascript
+<!-- Shortcode or template -->
+<div id="uploader"></div>
+<button id="upload-btn">Upload</button>
+
+<script>
+  const uploader = new VidInfraUploader({
+    endpoint: '<?php echo esc_js(get_option('upload_endpoint')); ?>',
+    uploadToken: '<?php echo esc_js(get_option('upload_token')); ?>',
+    target: '#uploader',
+  });
+</script>
+```
+</Accordion>
+
+## Browser Support
+
+The Vidinfra Uploader works on all major modern browsers. For the best performance, use the latest stable version of:
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+<Warning>
+    Older or unsupported browsers may not run advanced upload features like multipart uploads or drag-and-drop.
+</Warning>

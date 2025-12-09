@@ -33,5 +33,15 @@ This section allows you to configure HTTP headers for your Tenbyte CDN distribut
 - Enable the Request Header toggle and click **Add Header** to specify the header and its value.
 
 ## 4. Response Header
-- Modify or add headers that will be returned from the CDN to users.
+The Response Header section in the CDN settings allows you to modify or add headers that are returned to users from the CDN. This can help with controlling how responses are handled or customized.
 - Enable the **Response Header toggle** and click **Add Header** to set the header and its value.
+- Modify or add headers that will be returned from the CDN to users.
+
+    <Frame caption="Response Header">
+        <img src="/images/cdn/48.png" alt="Response Header" />
+    </Frame>
+
+
+    1. **Add**: You can add a custom header to the response. 
+    2. **Hide**: The Hide action allows you to prevent a specific header from being returned in the response. In this case, the Host header would not be shown in the response headers sent to the user.
+

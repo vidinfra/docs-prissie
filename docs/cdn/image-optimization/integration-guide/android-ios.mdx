@@ -1,0 +1,30 @@
+---
+title: 'Android and iOS Apps'
+description: 'Integrate Tenbyte Image Optimization into your Android and iOS apps to load lighter images and improve performance on mobile networks.'
+sidebarTitle: 'Android & iOS'
+icon: 'braces'
+---
+# Mobile App Integration
+
+You can deliver optimized images in your mobile apps with only a few small code changes. Tenbyte works with your existing setup, so you don’t need to modify your backend or storage flow.
+
+Use the **`buildImageUrl()`** function to generate the optimized image URL. It detects the right dimensions for the device and returns a resized version of the image automatically.
+
+## Android
+Generates a resized image URL based on the view’s width so the correct image size is fetched automatically.
+
+```java Java
+Url buildImageUrl(View view, String baseImageUrl) {
+    int imageWidth = view.getWidth() - view.getPaddingLeft() - view.getPaddingRight();    
+    return baseImageUrl + "?w=" + Math.round(imageWidth);
+}
+```
+## iOS
+Builds an optimized image URL by calculating the display width of the image view and appending it to the source URL.
+
+```swift Swift
+public func buildImageUrl(view: UIImageView, baseImageUrl: String) -> String {
+        let imageWidth = round(view.frame.width - view.layoutMargins.left - view.layoutMargins.right)
+        return baseImageUrl + "?w=" + "\(imageWidth)"
+}
+```
