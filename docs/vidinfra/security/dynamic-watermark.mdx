@@ -1,67 +1,200 @@
 ---
-title: 'Dynamic Watermark'
-description: 'Learn how to implement dynamic watermarking for your videos to protect your content and brand.'
+title: 'Dynamic Video Watermarking'
+description: 'Add branded, user-specific watermarks that move to deter piracy, screen recording, and unauthorized sharing.'
 icon: 'video-off'
-sidebarTitle: 'Custom Watermark for Video'
+sidebarTitle: 'Dynamic Video Watermark'
 ---
 
-# Custom Watermark for Video
+# Dynamic Watermarking for Video
 
-A **custom watermark** is a process where your **brand name** or **company name** is displayed dynamically over a video. 
+Dynamic watermarking protects videos from **piracy**, **screen-recording**, and **unauthorized redistribution**. Unlike static overlays, a **dynamic watermark** moves across the video, making it much harder to crop or remove. This ensures:
 
-This **watermark** moves across the video to ensure your content is protected from **unauthorized usage**. This feature is useful for **anti-piracy measures** and for **ensuring your branding is visible throughout the video**.
+- ✔ Branding stays visible
+- ✔ Content is traceable
+- ✔ Users are discouraged from unauthorized sharing
+- ✔ You can bind each playback session to a specific user or device
+
+---
+
+## Quick start (copy/paste)
+
+1) Copy the config below and set the `text` values for your brand + user/session identifier.
+2) Run `encodeWatermarkConfig(config)` in your app/console to get the Base64 string.
+3) Append `&watermark=<Base64>` to your Vidinfra player URL (see embed example).
+4) Paste the iframe snippet into your page and adjust sizing if needed.
+5) Verify playback: the watermark should be visible, readable, and moving every few seconds.
+
+---
+
+## Prerequisites
+
+- A Vidinfra player URL (e.g., `https://player.vidinfra.com/.../default/...`).
+- A way to identify the viewer (user ID, email hash, session ID).
+- Ability to run a small JS helper to encode the watermark payload.
+
+---
 
 ## Watermark Configuration Example
 
-Below is an example configuration where the watermark includes your **brand name** and a **dynamic user ID** that moves across the screen.
+Below is an example configuration with a **static brand watermark** (`"MyVideoApp"`) and a **dynamic user watermark** (`"User: 1827439"`) that moves every 3.5 seconds.
 
 ```javascript
-const watermarkConfig: WatermarkConfig = [
+const watermarkConfig = [
   {
-    text: "MyVideoApp",                         
-    font: "Arial",                              
-    fontSize: 20,                               
-    fillStyle: "rgba(255,255,255,0.8)",         
-    padding: 8,                                 
-    opacity: 0.9,                               
+    text: "vidinfra player",
+    font: "Arial",
+    fontSize: 20,
+    fillStyle: "rgba(255,255,255,0.8)",
+    padding: 8,
+    opacity: 0.9,
   },
   {
-    text: "User: 1827439",                      
-    font: "Roboto",                            
-    fontSize: 18,                               
-    fillStyle: "rgba(255, 255, 255, 0.6)",      
-    strokeStyle: "rgba(0, 0, 0, 0.3)",         
-    padding: 6,                                 
-    opacity: 0.85,                              
-    moveIntervalMs: 3500,                       
+    text: "User: 1827439",
+    font: "Roboto",
+    fontSize: 18,
+    fillStyle: "rgba(255, 255, 255, 0.6)",
+    strokeStyle: "rgba(0, 0, 0, 0.3)",
+    padding: 6,
+    opacity: 0.85,
+    moveIntervalMs: 3500, // moves every 3.5 seconds
   },
 ];
 ```
-- **`text`**: The text displayed on the video. This could be your brand name, company name, or any custom information (like a user ID).
-- **`font`**: The font style used for the watermark text (e.g., Arial, Roboto).
-- **`fontSize`**: The size of the text.
-- **`fillStyle`**: The text color and its opacity.
-- **`padding`**: The distance between the watermark and the edges of the video.
-- **`opacity`**: Defines how transparent the watermark is. Lower values make it more transparent.
-- **`moveIntervalMs`**: For dynamic watermarks, this defines how often the watermark moves across the video, useful for anti-piracy and making the watermark harder to remove.
+
+### Property Breakdown
+
+| Property         | Description                                   |
+| ---------------- | --------------------------------------------- |
+| `text`           | Content displayed (brand name, user ID, etc.) |
+| `font`           | Font family                                   |
+| `fontSize`       | Text size (px)                                |
+| `fillStyle`      | Text color and opacity                        |
+| `strokeStyle`    | Outline for visibility                        |
+| `padding`        | Space between watermark and video edges       |
+| `opacity`        | Transparency level                            |
+| `moveIntervalMs` | Movement frequency for dynamic watermark      |
+
+---
 
 ## Encoding Watermark Configuration
 
-Once you’ve set up your watermark configuration, you will need to encode it in **Base64** to embed it in the video processing function. 
-
-Here is a code snippet to **encode** the **watermark configuration**:
+Convert the configuration to Base64 to embed in the player URL.
 
 ```javascript
 function encodeWatermarkConfig(config) {
   const jsonString = JSON.stringify(config);
-
-  // UTF-8 → Base64 encode
+  // UTF-8 → Base64
   return btoa(
     Array.from(new TextEncoder().encode(jsonString))
-      .map((byte) => String.fromCharCode(byte))
+      .map(byte => String.fromCharCode(byte))
       .join("")
   );
 }
 ```
-This encoding is necessary because video processing tools often require watermark data in **Base64** encoded format.
 
+> Tip: In Node, replace `btoa` with `Buffer.from(jsonString).toString("base64")`.
+
+### Generated Base64 Output
+
+Use this encoded value in your player URL:
+
+`W3sidGV4dCI6Ik15VmlkZW9BcHAiLCJmb250IjoiQXJpYWwiLCJmb250U2l6ZSI6MjAsImZpbGxTdHlsZSI6InJnYmEoMjU1LDI1NSwyNTUsMC44KSIsInBhZGRpbmciOjgsIm9wYWNpdHkiOjAuOX0seyJ0ZXh0IjoiVXNlcjogMTgyNzQzOSIsImZvbnQiOiJSb2JvdG8iLCJmb250U2l6ZSI6MTgsImZpbGxTdHlsZSI6InJnYmEoMjU1LCAyNTUsIDI1NSwgMC42KSIsInN0cm9rZVN0eWxlIjoicmdiYSgwLCAwLCAwLCAwLjMpIiwicGFkZGluZyI6Niwib3BhY2l0eSI6MC44NSwibW92ZUludGVydmFsTXMiOjM1MDB9XQ==`
+
+---
+
+## Embedding the Watermark Into the Player
+
+Add the Base64 configuration to the `watermark=` parameter of your player URL.
+
+```html
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe
+    id="vidinfra-player"
+    src="https://player.vidinfra.com/7ff08669-8f0e-4e8c-9f30-425d96ab7c4d/default/aa2952e7-289d-4183-9601-9c3b567c0ead?autoplay=true&loop=true&muted=false&controls=true&preload=true&watermark=W3sidGV4dCI6Ik15VmlkZW9BcHAiLCJmb250IjoiQXJpYWwiLCJmb250U2l6ZSI6MjAsImZpbGxTdHlsZSI6InJnYmEoMjU1LDI1NSwyNTUsMC44KSIsInBhZGRpbmciOjgsIm9wYWNpdHkiOjAuOX0seyJ0ZXh0IjoiVXNlcjogMTgyNzQzOSIsImZvbnQiOiJSb2JvdG8iLCJmb250U2l6ZSI6MTgsImZpbGxTdHlsZSI6InJnYmEoMjU1LCAyNTUsIDI1NSwgMC42KSIsInN0cm9rZVN0eWxlIjoicmdiYSgwLCAwLCAwLCAwLjMpIiwicGFkZGluZyI6Niwib3BhY2l0eSI6MC44NSwibW92ZUludGVydmFsTXMiOjM1MDB9XQ=="
+    loading="lazy"
+    style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen="true">
+  </iframe>
+</div>
+```
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://player.vidinfra.com/7ff08669-8f0e-4e8c-9f30-425d96ab7c4d/default/d8b60f26-dcef-4568-b525-eac9464ddbb3?autoplay=true&loop=true&muted=false&controls=true&preload=true&watermark=W3sidGV4dCI6Ik15VmlkZW9BcHAiLCJmb250IjoiQXJpYWwiLCJmb250U2l6ZSI6MjAsImZpbGxTdHlsZSI6InJnYmEoMjU1LDI1NSwyNTUsMC44KSIsInBhZGRpbmciOjgsIm9wYWNpdHkiOjAuOX0seyJ0ZXh0IjoiVXNlcjogMTgyNzQzOSIsImZvbnQiOiJSb2JvdG8iLCJmb250U2l6ZSI6MTgsImZpbGxTdHlsZSI6InJnYmEoMjU1LCAyNTUsIDI1NSwgMC42KSIsInN0cm9rZVN0eWxlIjoicmdiYSgwLCAwLCAwLCAwLjMpIiwicGFkZGluZyI6Niwib3BhY2l0eSI6MC44NSwibW92ZUludGVydmFsTXMiOjM1MDB9XQ="
+  title="Vidinfra Player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+### Minimal iframe template (ready to paste)
+
+```html
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+  <iframe
+    src="https://player.vidinfra.com/<librayID>/default/<videoID>?autoplay=true&loop=true&muted=false&controls=true&preload=true&watermark=<BASE64_ENCODED_CONFIG>"
+    style="border: none; position: absolute; top: 0; height: 100%; width: 100%;"
+    allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;"
+    allowfullscreen>
+  </iframe>
+</div>
+```
+
+### Dynamic user binding example
+
+```javascript
+function buildWatermarkConfig(userId) {
+  return [
+    { text: "MyVideoApp", font: "Arial", fontSize: 20, fillStyle: "rgba(255,255,255,0.8)", padding: 8, opacity: 0.9 },
+    { text: `User: ${userId}`, font: "Roboto", fontSize: 18, fillStyle: "rgba(255, 255, 255, 0.6)", strokeStyle: "rgba(0, 0, 0, 0.3)", padding: 6, opacity: 0.85, moveIntervalMs: 3500 },
+  ];
+}
+
+function buildWatermarkedSrc(basePlayerUrl, userId) {
+  const config = buildWatermarkConfig(userId);
+  const watermark = encodeURIComponent(encodeWatermarkConfig(config));
+  return `${basePlayerUrl}&watermark=${watermark}`;
+}
+
+// Usage:
+// const src = buildWatermarkedSrc("https://player.vidinfra.com/<project>/<profile>/<video>?autoplay=true", currentUser.id);
+// document.querySelector("#vidinfra-player").src = src;
+```
+
+## Embed Vidinfra videos using iframe elements
+
+1) Copy the iframe snippet above into your page.
+2) Replace the `src` with your Vidinfra player URL and include `watermark=<Base64>` to apply your encoded config.
+3) Adjust container sizing (e.g., `padding-bottom` for aspect ratio) to fit your layout.
+4) Keep `allowfullscreen` enabled so viewers can expand the video.
+
+---
+
+## Best practices
+
+- Use `encodeURIComponent` on the Base64 string when appending it to URLs.
+- Prefer semi-transparent fill plus a light stroke for readability on varied backgrounds.
+- Set `moveIntervalMs` between 2500–5000 for good movement without distraction.
+- Avoid PII: use a user ID or hashed email instead of raw email when possible.
+- Keep opacity >0.6 so the watermark stays visible on bright scenes.
+
+## Troubleshooting
+
+- Watermark not visible: increase `opacity`, add `strokeStyle`, or enlarge `fontSize`.
+- URL rejected or broken: ensure the `watermark` value is URL-encoded.
+- Movement too subtle: reduce `moveIntervalMs` or increase `fontSize`.
+- Layout issues: adjust the wrapper’s `padding-bottom` to match your aspect ratio (e.g., 56.25% for 16:9).
+
+## Quick verification checklist
+
+- The iframe loads and plays the video.
+- Watermark shows both brand and user text.
+- Watermark moves on an interval.
+- Fullscreen works and watermark remains visible.
+
+Dynamic watermarking provides:
+
+- ✔ Stronger anti-piracy protection
+- ✔ User-specific traceability
+- ✔ Branding visibility
+- ✔ Hard-to-remove movement-based watermarking
