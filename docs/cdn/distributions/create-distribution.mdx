@@ -78,7 +78,11 @@ Select S3 Bucket if your files are stored in an **S3-compatible storage service*
 
 ## Advanced Settings
 
-The Advanced Settings section allows you to configure additional request headers that **Tenbyte CDN** will send to your origin server. 
+The Advanced Settings section allows you to configure additional request headers that **Tenbyte CDN** will send to your origin server.
+
+    <Frame caption="Advanced Settings">
+        <img src="/images/cdn/46.png" alt="Advanced Settings" />
+    </Frame>
 
     - **Host Header:** Use this field to set a custom Host header for CDN requests.
         1. **Key:** The header name.
@@ -86,10 +90,11 @@ The Advanced Settings section allows you to configure additional request headers
 
 <Note>These settings are optional and are used when your origin requires specific headers for routing or authentication.</Note>
 
-Use this option when:
+- Use this option when:
 
     - Your server uses virtual hosting
     - You want the CDN to forward a specific domain instead of the default origin URL
     - Your backend needs a matching Host header for SSL or routing rules
 
-After entering all the required information, click **Create Distribution**. Your CDN distribution will be created, and you’ll see it listed on the Distributions Dashboard.
+
+- After entering all the required information, click **Create Distribution**. Your CDN distribution will be created, and you’ll see it listed on the Distributions Dashboard.
