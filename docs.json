@@ -275,14 +275,22 @@
                 ]
               },
               {
-                "group": "Storage and Backup",
+                "group": "Storage",
                 "expanded": false,
                 "icon": "database-backup",
                 "pages": [
                   "docs/cloud/storage/block-storage",
-                  "docs/cloud/storage/object-storage",
-                  "docs/cloud/storage/backup",
-                  "docs/cloud/storage/snapshots"
+                  "docs/cloud/storage/object-storage"
+                ]
+              },
+              {
+                "group": "Snapshot & Backup",
+                "expanded": false,
+                "icon": "rotate-ccw",
+                "pages": [
+                  "docs/cloud/backup/snapshots",
+                  "docs/cloud/backup/backup"
+                  
                 ]
               },
               {
