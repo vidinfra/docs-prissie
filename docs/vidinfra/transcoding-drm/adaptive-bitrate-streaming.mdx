@@ -1,16 +1,14 @@
 ---
 title: 'Adaptive Bitrate Streaming'
-description: 'Deliver videos in multiple qualities so playback automatically adjusts to the viewer’s network speed.'
 sidebarTitle: 'Adaptive Bitrate'
 icon: 'podcast'
 ---
-# Adaptive Bitrate Streaming (`HLS` + `DASH`)
 
-Adaptive Bitrate Streaming (ABR) ensures that every viewer receives the best possible video quality based on their current network conditions. Instead of serving a single fixed-quality file, Vidinfra generates multiple resolutions during transcoding and delivers them through **`HLS`** and **`DASH`**. This gives smoother playback, fewer stalls, and better performance on any device and network.
+Adaptive Bitrate Streaming (ABR) delivers the best possible video quality based on each viewer’s network conditions. Vidinfra automatically generates multiple resolutions during transcoding and streams them using **`HLS`** and **`DASH`**, ensuring smooth playback with minimal buffering.
 
-**ABR** is a core part of Tenbyte’s video delivery workflow. It helps reduce buffering and improves playback across varying internet speeds, especially on mobile networks.
+ABR is a core part of Tenbyte’s video delivery workflow, improving performance across devices and adapting reliably to changing network speeds, especially on mobile connections.
 
-## 1. Open Transcoding Settings
+## Open Transcoding Settings
 
 - From the left sidebar, open the Settings dropdown and select Transcoding.
 - This opens the transcoding dashboard, where you will see the default transcoding profile.
@@ -32,7 +30,9 @@ Enter a unique name to identify this transcoding preset.
 ### Preset Description
 Add a short description that explains what the preset is optimized for. 
 
-## 2. ABR in Vidinfra
+--- 
+
+## ABR in Vidinfra
 When Adaptive Bitrate (**`HLS`** + **`DASH`**) is selected in the transcoding profile:
 
 - Vidinfra creates multiple output resolutions (e.g., **`240p`**, **`360p`**, **`480p`**, **`720p`**, **`1080p`**).

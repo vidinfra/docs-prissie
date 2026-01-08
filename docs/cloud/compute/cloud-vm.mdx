@@ -1,15 +1,13 @@
 ---
 title: 'Tenbyte Cloud Virtual Machines'
-description: 'Create, configure, and manage scalable virtual machines in Tenbyte Cloud for your business needs.'
 sidebarTitle: 'Virtual Machines'
 icon: 'monitor-dot'
 ---
 
-# Virtual Machines in Tenbyte Cloud
+This guide explains the full process of creating a virtual machine in Tenbyte Cloud. It covers selecting an operating system or application image, configuring the machine type, setting up networking, and completing the VM setup.
 
-This guide walks you through the complete process of creating a virtual machine (VM) in **Tenbyte Cloud**. You’ll learn how to select an OS or app image, configure the machine type, set up networking, and finalize your resource.
 
-## 1. Select Virtual Machine
+## Select Virtual Machine
 - To begin, open your Tenbyte Cloud dashboard and choose Virtual Machine from the list of available services.
 
     <Frame caption="Select Virtual Machine">
@@ -17,7 +15,9 @@ This guide walks you through the complete process of creating a virtual machine 
     </Frame>
 - This takes you to the VM creation page where all configuration options are listed.
 
-## 2. Choose Operating System
+--- 
+
+## Choose Operating System
 - If you want to install an operating system, select **Operating System** and choose the OS. 
 
     <Frame caption="Select Operating System">
@@ -39,7 +39,9 @@ You can choose from the following operating systems:
     Each OS image is maintained and updated regularly to provide a reliable foundation for your workloads.
 </Note>
 
-## 3. Choose App Catalog
+--- 
+
+## Choose App Catalog
 - If you need an application, select **App Catalog**.
 
     <Frame caption="Select App Catalog">
@@ -64,17 +66,23 @@ Choose from available applications like:
     For both operating systems and applications, you can choose the version that best fits your requirements during the setup process.   
 </Note>
 
-## 4. Choose Empty Disk for ISO Booting
+--- 
+
+## Choose Empty Disk for ISO Booting
 - If you plan to install an operating system manually using an ISO image, choose Empty disk. 
 
-## 5. Select your Location
+--- 
+
+## Select your Location
 - Choose your Data center where the resource will be created.
 
 <Tip>
     Selecting a region close to your users or infrastructure can improve performance and lower latency.
 </Tip>
 
-## 6. Select Server Class
+--- 
+
+## Select Server Class
 - Choose between **General Purpose** or **Heavy Compute** based on your workload type.
 
     <Frame caption="Select Server Class">
@@ -82,7 +90,10 @@ Choose from available applications like:
     </Frame>
     1. **General Purpose**: Ideal for everyday applications, low to medium traffic workloads, and business systems.
     2. **Heavy Compute**: Recommended for high-traffic systems, intensive compute tasks, and enterprise workloads.
-## 7. Configure your VM Size
+
+--- 
+
+## Configure your VM Size
 - Select the **VM size** based on the resources your application requires.
 - You can configure -
     - **CPU Cores** – Match the number of cores to your processing demands.
@@ -94,14 +105,19 @@ Choose from available applications like:
     </Frame>
     
 - This flexible configuration lets you build a VM that fits your exact use case.
-## 8. Public IPv4 Address
+
+--- 
+
+## Public IPv4 Address
 - If you require an **external IP** for your VM, **enable Public IPv4**.
 
 <Note>
     Enabling Public IPv4 will incur an additional US$2/month charge.
 </Note>
 
-## 9. Select VPC Network
+--- 
+
+## Select VPC Network
 - Choose an existing VPC network or create a new one for private and secure network setup.
 
     <Frame caption="Public IPv4 and VPC Network">
@@ -109,7 +125,9 @@ Choose from available applications like:
     </Frame>
 - If you want to set up your own VPC network, you can follow the steps in the [Tenbyte VPC](/docs/cloud/networking/vpc) page found in the **Networking and Security** section.
 
-## 10. Fill in User Information and Billing Details
+--- 
+
+## Fill in User Information and Billing Details
 1. **Username**: Enter a username for your virtual machine. This will be used to log in. 
 2. **Password**: Set a password that meets the security criteria
 3. **Confirm Password**: Re-type the password to ensure it has been entered correctly.
@@ -131,15 +149,18 @@ Choose from available applications like:
     If your account has limitations, a notice will appear, indicating these limits. The restriction will be removed once your total top-up reaches US$2,000.
 </Warning>
 
+--- 
     
-## 11. Create the VM
+## Create the VM
 - Once you’ve completed all fields and reviewed your details, click the Create button to finalize the creation of your virtual machine.
 
    <Frame caption="Create your VM">
         <img src="/images/cloud/16.png" alt="Create your VM" />
     </Frame>
 
-## 12. View Your Created Virtual Machine
+--- 
+
+## View Your Created Virtual Machine
 - Once your virtual machine (VM) is created, you will see it listed on your VM dashboard.
 
     <Frame caption="View Your Created Virtual Machine">

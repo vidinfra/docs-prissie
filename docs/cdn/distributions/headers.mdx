@@ -1,14 +1,12 @@
 ---
-title: 'Manage HTTP Headers'
-description: 'Configure HTTP headers for how your CDN communicates with clients and servers.'
+title: 'Configure HTTP Headers'
 sidebarTitle: 'Headers'
 icon: 'server'
 ---
-# Configure HTTP Headers
 
-This section allows you to configure HTTP headers for your Tenbyte CDN distribution.
+Configure HTTP headers for your Tenbyte CDN distribution to control caching behavior, security policies, and request handling at the edge.
 
-## 1. Host Header
+## Host Header
 - Specify the custom Host Header that your CDN servers will use when requesting content from your origin server.
 
     <Frame caption="Host Header">
@@ -18,7 +16,9 @@ This section allows you to configure HTTP headers for your Tenbyte CDN distribut
 - Enable the **Host Header** toggle.
 - Enter the **Key** and the **Value**.
 
-## 2. CORS Headers
+--- 
+
+## CORS Headers
 - Control how resources are shared across different origins by enabling Cross-Origin Resource Sharing (CORS).
 
     <Frame caption="CORS Headers">
@@ -28,11 +28,15 @@ This section allows you to configure HTTP headers for your Tenbyte CDN distribut
 - Enable the **CORS Headers** toggle.
 - Choose either **`"*"`** (to allow all origins) or specify a **Specific Origin**. If you select **Specify Origin** you need to provide your **Origin Domain**
 
-## 3. Request Header
+--- 
+
+## Request Header
 - Add custom headers to requests sent from the CDN to your origin.
 - Enable the Request Header toggle and click **Add Header** to specify the header and its value.
 
-## 4. Response Header
+--- 
+
+## Response Header
 The Response Header section in the CDN settings allows you to modify or add headers that are returned to users from the CDN. This can help with controlling how responses are handled or customized.
 - Enable the **Response Header toggle** and click **Add Header** to set the header and its value.
 - Modify or add headers that will be returned from the CDN to users.
@@ -40,7 +44,6 @@ The Response Header section in the CDN settings allows you to modify or add head
     <Frame caption="Response Header">
         <img src="/images/cdn/48.png" alt="Response Header" />
     </Frame>
-
 
     1. **Add**: You can add a custom header to the response. 
     2. **Hide**: The Hide action allows you to prevent a specific header from being returned in the response. In this case, the Host header would not be shown in the response headers sent to the user.

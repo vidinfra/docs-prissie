@@ -1,10 +1,8 @@
 ---
 title: 'Astro.js'
-description: 'Integrate Tenbyte Image Optimization with Astro.js to deliver optimized, fast-loading images across your application'
 sidebarTitle: 'Astro.js'
 icon: 'braces'
 ---
-# Tenbyte Image Integration for Astro.js
 
 Use Tenbyte Image Optimization to deliver lighter, faster images in your Astro project. 
 
@@ -12,7 +10,7 @@ This guide walks you through the setup process, how to use the integration in yo
 
 ## Installation & Setup
 
-### 1. Create a Tenbyte Astro Component
+### Create a Tenbyte Astro Component
 - Create **`src/components/TenbyteImage.astro`**
 ```javascript Javascript
 ---
@@ -26,7 +24,7 @@ const { src, alt = "", style = "", ...rest } = Astro.props;
   {...rest}
 />
 ```
-### 2. Load Tenbyte JS and Configure in Global Layout
+### Load Tenbyte JS and Configure in Global Layout
 - Add to your main layout (e.g., **`src/layouts/BaseLayout.astro`**):
 ```html HTML
 <head>
@@ -54,6 +52,8 @@ const { src, alt = "", style = "", ...rest } = Astro.props;
   Update "**`example.com`**" and "**`your-tenbyte-domain`**" to match the domain where your images are hosted and the Tenbyte domain provided to your account.
 </Warning>
 
+--- 
+
 ## Usage
 Import and use the Tenbyte image component in your Astro pages:
 ```javascript Javascript
@@ -76,10 +76,14 @@ Use the **`data-src`** attribute when loading images so Tenbyte can optimize the
   style="width: 400px;"
 />
 ```
+--- 
+
 ## Advanced
 - You can pass any standard HTML **`<img>`** attribute as a prop.
 - SSR is fully supported, and the output renders as regular **`<img>`** tags.
 - For static Astro builds, images are still delivered in an optimized form through Tenbyte.
+
+--- 
 
 ## Example
 
@@ -90,6 +94,8 @@ Use the **`data-src`** attribute when loading images so Tenbyte can optimize the
   style="width:300px;"
 />
 ```
+--- 
+
 ## Troubleshooting
 
 - Make sure your Tenbyte image domain or source settings are configured correctly.

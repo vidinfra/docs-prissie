@@ -1,11 +1,12 @@
 ---
 title: 'Vidinfra Uploader SDK'
-description: 'Control your video players inside iframes.'
 sidebarTitle: 'Uploader SDK'
 icon: 'monitor-up'
 ---
-# VidInfra Uploader SDK
-A modern TypeScript based upload SDK designed for handling large video files with consistency and control. The SDK includes multipart upload logic, progress insights, drag and drop helpers & lifecycle management features that simplify video ingestion workflows.
+
+The Vidinfra Uploader SDK is a modern TypeScript based library built for reliable large video uploads. 
+
+It supports multipart uploads, progress tracking, drag and drop handling, and upload lifecycle control to simplify video ingestion workflows.
 
 ## Features
 
@@ -29,6 +30,8 @@ A modern TypeScript based upload SDK designed for handling large video files wit
 
 - **TypeScript Support**- Full TypeScript support with accurate type definitions for safer and cleaner integration.
 
+--- 
+
 ## Installation
 This section provides the installation commands for adding the Vidinfra Uploader SDK to a project using **`npm`**, **`yarn`**, or **`pnpm`**. It’s the initial setup step required before using the uploader.
 
@@ -43,6 +46,7 @@ Or,
 ```bash
 npm install @vidinfra/uploader
 ```
+--- 
 
 ## Quick Start
 ### ES Modules (Modern Bundlers)
@@ -84,6 +88,8 @@ This code block loads the Vidinfra Uploader in a browser using a script tag, app
   });
 </script>
 ```
+--- 
+
 ## Configuration
 This section explains the available settings for the Vidinfra Uploader. It shows the required fields and the optional options you can use to control metadata, upload behavior, and UI targets.
 
@@ -165,6 +171,8 @@ const uploader = new VidInfraUploader({
   branding: false,
 });
 ```
+--- 
+
 ## API Reference
 ### Methods
 This section lists the main methods of the Vidinfra Uploader. It explains how to control uploads, manage files, check the uploader state, update options, and remove the uploader when you’re done.
@@ -233,6 +241,9 @@ This section explains what data you get back after a successful upload. It retur
   }
 }
 ```
+
+--- 
+
 ## Package Formats
 This table shows all build formats included in the Vidinfra Uploader package. It explains which file to use for Node.js, modern bundlers, browsers, UMD script tags, development builds, and TypeScript types.
 
@@ -255,6 +266,7 @@ This section shows two CDN options (**`unpkg`** and **`jsDelivr`**) for loading 
 <!-- jsDelivr -->
 <script src="https://cdn.jsdelivr.net/npm/@vidinfra/uploader/dist/index.umd.js"></script>
 ```
+--- 
 
 ## Framework Examples
 This section lists example integrations for popular frameworks, showing how to use the Vidinfra Uploader in React, Vue, Svelte, Next.js, Laravel, and WordPress.
@@ -416,6 +428,8 @@ wp_enqueue_style(
 </script>
 ```
 </Accordion>
+
+--- 
 
 ## Browser Support
 
