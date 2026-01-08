@@ -1,10 +1,9 @@
 ---
 title: 'Shopify'
-description: 'Integrate Tenbyte Image Optimization with Shopify to serve device-sized, compressed images.'
 sidebarTitle: 'Shopify'
 icon: 'braces'
 ---
-# Tenbyte Image Optimization for Shopify
+
 Deliver faster, lighter images across your Shopify storefront by routing your image requests through Tenbyte’s image optimization service. 
 
 This guide explains how to deliver Shopify store images through Tenbyte CDN for faster loading and better performance. You will configure your Tenbyte distribution, copy your Delivery Endpoint, and use it inside your Shopify theme.
@@ -25,6 +24,8 @@ This guide explains how to deliver Shopify store images through Tenbyte CDN for 
     <Frame caption="Domain Distribution URL">
         <img src="/images/cdn/52.png" alt="Add Shopify as an Origin" />
     </Frame>
+
+--- 
 
 ## Add Tenbyte Settings to Shopify (`settings_schema.json`)
 - In Shopify Admin go to Online Store → Themes, locate the theme, open the **`“…”`** menu, and select Edit code. This allows users to enter the Delivery Endpoint.
@@ -58,6 +59,8 @@ This guide explains how to deliver Shopify store images through Tenbyte CDN for 
     ]
 }
 ```
+--- 
+
 ## Create tenbyte.liquid file
 - Create a new file named **`tenbyte.liquid`** inside the Snippets directory. Paste the code below into the file and save it.
 ```liquid tenbyte.liquid
@@ -115,10 +118,14 @@ This guide explains how to deliver Shopify store images through Tenbyte CDN for 
  {% endif %}
 {% endcapture %}{{ TENBYTE | strip | replace:'  ' | strip_newlines }}
 ```
+--- 
+
 ## Enable Tenbyte
 - Go to Online Store → Themes → Customize. In the left panel, open the Tenbyte section under General settings and turn it on. Then fill in the two fields:
     - **Default URL endpoint**: https://example.tenbytecdn.com
     - **Shopify CDN domain**: //cdn2.shopify.com or //cdn.shopify.com
+
+--- 
 
 ## Edit your theme files
 - Next, you’ll update the theme files that handle image output. These are the templates where Shopify renders your product, collection, and banner images.

@@ -1,24 +1,20 @@
 ---
 title: 'Create a CDN Distribution'
-description: 'Set up a new Tenbyte CDN distribution to route traffic through edge locations and cache your content.'
-sidebarTitle: 'Create Distribution'
+sidebarTitle: 'Create a Distribution'
 icon: 'heart-plus'
 ---
-# Set Up Your Distribution
 
-Configure a CDN distribution, add your origin, and start caching content across Tenbyte’s global edge locations.
+Configure a CDN distribution, connect your origin, and cache content across Tenbyte’s global edge network for faster delivery.
 
 In a few quick steps, you can create your **first CDN distribution**.
 
-## 1. Create a CDN Distribution
+## Name Your Distribution
 
-Follow these steps to set up your first CDN distribution in Tenbyte CDN.
+In the Distribution Name field, enter a clear name for your distribution.
 
-### Name Your Distribution
+--- 
 
-- In the Distribution Name field, enter a clear name for your distribution.
-
-### Choose a Domain Type
+## Choose a Domain Type
 
 Under **Domain Type**, select how the CDN domain will be assigned for your distribution. 
 
@@ -31,7 +27,9 @@ You have two options:
     1. **System Generated:** Tenbyte automatically provides a CDN domain for you.
     2. **Custom:** Use your own domain for the CDN (e.g., **`cdn.yoursite.com`**).
 
-### Choose a Cache Strategy
+--- 
+
+## Choose a Cache Strategy
 The Cache Strategy determines how Tenbyte CDN caches your content. 
 
     <Frame caption="Cache Strategy">
@@ -44,7 +42,9 @@ Select the option that best matches the type of assets you are serving:
     3. **Livestream:** Short TTL with frequent refresh. Ideal for live streaming workflows where segments update continuously (HLS/DASH live).
     4. **Dynamic Content:** Minimal caching suitable for APIs, pages with dynamic data, and frequently changing responses. Use this when content must always be fresh.
 
-## 3. Set the Origin
+--- 
+
+## Set the Origin
 
 The Origin is the server or storage location where your content is stored. Tenbyte CDN fetches files from this location when serving users. You can set your origin using either a Hostname or an S3 Bucket.
 
@@ -75,6 +75,8 @@ Select S3 Bucket if your files are stored in an **S3-compatible storage service*
     - **Region:** Choose the region of your S3 bucket.
 
 <Warning>Make sure your access keys and bucket permissions allow the CDN to read files.</Warning>
+
+--- 
 
 ## Advanced Settings
 

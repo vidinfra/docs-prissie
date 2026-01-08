@@ -1,15 +1,12 @@
 ---
-title: 'Player SDK'
-description: 'Control your video players inside iframes.'
+title: 'Player SDK for Embedded Video Control'
 sidebarTitle: 'Player SDK'
 icon: 'play'
 ---
 
-# Web Player SDK
+The Vidinfra Player SDK is a lightweight, type safe JavaScript library for controlling embedded video players inside iframes. 
 
-The Vidinfra Player SDK is a lightweight, type-safe JavaScript library designed to control video players inside iframes. It leverages the power of the postMessage API for secure, real-time communication between the parent page and embedded video players. Whether you're integrating a video player into your app or building custom controls, the Player SDK makes it easy and efficient.
-
-This documentation provides an overview of the library’s features, installation, usage instructions, and examples to help you get started quickly.
+It uses the **`postMessage`** API for secure, real time communication, making custom player integration simple and efficient.
 
 ## Key Features
 
@@ -36,6 +33,8 @@ Alternatively, you can load the SDK via a CDN:
 <script src="https://unpkg.com/@vidinfra/player/dist/player.global.js"></script>
 ```
 This method allows you to use the SDK without needing to install it locally, making it easy to integrate into static or non-Node.js projects.
+
+--- 
 
 ## Quick Start
 
@@ -81,6 +80,8 @@ player.setVolume(0.5);
 <Note>
     To learn how to copy a video ID, check the [Quickstart Guide](/docs/vidinfra/quickstart#copy-your-video-id) in the Vidinfra section.
 </Note>
+
+--- 
 
 ## Usage
 
@@ -148,6 +149,8 @@ const player = new Player("vidinfra-player", {
   });
 </script>
 ```
+---
+
 ## API Reference
 
 ### Constructor
@@ -372,6 +375,7 @@ The player emits the following events:
 | **`fullscreenchange`**| Fullscreen state changed                      |
 | **`error`**         | Playback error occurred                          |
 
+---
 
 ## Examples
 ### Basic Playback Control
@@ -488,6 +492,8 @@ window.addEventListener("message", (event) => {
   // Handle message
 });
 ```
+--- 
+
 ## Browser Support
 - Modern browsers with ES6+ support
 - Requires **`postMessage`** API

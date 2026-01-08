@@ -1,37 +1,34 @@
 ---
-title: 'Referrer Access Control'
-description: 'Restrict video playback to approved websites by allowing or blocking specific referrer domains.'
+title: 'Referrer Access Policy'
 sidebarTitle: 'Referrer Policy'
 icon: 'user-lock'
 ---
-# Referrer Access Policy
 
-Control which websites can load and play your videos by whitelisting or blocking referrer domains.
+Restrict video playback to approved websites by allowing or blocking specific referrer domains and preventing unauthorized embeds.
 
-**Quick decision guide**
-- Choose **Allow by Default** if most sites can play your video and you only need to block a few.
-- Choose **Deny by Default** if only trusted sites should play your video.
-
-## 1. Open Security Settings
 To open Security Settings, see Open Security Settings in the [Country Access Policy](/docs/vidinfra/security/signed-urls#1-open-security-settings) section. 
 
-## 2. Allow by Default
+--- 
+
+## Allow by Default
 All websites can access your video unless you add blocked domains.
 
     <Frame caption="Allow by Default">
         <img src="/images/vidinfra/library-41.png" alt="Allow by Default" />
     </Frame>
 
-## 3. Deny by Default
+--- 
+
+## Deny by Default
 All websites are blocked unless you add allowed domains.
 
     <Frame caption="Deny by Default">
         <img src="/images/vidinfra/library-42.png" alt="Deny by Default" />
     </Frame>
 
----
+--- 
 
-## 4. Domain Restrictions
+## Domain Restrictions
 Add the domains that should be allowed or blocked based on your chosen rule. Use the same list field for either mode.
 
 **Examples**
@@ -40,9 +37,8 @@ Add the domains that should be allowed or blocked based on your chosen rule. Use
 
 <Danger>Only the specified domains will be permitted according to your policy settings.</Danger>
 
----
+--- 
 
-## 5. Verify access
+## Verify access
 - Test playback on an allowed domain (should succeed).
 - Test playback on a non-allowed domain (should be blocked based on your default rule).
----
