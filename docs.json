@@ -3,7 +3,7 @@
   "theme": "willow",
   "name": "Product Documentation & Developer Hub",
   "description": "Comprehensive documentation for Vidinfra, the ultimate video infrastructure solution. Explore guides, API references, and tutorials to seamlessly integrate and manage your video content with ease.",
-  
+
   "colors": {
     "primary": "#029C69",
     "light": "#029C69",
@@ -49,9 +49,7 @@
         "groups": [
           {
             "group": "Home",
-            "pages": [
-              "index"
-            ]
+            "pages": ["index"]
           },
           {
             "group": "Account & Organization",
@@ -121,9 +119,7 @@
                 "group": "Player Customization",
                 "expanded": false,
                 "icon": "palette",
-                "pages": [
-                  "docs/vidinfra/player-customization/player-themes"
-                ]
+                "pages": ["docs/vidinfra/player-customization/player-themes"]
               },
               {
                 "group": "Transcoding & DRM",
@@ -142,8 +138,6 @@
                   "docs/vidinfra/security/dynamic-watermark",
                   "docs/vidinfra/security/country-access-policy",
                   "docs/vidinfra/security/referrer-policy"
-                  
-
                 ]
               },
               {
@@ -179,7 +173,6 @@
                   "docs/cdn/index",
                   "docs/cdn/quickstart",
                   "docs/cdn/cdn-faqs"
-                  
                 ]
               },
               {
@@ -243,9 +236,7 @@
                 "group": "Certificate",
                 "expanded": false,
                 "icon": "shield",
-                "pages": [
-                  "docs/cdn/certificates/custom-certificates"
-                ]
+                "pages": ["docs/cdn/certificates/custom-certificates"]
               }
             ]
           },
@@ -262,7 +253,8 @@
                   "docs/cloud/index",
                   "docs/cloud/quickstart",
                   "docs/cloud/account-setup",
-                  "docs/cloud/cloud-faqs"
+                  "docs/cloud/cloud-faqs",
+                  "docs/cloud/cloud-init-config"
                 ]
               },
               {
@@ -307,17 +299,13 @@
                 "group": "Monitoring & Analytics",
                 "expanded": false,
                 "icon": "chart-bar",
-                "pages": [
-                  "docs/cloud/monitoring/metrics"
-                ]
+                "pages": ["docs/cloud/monitoring/metrics"]
               },
               {
                 "group": "Billing",
                 "expanded": false,
                 "icon": "hand-coins",
-                "pages": [
-                  "docs/cloud/billing/billing"
-                ]
+                "pages": ["docs/cloud/billing/billing"]
               }
             ]
           }
@@ -328,9 +316,7 @@
         "groups": [
           {
             "group": "API documentation",
-            "pages": [
-              "api-reference/overview"
-            ]
+            "pages": ["api-reference/overview"]
           },
           {
             "group": "CDN",
@@ -353,9 +339,7 @@
         "groups": [
           {
             "group": "Changelog",
-            "pages": [
-              "changelog"
-            ]
+            "pages": ["changelog"]
           }
         ]
       }
@@ -377,7 +361,6 @@
     }
   },
 
-  
   "navbar": {
     "links": [
       {
@@ -389,7 +372,6 @@
       "type": "button",
       "label": "Dashboard",
       "href": "https://console.tenbyte.io"
-      
     }
   },
   "contextual": {

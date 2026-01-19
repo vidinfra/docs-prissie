@@ -1,0 +1,51 @@
+---
+title: "Tenbyte Cloud Init Configuration Generator"
+description: "Generate cloud-init configurations for automated server provisioning with Tenbyte infrastructure."
+icon: "cloud-upload"
+sidebarTitle: "Cloud Init Config"
+---
+
+Use the generator below to create a cloud-init configuration for your server. Configure your username, password, web server, and database type to generate a ready-to-use cloud-init YAML configuration.
+
+import { CloudInitGenerator } from "/snippets/cloud-init-generator.jsx";
+
+<CloudInitGenerator />
+
+## How to Use
+
+1. Enter your desired **username** and **password** for the hosting account
+2. Select your preferred **web server** (Nginx, Apache2, OpenLiteSpeed, or MERN Stack)
+3. Choose your **database type** (MySQL, MariaDB, or MongoDB)
+4. Enable additional options like **Node.js** if needed
+5. Click **Copy Config** to copy the generated YAML
+6. Paste the configuration into your cloud provider's user-data field when creating a new instance
+
+## Available Options
+
+### Web Servers
+
+| Server            | Description                                                              |
+| ----------------- | ------------------------------------------------------------------------ |
+| **Nginx**         | High-performance, lightweight web server with reverse proxy capabilities |
+| **Apache2**       | Feature-rich HTTP server with extensive module support                   |
+| **OpenLiteSpeed** | High-performance LiteSpeed web server with LSCache support               |
+| **MERN Stack**    | Full-stack setup with MongoDB, Express.js, React, and Node.js            |
+
+### Databases
+
+| Database    | Description                                       |
+| ----------- | ------------------------------------------------- |
+| **MySQL**   | Popular open-source relational database           |
+| **MariaDB** | MySQL-compatible database with enhanced features  |
+| **MongoDB** | NoSQL document database for flexible data storage |
+
+### Additional Flags
+
+| Flag       | Description                                              |
+| ---------- | -------------------------------------------------------- |
+| `--nodejs` | Install Node.js runtime on the server                    |
+| `--yarn`   | Install Yarn package manager (available with MERN stack) |
+
+## Usage
+
+The generated cloud-init configuration can be used when creating a new virtual machine. Simply paste the YAML configuration into the **User Data** field during instance creation, and your server will be automatically provisioned with your selected stack.
