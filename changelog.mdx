@@ -11,31 +11,30 @@ icon: "arrow-up-down"
 </Update>
 
 <Update label="28 January 2026" description="v1.0.1" tags={["Vidinfra Player", "Improvements"]}>
-  ## Vidinfra Player
+  ### Vidinfra Player
   
-  This release addresses critical desktop functionality issues and introduces comprehensive mobile device optimizations to improve the video playback experience across all platforms.
+  Critical desktop fixes and mobile optimizations for improved playback experience.
 
- 
-  #### Desktop Improvements  
-  • Restored click-to-play functionality on desktop browsers  
-  • Enabled double-click to toggle fullscreen mode on desktop  
-  • Implemented volume and muted state persistence across videos  
-  • Optimized player controls auto-hide timing for better viewing experience  
-  • Redesigned context menu with About and Keyboard Shortcuts views  
-  • Added comprehensive keyboard shortcuts and accessibility features  
+  #### Added  
+  • Volume and muted state persistence across videos  
+  • Double-click to toggle fullscreen mode on desktop  
+  • Comprehensive keyboard shortcuts and accessibility features  
+  • Compact control bar layout optimized for small screens under 300px width  
+  • Dark backdrop to mobile settings panel for better visibility  
 
-  #### Mobile Optimizations  
-  • Fixed memory leaks by properly cleaning up timers on mobile devices  
-  • Added compact control bar layout optimized for small screens under 300px width  
+  #### Enhanced  
+  • Click-to-play functionality on desktop browsers  
+  • Player controls auto-hide timing for better viewing experience  
+  • Context menu redesigned with About and Keyboard Shortcuts views  
+  • Mobile tap controls for more reliable play/pause toggling  
+  • Mobile seek bar with increased touch target area and accurate scrubbing  
   • Centered play button, loading spinner, and seek buttons within the visible video area  
-  • Enhanced mobile tap controls for more reliable play/pause toggling  
-  • Centered player controls properly in portrait fullscreen mode  
-  • Improved mobile seek bar with increased touch target area and accurate scrubbing  
-  • Added dark backdrop to mobile settings panel for better visibility  
-  • Fixed iOS-specific issues with controls animation and fullscreen centering  
+  • Player controls positioning in portrait fullscreen mode on mobile  
 
-  #### General Fixes  
+  #### Fixed  
+  • Memory leaks by properly cleaning up timers on mobile devices  
+  • Settings panel cutoff issues in iframes and mobile devices  
+  • iOS-specific issues with controls animation and fullscreen centering  
   • Standardized all seek intervals to 10 seconds for consistent navigation  
-  • Separated mute and volume controls to function independently  
-  • Fixed settings panel cutoff issues in iframes and mobile devices
+  • Separated mute and volume controls to function independently
 </Update>
