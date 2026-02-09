@@ -206,7 +206,6 @@
                       "docs/cdn/image-optimization/integration-guide/shopify",
                       "docs/cdn/image-optimization/integration-guide/astro",
                       "docs/cdn/image-optimization/integration-guide/nuxt"
-                  
                     ]
                   }
                 ]
@@ -220,7 +219,6 @@
                   "docs/cdn/analytics/request-served",
                   "docs/cdn/analytics/cache-hit-ratio",
                   "docs/cdn/analytics/response-classes"
-
                 ]
               },
               {
@@ -282,7 +280,6 @@
                 "pages": [
                   "docs/cloud/backup/snapshots",
                   "docs/cloud/backup/backup"
-                  
                 ]
               },
               {
@@ -329,6 +326,13 @@
             "group": "Vidinfra",
             "openapi": {
               "source": "https://raw.githubusercontent.com/vidinfra/open-api-docs/refs/heads/main/openapi.json",
+              "directory": "api-reference"
+            }
+          },
+          {
+            "group": "Vidinfra Webinar",
+            "openapi": {
+              "source": "https://raw.githubusercontent.com/vidinfra/open-api-docs/refs/heads/main/live-api.json",
               "directory": "api-reference"
             }
           }
