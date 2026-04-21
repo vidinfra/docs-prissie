@@ -5,8 +5,6 @@ icon: 'blocks'
 sidebarTitle: 'Laravel with Tenbyte'
 ---
  
-# Laravel With Tenbyte
- 
 ### How do I use Laravel with Tenbyte?
  
 [Laravel](https://laravel.com/) is validated for use with Tenbyte. To use this product with Tenbyte, please follow the instructions below.
@@ -140,7 +138,7 @@ composer create-project laravel/laravel
 
     ```
  
-    > **Note:** This example uses Tenbyte's `us-east-1` storage region. To use other Tenbyte storage regions, please use the appropriate Tenbyte service URL as described in [this article](#).
+    > **Note:** This example uses Tenbyte's `us-east-1` storage region. To use other Tenbyte storage regions, please use the appropriate Tenbyte service URL.
 9. Now you need to create a new driver, as S3 has `amazonaws.com` hardcoded in the library. Go to `config -> filesystems.php` and replace with the following code:
     ```php
     return [
