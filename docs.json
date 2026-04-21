@@ -270,7 +270,8 @@
                 "icon": "database-backup",
                 "pages": [
                   "docs/cloud/storage/block-storage",
-                  "docs/cloud/storage/object-storage"
+                  "docs/cloud/storage/object-storage",
+                  "docs/cloud/storage/laravel-with-tenbyte"
                 ]
               },
               {
