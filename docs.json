@@ -270,8 +270,21 @@
                 "icon": "database-backup",
                 "pages": [
                   "docs/cloud/storage/block-storage",
-                  "docs/cloud/storage/object-storage",
-                  "docs/cloud/storage/laravel-with-tenbyte"
+                  
+                  {"group": "T2 Object Storage",
+                    "expanded": false,
+                    "icon": "package",
+                    "pages": [
+                    "docs/cloud/storage/object-storage",
+                     {"group": "Integration Guide",
+                    "expanded": false,
+                    "icon": "globe",
+                    "pages": [
+                    "docs/cloud/storage/laravel-with-tenbyte"
+                    ]
+                  }
+                    ]
+                  }
                 ]
               },
               {
