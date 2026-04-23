@@ -19,16 +19,13 @@ composer create-project laravel/laravel
         <img src="/images/cloud/95.png" alt="image loading" />
     </Frame>
 4. Go inside your project using the `cd` command and you will see the project files inside.
-
     <Frame>
         <img src="/images/cloud/96.png" alt="image loading" />
     </Frame>
-
 5. Now we will need to edit certain files inside this project to make this work with S3-style storage. You can either use any editor to edit the files (e.g. `vim` or `nano`) or make use of an IDE to search and edit them easily (e.g. Atom or Visual Studio Code).
 6. Once you have the framework open in an IDE, create a new `.php` file in `resources -> views` and name it `fileUpload.blade.php`.
    > **Note:** We recommend using the same name for the test as we have used this name when referencing in other files.
    The hierarchy would look like this
-
     <Frame>
         <img src="/images/cloud/97.png" alt="image loading" />
     </Frame>
@@ -77,8 +74,7 @@ composer create-project laravel/laravel
    ```
  
    > **Note:** The directory here is `my-file` and your files will be uploaded inside it. We are also passing **`Tenbyte`** as a driver, which we will configure later in `filesystems.php` to specify our custom-defined driver to pass user input.
-8. Go to `vendor -> .env` file and replace with the following code.
-
+8. Go to the **root of your Laravel project** and open the `.env` file, then replace its contents with the following code.
     > **NOTE:** Make sure to use your correct Access Key, Secret Access Key, Tenbyte bucket region, Tenbyte Bucket Name, and Tenbyte Region URL.
     ```env
     APP_NAME=Laravel
@@ -113,11 +109,6 @@ composer create-project laravel/laravel
     MAIL_PASSWORD=null
     MAIL_ENCRYPTION=null
  
-    AWS_ACCESS_KEY_ID=
-    AWS_SECRET_ACCESS_KEY=
-    AWS_DEFAULT_REGION=us-east-1
-    AWS_BUCKET=
- 
     PUSHER_APP_ID=
     PUSHER_APP_KEY=
     PUSHER_APP_SECRET=
@@ -134,7 +125,6 @@ composer create-project laravel/laravel
     AWS_URL="t2.tenbytecloud.com"
     AWS_ENDPOINT=https://t2.tenbytecloud.com/
     AWS_USE_ACCELERATE_ENDPOINT=false 
-
     ```
  
     > **Note:** This example uses Tenbyte's `us-east-1` storage region. To use other Tenbyte storage regions, please use the appropriate Tenbyte service URL.
@@ -179,36 +169,39 @@ composer create-project laravel/laravel
     <Frame>
         <img src="/images/cloud/98.png" alt="image loading" />
     </Frame>
-
-    Now on the CLI, go inside your Laravel project and run the following two commands:
+    Now on the CLI, go inside your Laravel project and run the following commands.
+    For **Laravel 5 and below**:
     ```bash
     php artisan make:auth
     ```
  
+    For **Laravel 6 and above** (recommended):
+    ```bash
+    composer require laravel/ui
+    php artisan ui bootstrap --auth
+    ```
+ 
+    Then run:
     ```bash
     composer require league/flysystem-aws-s3-v3
     ```
- Output
-
-     <Frame>
+ 
+    Output
+    <Frame>
         <img src="/images/cloud/99.png" alt="image loading" />
     </Frame>
-
 11. Run your code using the following command and the server will start listening on port 8000:
     ```bash
     php artisan serve
     ```
- Output
-
+    Output
     <Frame>
         <img src="/images/cloud/100.png" alt="image loading" />
     </Frame>
-
     On the browser, navigate to `http://127.0.0.1:8000` and you will be prompted to upload files to your Tenbyte bucket. Once submitted, your files will be visible inside the bucket.
-
-        <Frame>
+    <Frame>
         <img src="/images/cloud/101.png" alt="image loading" />
     </Frame>
-      <Frame>
+    <Frame>
         <img src="/images/cloud/102.png" alt="image loading" />
     </Frame>
