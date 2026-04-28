@@ -1,0 +1,110 @@
+---
+title: "AWS SDK for .NET with Tenbyte T2"
+description: "How to use the AWS SDK for .NET with Tenbyte T2 S3-compatible storage"
+icon: 'blocks'
+sidebarTitle: 'AWS SDK for .NET with Tenbyte T2'
+---
+
+### How do I use the AWS SDK for .NET with Tenbyte T2?
+
+You can take advantage of Tenbyte T2 Cloud Storage using the [AWS SDK for .NET](https://aws.amazon.com/sdk-for-net/) alongside the Tenbyte [S3-Compatible API](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+To use the AWS SDK for .NET with Tenbyte T2, you must:
+
+* Use version **3.7.108.0 or greater** of the [AWSSDK.Core package](https://www.nuget.org/packages/AWSSDK.Core). Older versions do not support easy configuration of a custom endpoint using the service-specific endpoint feature.
+* Configure the `AWS_ENDPOINT_URL` environment variable or the `endpoint_url` setting in the shared AWS config file with your bucket's S3 endpoint. **Note:** you must include the `https://` prefix in the URL, for example: `https://t2.tenbytecloud.com`.
+* Configure your Tenbyte T2 Access Key ID and Secret Access Key via one of the [methods supported by the AWS SDK for .NET](https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/creds-assign.html). **Note:** the Tenbyte T2 Access Key ID is equivalent to the AWS access key id, and the Tenbyte T2 Secret Access Key is equivalent to the AWS secret access key.
+
+This example demonstrates how to use the AWS SDK for .NET with Tenbyte T2:
+
+```csharp
+using Amazon.S3;
+using Amazon.S3.Model;
+
+namespace Tenbyte_T2_Samples
+{
+  public class S3_Basics
+  {
+    public static async Task Main(string[] args)
+    {
+      /*
+        Create an Amazon S3 client object. The constructor looks for
+        credentials in the following order:
+        1. Explicitly set in the AmazonS3Client() constructor
+        2. A credentials profile with the name specified by a value in AWSConfigs.AWSProfileName.
+        3. A credentials profile with the name specified by the AWS_PROFILE environment variable.
+        4. The [default] credentials profile.
+        5. AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY, and AWS_SESSION_TOKEN environment variables - a
+           SessionAWSCredentials object is created from them, if they're all non-empty.
+        6. AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY environment variables - a BasicAWSCredentials
+           object is created from them, if they're both non-empty.
+
+        Since AWSSDK.Core 3.7.108.0, you can set AWS_ENDPOINT_URL to https://t2.tenbytecloud.com,
+        rather than creating an AmazonS3Config object with a custom ServiceURL and passing it to
+        the AmazonS3Client constructor.
+      */
+      IAmazonS3 client = new AmazonS3Client();
+
+      // Create a bucket and upload something into it
+      string bucket = "tenbyte-dotnet-sdk-sample-" + Guid.NewGuid();
+      string key = "sample.txt";
+
+      try
+      {
+        // The AWS SDK for .NET maps the CreateBucket operation to 'PutBucket'
+        await client.PutBucketAsync(new PutBucketRequest { BucketName = bucket });
+
+        await client.PutObjectAsync(new PutObjectRequest
+        {
+          BucketName = bucket,
+          Key = key,
+          ContentBody = "Hello from Tenbyte T2!"
+        });
+
+        Console.WriteLine($"Successfully uploaded data to {bucket}/{key}");
+      }
+      catch (AmazonS3Exception ex)
+      {
+        Console.WriteLine($"Error: {ex.Message}");
+      }
+    }
+  }
+}
+```
+
+### Setting Up Environment Variables
+
+Before running the application, set the following environment variables:
+
+**Windows (PowerShell):**
+```powershell
+$env:AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+$env:AWS_ACCESS_KEY_ID="your_T2_keyId"
+$env:AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+**Linux/macOS:**
+```bash
+export AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+export AWS_ACCESS_KEY_ID="your_T2_keyId"
+export AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+Alternatively, you can configure credentials in `~/.aws/credentials`:
+
+```ini
+[default]
+aws_access_key_id = your_T2_keyId
+aws_secret_access_key = your_T2_appKey
+```
+
+And set the endpoint in `~/.aws/config`:
+
+```ini
+[default]
+endpoint_url = https://t2.tenbytecloud.com
+```
+
+The Tenbyte S3-Compatible API allows thousands of integrations to natively work with Tenbyte T2 Cloud Storage. If you are new to the Tenbyte S3-Compatible API, refer to the [Getting Started guide](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+If you have issues using this SDK with Tenbyte T2, contact us at [support@tenbyte.io](mailto:support@tenbyte.io).

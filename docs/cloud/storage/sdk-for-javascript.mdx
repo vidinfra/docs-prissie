@@ -1,0 +1,91 @@
+---
+title: "AWS SDK for JavaScript V3 with Tenbyte T2"
+description: "How to use the AWS SDK for JavaScript V3 with Tenbyte T2 S3-compatible storage"
+icon: 'blocks'
+sidebarTitle: 'AWS SDK for JavaScript V3 with Tenbyte T2'
+---
+
+### How do I use the AWS SDK for JavaScript V3 with Tenbyte T2?
+
+You can easily configure Tenbyte T2 Cloud Storage for use with the [AWS SDK for JavaScript V3](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/) using the Tenbyte [S3-Compatible API](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+The following example shows a `sample.js` that creates a bucket and uploads a file:
+
+> **Note:** Make sure to replace the endpoint with your actual Tenbyte T2 endpoint from your Tenbyte console.
+
+```javascript
+import { S3Client, CreateBucketCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import { v4 as uuid } from 'uuid';
+
+// Create an S3 client pointed to Tenbyte T2
+const s3 = new S3Client({
+  endpoint: 'https://t2.tenbytecloud.com',
+  region: 'us-east-1',
+  credentials: {
+    accessKeyId: 'your_T2_keyId',
+    secretAccessKey: 'your_T2_appKey',
+  },
+  forcePathStyle: true,
+});
+
+// Create a bucket and upload something into it
+var bucketName = 'tenbyte-sdk-sample-' + uuid();
+var keyName = 'sample.txt';
+
+try {
+  await s3.send(new CreateBucketCommand({ Bucket: bucketName }));
+
+  await s3.send(new PutObjectCommand({
+    Bucket: bucketName,
+    Key: keyName,
+    Body: 'Hello from Tenbyte T2!'
+  }));
+
+  console.log("Successfully uploaded data to " + bucketName + "/" + keyName);
+} catch (err) {
+  console.log("Error: ", err);
+}
+```
+
+The following code sample shows the content of `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.32.0",
+    "uuid": "^9.0.0"
+  },
+  "type": "module"
+}
+```
+
+The following code sample shows how to install dependencies:
+
+```bash
+% npm install
+
+added 106 packages, and audited 107 packages in 3s
+
+found 0 vulnerabilities
+```
+
+The AWS SDK for JavaScript can read credentials from the shared credentials file, environment variables, and other mechanisms. See [Setting Credentials in Node.js](https://docs.aws.amazon.com/sdk-for-javascript/v3/developer-guide/setting-credentials-node.html) for details.
+
+For example, to use the shared credentials file, add your Tenbyte T2 credentials to `~/.aws/credentials` as a separate profile:
+
+```ini
+[tenbyte]
+aws_access_key_id = your_T2_keyId
+aws_secret_access_key = your_T2_appKey
+```
+
+Then run the following script:
+
+```bash
+% AWS_PROFILE=tenbyte node sample.js
+Successfully uploaded data to tenbyte-sdk-sample-38cb5413-29c2-46f5-ab2d-4ac4d553f929/sample.txt
+```
+
+The Tenbyte S3-Compatible API allows thousands of integrations to natively work with Tenbyte T2 Cloud Storage. If you are new to the Tenbyte S3-Compatible API, refer to the [Getting Started guide](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+If you have issues using this SDK with Tenbyte T2, contact us at [support@tenbyte.io](mailto:support@tenbyte.io).

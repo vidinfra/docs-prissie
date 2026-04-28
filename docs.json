@@ -280,9 +280,23 @@
                     "expanded": false,
                     "icon": "globe",
                     "pages": [
-                    "docs/cloud/storage/laravel-with-tenbyte"
+                    "docs/cloud/storage/laravel-with-tenbyte",
+                    "docs/cloud/storage/sdk-for-go",
+                    "docs/cloud/storage/sdk-for-python",
+                    "docs/cloud/storage/sdk-for-javascript",
+                    "docs/cloud/storage/sdk-for-java",
+                    "docs/cloud/storage/sdk-for-php",
+                    "docs/cloud/storage/sdk-for-ruby",
+                    "docs/cloud/storage/sdk-for-dotnet"
                     ]
                   }
+                    ]
+                  },
+                   {"group": "S3 compitable api",
+                    "expanded": false,
+                    "icon": "globe",
+                    "pages": [
+                  "docs/cloud/storage/s3-compitable-api/intro-s3-compitable-api"
                     ]
                   }
                 ]

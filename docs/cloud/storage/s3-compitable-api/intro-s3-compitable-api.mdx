@@ -1,0 +1,134 @@
+---
+title: "Introduction to the Tenbyte T2 S3-Compatible API"
+description: "Overview of the Tenbyte T2 S3-Compatible API and how to get started"
+icon: 'blocks'
+sidebarTitle: 'S3-Compatible API Introduction'
+---
+
+### Introduction to the Tenbyte T2 S3-Compatible API
+
+The Tenbyte T2 Cloud Storage S3-Compatible API implements the most commonly used actions from the Amazon Simple Storage Service (S3) API, and it easily integrates with your existing applications, data management tools, and Amazon S3 gateways.
+
+If you are not already a Tenbyte T2 user, you can [sign up for an account today](https://console.tenbytecloud.com/app/).
+
+Most applications and scripts use one of the AWS SDKs or the S3 commands in the AWS CLI to access Tenbyte T2. All of the SDKs, and the CLI, allow you to override the default Amazon S3 endpoint in favor of Tenbyte T2. Sometimes, though, you might want to interact directly with Tenbyte T2 via the S3-Compatible API, perhaps in debugging an issue, or just to better understand how the service works. This documentation is the definitive reference for accessing Tenbyte T2 directly via the S3-Compatible API.
+
+### Prerequisites
+
+If you are familiar with Tenbyte, getting started is straightforward:
+
+* Create a Tenbyte T2 account.
+* Ensure that T2 object storage is enabled on your account.
+* Create an application key. You cannot use your master application key with the S3-Compatible API.
+* [Create a bucket](https://docs.tenbyte.io/docs/cloud/storage/object-storage). Note the bucket's Endpoint URL. It has the form `https://t2.tenbytecloud.com`. Make a note of the endpoint and region. At present, Tenbyte T2 provides a unified endpoint for all storage operations.
+
+### Authentication
+
+The S3-Compatible API supports only v4 signatures for authentication. v2 signatures are not supported at this time. To learn more about S3 authentication, refer to the [AWS Signature documentation](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_sigv.html).
+
+**Authorization Credentials:**
+```
+Access Key:   <your-application-key-id>
+Secret Key:   <your-application-key>
+```
+
+### Request and Response Formats
+
+Communicate with the API by sending HTTP requests to resource endpoints. The HTTP method determines the action taken.
+
+**DELETE**
+Use the DELETE method to destroy a resource such as a bucket, object, or bucket setting. If it is not found, the operation will return a 4xx error and an appropriate message.
+
+**GET**
+To retrieve object data or configuration, use the GET method. Object data is returned in the format it was written; configuration is returned as XML. GET methods are read-only and do not modify any resources.
+
+**PUT**
+Use the PUT method to write object data or configuration. Configuration must be formatted as XML according to the schema defined by the Amazon S3 API.
+
+**POST**
+Use the POST method with the S3 Delete Object, S3 Complete Multipart Upload, and S3 Create Multipart Upload operations.
+
+### HTTP Response Codes
+
+The API uses standard HTTP response codes to show the outcome of requests. Response codes in the 2xx range indicate success, while codes in the 4xx range indicate a client-side error, such as an authorization failure or a malformed request. 4xx errors return an XML response object explaining the problem:
+
+```xml
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Error>
+    <Code>NoSuchBucket</Code>
+    <Message>The specified bucket does not exist: NonExistentBucket</Message>
+    <Resource>NonExistentBucket</Resource>
+</Error>
+```
+
+Codes in the 5xx range indicate a server-side problem preventing Tenbyte T2 from fulfilling your request, and include JSON diagnostics:
+
+```json
+{
+    "code": "internal_error",
+    "message": "incident id 2f0e432cc922-9c2c28e96a16711b",
+    "status": 500
+}
+```
+
+### Response Code Reference
+
+| Code | Status | Description |
+|------|--------|-------------|
+| 200 | OK | The response contains your requested information. |
+| 201 | Created | Your request was accepted. The resource was created. |
+| 202 | Accepted | Your request was accepted. The resource was created or updated. |
+| 204 | No Content | Your request succeeded; there is no additional information returned. |
+| 400 | Bad Request | Your request was malformed. |
+| 401 | Unauthorized | You did not supply valid authentication credentials. |
+| 403 | Forbidden | You are not allowed to perform that action. |
+| 404 | Not Found | No results were found for your request. |
+| 429 | Too Many Requests | Your request exceeded the API rate limit. |
+| 500 | Internal Server Error | We were unable to perform the request due to server-side problems. |
+
+### Differences from AWS S3
+
+For the most part, the Tenbyte T2 Cloud Storage S3-Compatible API operates identically to Amazon S3. However, there are some important differences you should keep in mind when designing applications and solutions:
+
+* **Tenbyte T2 endpoints** are located at `t2.tenbytecloud.com` rather than `amazonaws.com`. Most S3-compatible applications and tools let you customize the S3 endpoint to work with S3-compatible APIs outside of Amazon.
+
+* **Access Control Lists (ACLs)** are set at the bucket level, and only the canned ACL values `private` and `public-read` are supported. You cannot set complex ACLs via XML. Objects inherit their bucket's ACL. Attempting to set an object's ACL to a different value from its parent results in a 403 Forbidden error.
+
+* **File and bucket naming** — Tenbyte T2 features slightly different restrictions on file names and bucket names than Amazon S3.
+
+* **Bucket versioning** — Buckets in Tenbyte T2 are versioned by default. Because buckets are versioned, when a file is deleted by referencing the name, only the most recent version of that file is deleted and older versions of the file continue to exist in the bucket.
+
+* **HTTPS-only connections** — The API endpoints accept only connections over HTTPS. Non-secure connections are rejected.
+
+* **Encryption** — Tenbyte T2 supports server-side encryption of data using either Tenbyte-managed keys (SSE-T2) or customer-managed keys (SSE-C). SSE-KMS encryption is not currently supported.
+
+* **Not currently supported** — IAM roles, Object Tagging, and Website configuration are not currently supported.
+
+### Bucket Operations
+
+This set of operations allows you to manipulate Tenbyte T2 buckets.
+
+There is no limit to the number of files in a bucket, but there is a limit of 100 buckets per account.
+
+Aside from the S3 List Buckets operation, all bucket operations use an endpoint in the following form:
+
+```
+https://t2.tenbytecloud.com/<your-bucket-name>
+```
+
+### Network Support
+
+The Tenbyte S3-Compatible API currently supports IPv4 connections.
+
+---
+
+For detailed SDK examples and integration guides, see the following:
+
+* [AWS SDK for Go with Tenbyte T2](/docs/storage/sdk-for-go)
+* [AWS SDK for Java V2 with Tenbyte T2](/docs/storage/sdk-for-java)
+* [AWS SDK for JavaScript V3 with Tenbyte T2](/docs/storage/sdk-for-javascript)
+* [AWS SDK for Python (boto3) with Tenbyte T2](/docs/storage/sdk-for-python)
+* [AWS SDK for .NET with Tenbyte T2](/docs/storage/sdk-for-dotnet)
+* [AWS SDK for PHP with Tenbyte T2](/docs/storage/sdk-for-php)
+* [AWS SDK for Ruby with Tenbyte T2](/docs/storage/sdk-for-ruby)
+* [Laravel with Tenbyte T2](/docs/storage/laravel-with-tenbyte)
