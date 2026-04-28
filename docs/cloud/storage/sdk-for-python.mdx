@@ -1,0 +1,115 @@
+---
+title: "AWS SDK for Python (boto3) with Tenbyte T2"
+description: "How to use the AWS SDK for Python (boto3) with Tenbyte T2 S3-compatible storage"
+icon: 'blocks'
+sidebarTitle: 'AWS SDK for Python (boto3) with Tenbyte T2'
+---
+
+### How do I use the AWS SDK for Python (boto3) with Tenbyte T2?
+
+You can take advantage of Tenbyte T2 Cloud Storage using the AWS SDK for Python (boto3) alongside the Tenbyte [S3-Compatible API](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+You need to point the `endpoint_url` to the Tenbyte T2 S3 endpoint of the account to which you are connecting, along with supplying an Access Key ID and Secret Access Key for the account.
+
+### Prerequisites
+
+To use the AWS SDK for Python (boto3) with Tenbyte T2, you must:
+
+* Use [**AWS SDK for Python (boto3) version 1.28.0 or greater**](https://aws.amazon.com/sdk-for-python/). Older versions do not support easy configuration of a custom endpoint using the service-specific endpoint feature.
+* Configure the `AWS_ENDPOINT_URL` environment variable or the `endpoint_url` setting in the shared AWS config file with your Tenbyte T2 S3 endpoint. **Note:** you must include the `https://` prefix in the URL, for example `https://t2.tenbytecloud.com`.
+* Configure your Tenbyte T2 Access Key ID and Secret Access Key via one of the methods supported by boto3. **Note:** the Tenbyte T2 Access Key ID is equivalent to the AWS access key id, and the Tenbyte T2 Secret Access Key is equivalent to the AWS secret access key.
+
+### Installation
+
+Install boto3 via pip if you haven't already:
+
+```bash
+pip install boto3
+```
+
+### Setting Up Environment Variables
+
+Set the following environment variables before running your application:
+
+**Linux/macOS:**
+```bash
+export AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+export AWS_ACCESS_KEY_ID="your_T2_keyId"
+export AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+**Windows (PowerShell):**
+```powershell
+$env:AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+$env:AWS_ACCESS_KEY_ID="your_T2_keyId"
+$env:AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+Alternatively, you can configure them in `~/.aws/credentials` and `~/.aws/config`:
+
+```ini
+# ~/.aws/credentials
+[default]
+aws_access_key_id = your_T2_keyId
+aws_secret_access_key = your_T2_appKey
+```
+
+```ini
+# ~/.aws/config
+[default]
+endpoint_url = https://t2.tenbytecloud.com
+```
+
+### Example: Creating a Bucket and Uploading a File
+
+The following example demonstrates how to create a bucket and upload data after having configured `AWS_ENDPOINT_URL`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` using either environment variables or the shared AWS config file:
+
+```python
+import boto3
+
+s3 = boto3.client('s3')
+
+# Create a bucket
+s3.create_bucket(Bucket='my-tenbyte-bucket')
+print("Bucket created successfully: my-tenbyte-bucket")
+
+# Upload an object
+s3.put_object(
+    Bucket='my-tenbyte-bucket',
+    Key='sample.txt',
+    Body='Hello from Tenbyte T2!',
+)
+print("File uploaded successfully: sample.txt")
+```
+
+### Example: Using Inline Credentials (Without Environment Variables)
+
+If you prefer to pass credentials directly in the code without using environment variables or config files:
+
+```python
+import boto3
+
+s3 = boto3.client(
+    's3',
+    endpoint_url='https://t2.tenbytecloud.com',
+    aws_access_key_id='your_T2_keyId',
+    aws_secret_access_key='your_T2_appKey',
+    region_name='us-east-1',
+)
+
+# Create a bucket
+s3.create_bucket(Bucket='my-tenbyte-bucket')
+print("Bucket created successfully: my-tenbyte-bucket")
+
+# Upload an object
+s3.put_object(
+    Bucket='my-tenbyte-bucket',
+    Key='sample.txt',
+    Body='Hello from Tenbyte T2!',
+)
+print("File uploaded successfully: sample.txt")
+```
+
+The Tenbyte S3-Compatible API allows thousands of integrations to natively work with Tenbyte T2 Cloud Storage. If you are new to the Tenbyte S3-Compatible API, refer to the [Getting Started guide](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+If you have issues using this SDK with Tenbyte T2, contact us at [support@tenbyte.io](mailto:support@tenbyte.io).

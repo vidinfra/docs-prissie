@@ -1,0 +1,73 @@
+---
+title: "AWS SDK for PHP with Tenbyte T2"
+description: "How to use the AWS SDK for PHP with Tenbyte T2 S3-compatible storage"
+icon: 'blocks'
+sidebarTitle: 'AWS SDK for PHP with Tenbyte T2'
+---
+
+### How do I use the AWS SDK for PHP with Tenbyte T2?
+
+You can take advantage of Tenbyte T2 Cloud Storage using the AWS SDK for PHP alongside the Tenbyte [S3-Compatible API](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+> **Important:** Pre-Signed URLs that are generated with the PHP SDK are not currently compatible with Tenbyte T2.
+
+### Prerequisites
+
+When you create a Tenbyte T2 bucket, select the **Allow List All Bucket Names** checkbox. This option is required for the List Buckets operation. If you did not select this when you created your application key, you must create a new application key with this permission enabled.
+
+### Configuration
+
+First, configure your Tenbyte T2 credentials in the `~/.aws/credentials` file:
+
+```ini
+[tenbyte]
+aws_access_key_id = your_T2_keyId
+aws_secret_access_key = your_T2_appKey
+```
+
+### Example: Creating a Bucket
+
+This example shows how you create a bucket using the AWS SDK for PHP with a profile named `tenbyte` in the `~/.aws/credentials` file.
+
+```php
+<?php
+// Include the SDK using the Composer autoloader
+require '<path-to>/vendor/autoload.php';
+
+use Aws\S3\S3Client;
+use Aws\Exception\AwsException;
+
+// Instantiate the S3 client using your Tenbyte T2 profile
+$s3Client = new S3Client([
+    'endpoint' => 'https://t2.tenbytecloud.com',
+    'profile' => 'tenbyte',
+    'region' => 'us-east-1',
+    'version' => 'latest',
+    'use_path_style_endpoint' => true,
+]);
+
+// Sample to create a bucket
+try {
+    $result = $s3Client->createBucket([
+        'Bucket' => 'my-tenbyte-bucket'
+    ]);
+    
+    echo "Bucket created successfully: " . $result['Location'] . "\n";
+} catch (AwsException $e) {
+    echo "Error creating bucket: " . $e->getAwsErrorMessage() . "\n";
+}
+
+?>
+```
+
+### Installation
+
+To use the AWS SDK for PHP, install it via Composer:
+
+```bash
+composer require aws/aws-sdk-php
+```
+
+The Tenbyte S3-Compatible API allows thousands of integrations to natively work with Tenbyte T2 Cloud Storage. If you are new to the Tenbyte S3-Compatible API, refer to the [Getting Started guide](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+If you have issues using this SDK with Tenbyte T2, contact us at [support@tenbyte.io](mailto:support@tenbyte.io).

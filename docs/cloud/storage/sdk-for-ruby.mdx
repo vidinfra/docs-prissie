@@ -1,0 +1,133 @@
+---
+title: "AWS SDK for Ruby with Tenbyte T2"
+description: "How to use the AWS SDK for Ruby with Tenbyte T2 S3-compatible storage"
+icon: 'blocks'
+sidebarTitle: 'AWS SDK for Ruby with Tenbyte T2'
+---
+
+### How do I use the AWS SDK for Ruby with Tenbyte T2?
+
+You can take advantage of Tenbyte T2 Cloud Storage using the AWS SDK for Ruby alongside the Tenbyte [S3-Compatible API](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+You need to set the client endpoint and region to the Tenbyte S3 endpoint and region of the account to which you are connecting, along with supplying an Access Key ID and Secret Access Key for the account.
+
+### Prerequisites
+
+To use the AWS SDK for Ruby with Tenbyte T2, you must:
+
+* Use **version 1.131.0 or later** of the [aws-sdk-s3 gem](https://rubygems.org/gems/aws-sdk-s3). Older versions do not support easy configuration of a custom endpoint using the service-specific endpoint feature.
+* Configure the `AWS_REGION` environment variable or the `region` setting in the shared AWS config file with the region of your Tenbyte T2 endpoint. For example: `us-east-1`.
+* Configure the `AWS_ENDPOINT_URL` environment variable or the `endpoint_url` setting in the shared AWS config file with your Tenbyte T2 S3 endpoint. **Note:** you must include the `https://` prefix in the URL, for example `https://t2.tenbytecloud.com`.
+* Configure your Tenbyte T2 Access Key ID and Secret Access Key via one of the methods supported by the AWS SDK for Ruby. **Note:** the Tenbyte T2 Access Key ID is equivalent to the AWS access key id, and the Tenbyte T2 Secret Access Key is equivalent to the AWS secret access key.
+
+### Installation
+
+Install the `aws-sdk-s3` gem via Bundler or gem:
+
+```bash
+gem install aws-sdk-s3
+```
+
+Or add it to your `Gemfile`:
+
+```ruby
+gem 'aws-sdk-s3', '>= 1.131.0'
+```
+
+Then run:
+
+```bash
+bundle install
+```
+
+### Setting Up Environment Variables
+
+Set the following environment variables before running your application:
+
+**Linux/macOS:**
+```bash
+export AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+export AWS_REGION="us-east-1"
+export AWS_ACCESS_KEY_ID="your_T2_keyId"
+export AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+**Windows (PowerShell):**
+```powershell
+$env:AWS_ENDPOINT_URL="https://t2.tenbytecloud.com"
+$env:AWS_REGION="us-east-1"
+$env:AWS_ACCESS_KEY_ID="your_T2_keyId"
+$env:AWS_SECRET_ACCESS_KEY="your_T2_appKey"
+```
+
+Alternatively, you can configure them in `~/.aws/credentials` and `~/.aws/config`:
+
+```ini
+# ~/.aws/credentials
+[default]
+aws_access_key_id = your_T2_keyId
+aws_secret_access_key = your_T2_appKey
+```
+
+```ini
+# ~/.aws/config
+[default]
+region = us-east-1
+endpoint_url = https://t2.tenbytecloud.com
+```
+
+### Example: Creating a Bucket and Uploading a File
+
+The following example demonstrates how to create a bucket and upload data after having configured `AWS_REGION`, `AWS_ENDPOINT_URL`, `AWS_ACCESS_KEY_ID`, and `AWS_SECRET_ACCESS_KEY` using either environment variables or the shared AWS config file:
+
+```ruby
+require 'aws-sdk-s3'
+
+# Use aws-sdk-s3 gem version 1.131.0 or later to configure endpoint via
+# AWS_ENDPOINT_URL environment variable
+s3 = Aws::S3::Client.new()
+
+# Create a bucket
+s3.create_bucket(bucket: 'my-tenbyte-bucket')
+puts "Bucket created successfully: my-tenbyte-bucket"
+
+# Upload an object
+s3.put_object(
+  bucket: 'my-tenbyte-bucket',
+  key: 'sample.txt',
+  body: 'Hello from Tenbyte T2!'
+)
+puts "File uploaded successfully: sample.txt"
+```
+
+### Example: Using Inline Credentials (Without Environment Variables)
+
+If you prefer to pass credentials directly in the code without using environment variables or config files:
+
+```ruby
+require 'aws-sdk-s3'
+
+s3 = Aws::S3::Client.new(
+  endpoint: 'https://t2.tenbytecloud.com',
+  region: 'us-east-1',
+  access_key_id: 'your_T2_keyId',
+  secret_access_key: 'your_T2_appKey',
+  force_path_style: true
+)
+
+# Create a bucket
+s3.create_bucket(bucket: 'my-tenbyte-bucket')
+puts "Bucket created successfully: my-tenbyte-bucket"
+
+# Upload an object
+s3.put_object(
+  bucket: 'my-tenbyte-bucket',
+  key: 'sample.txt',
+  body: 'Hello from Tenbyte T2!'
+)
+puts "File uploaded successfully: sample.txt"
+```
+
+The Tenbyte S3-Compatible API allows thousands of integrations to natively work with Tenbyte T2 Cloud Storage. If you are new to the Tenbyte S3-Compatible API, refer to the [Getting Started guide](https://docs.tenbyte.io/docs/cloud/storage/object-storage).
+
+If you have issues using this SDK with Tenbyte T2, contact us at [support@tenbyte.io](mailto:support@tenbyte.io).
