@@ -278,7 +278,7 @@
                     "docs/cloud/storage/object-storage",
                      {"group": "Integration Guide",
                     "expanded": false,
-                    "icon": "globe",
+                    "icon": "puzzle",
                     "pages": [
                     "docs/cloud/storage/laravel-with-tenbyte",
                     "docs/cloud/storage/sdk-for-go",
@@ -292,9 +292,9 @@
                   }
                     ]
                   },
-                   {"group": "S3 compitable api",
+                    {"group": "S3 Compitable API",
                     "expanded": false,
-                    "icon": "globe",
+                    "icon": "plug",
                     "pages": [
                   "docs/cloud/storage/s3-compitable-api/intro-s3-compitable-api"
                     ]
